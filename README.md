@@ -54,8 +54,6 @@ command to run if program contains helper info
 
 ## Authors
 
-Contributors names and contact info
-
 Alex Libacova
 
 Daniel Greaves
