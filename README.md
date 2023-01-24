@@ -15,16 +15,16 @@ An in-depth paragraph about your project and overview of use.
 * Clone FEC
 
 * Create and Move to a new feature:
-*  git checkout -b featureName
+    * git checkout -b featureName
 
-* Make frequent Commits
+* Make frequent commits
 
 * Send push to main
-* git push --set-upstream origin featureName
- -
+    * git push --set-upstream origin featureName
+    
 * Create pull request
-*  Add what your PR achieves
-*  Include any Questions
+    * Add what your PR achieves
+    * Include any Questions
 *  Await code review
 
 ### Dependencies
