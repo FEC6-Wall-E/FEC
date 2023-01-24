@@ -16,7 +16,7 @@ Create and Move to a new feature:
 Make frequent Commits
  -
 Send push to main
-  git push --set-upstream origin test
+  git push --set-upstream origin featureName
  -
 Create pull request
   Add what your PR achieves
