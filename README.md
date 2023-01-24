@@ -1,5 +1,11 @@
 # FEC
 
+**-Overview-**
+
+**-Table of Contents-**
+
+**-Description-**
+
 **-Git Work flow-**
 
 Clone FEC
@@ -17,3 +23,12 @@ Create pull request
   Include any Questions
   Await code review
  -
+Anything else?
+
+**-Team Members-**
+
+  Alex Libacova
+
+  Daniel Greaves
+
+  Jacob Davis
