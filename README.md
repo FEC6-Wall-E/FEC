@@ -3,6 +3,8 @@
 Simple overview of use/purpose.
 
 ## Table of Contents
+=================
+  * [Description](#description)
 
 ## Description
 
