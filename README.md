@@ -1,47 +1,31 @@
-# FEC
-
-**-Overview-**
-
-**-Table of Contents-**
-
-**-Description-**
-
-**-Git Work flow-**
-
-Clone FEC
- -
-Create and Move to a new feature:
-  git checkout -b featureName
- -
-Make frequent Commits
- -
-Send push to main
-  git push --set-upstream origin featureName
- -
-Create pull request
-  Add what your PR achieves
-  Include any Questions
-  Await code review
- -
-Anything else?
-
-**-Team Members-**
-
-  Alex Libacova
-
-  Daniel Greaves
-
-  Jacob Davis
-  
-  # Project Title
+  # FEC - Front End Capstone
 
 Simple overview of use/purpose.
+
+## Table of Contents
 
 ## Description
 
 An in-depth paragraph about your project and overview of use.
 
 ## Getting Started
+
+### Git Workflow
+
+* Clone FEC
+
+* Create and Move to a new feature:
+*  git checkout -b featureName
+
+* Make frequent Commits
+
+* Send push to main
+* git push --set-upstream origin featureName
+ -
+* Create pull request
+*  Add what your PR achieves
+*  Include any Questions
+*  Await code review
 
 ### Dependencies
 
@@ -72,8 +56,11 @@ command to run if program contains helper info
 
 Contributors names and contact info
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+Alex Libacova
+
+Daniel Greaves
+
+Jacob Davis
 
 ## Version History
 
