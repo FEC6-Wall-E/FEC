@@ -3,8 +3,17 @@
 Simple overview of use/purpose.
 
 ## Table of Contents
-=================
   * [Description](#description)
+  * [Geting Started](#getting-started)
+    * [Git Workflow](#git-workflow)
+    * [Dependencies](#dependencies)
+    * [Installing](#installing)
+    * [Executing program](#executing-program)
+  * [Help](#help)
+  * [Authors](#authors)
+  * [Version History](#version-history)
+  * [License](#license)
+  * [Acknowledgments](#acknowledgments)
 
 ## Description
 
