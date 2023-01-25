@@ -2,7 +2,7 @@
 const axios = require('axios')
 
 const headers = {
-  'Authorization': process.env.AUTH;
+  'Authorization': process.env.AUTH_KEY
 }
 
 module.exports = {

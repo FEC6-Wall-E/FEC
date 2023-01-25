@@ -1,9 +1,11 @@
+require("dotenv").config();
+
 const express = require('express');
 const morgan = require('morgan');
 const router = require('./router.js')
 
 const app = express();
-const port = 1337;
+const port = process.env.PORT;
 
 //MIDDLE WARE
 app.use(morgan('dev'));
