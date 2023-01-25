@@ -1,1 +1,16 @@
-const app = require('express');
+const express = require('express');
+const morgan = require('morgan');
+const router = require('./router.js')
+
+const app = express();
+const port = 1337;
+
+//MIDDLE WARE
+app.use(morgan('dev'));
+app.use('/', router);
+app.use(express.json());
+
+app.use(express.static('../client/dist')) // SERVE CLIENT FILES
+
+app.listen(port)
+console.log(`LISTENING AT PORT: ${port}`)
