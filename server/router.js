@@ -8,14 +8,14 @@ router.get('/products/:pid/styles', controller.products.getStyles)
 router.get('/products/:pid/related', controller.products.getRelated)
 
 
-// REVIEW ROUTES
-router.get('/products/:pid/reviews', controller.reviews.getReviews)
-router.get('/products/:pid/meta', controller.reviews.getMeta)
+// REVIEW/META ROUTES
+router.get('/reviews/:pid', controller.reviews.getReviews)
+router.get('/meta/:pid', controller.reviews.getMeta)
 
-router.post('/products/:pid/reviews', controller.reviews.post)
+router.post('/reviews/:pid', controller.reviews.post)
 
-router.put('/products/:pid/helpful', controller.reviews.helpful)
-router.put('/products/:pid/report', controller.reviews.report)
+router.put('/reviews/:rid/helpful', controller.reviews.helpful)
+router.put('/reviews/:rid/report', controller.reviews.report)
 
 
 // Q&A ROUTES
@@ -29,7 +29,5 @@ router.put('/products/:pid/questions/:qid/helpful', controller.questions.questio
 router.put('/products/:pid/questions/:qid/report', controller.questions.questionReport)
 router.put('/products/:pid/questions/:qid/answers/:aid/helpful', controller.questions.answerHelpful)
 router.put('/products/:pid/questions/:qid/answers/:aid/report', controller.questions.answerReport)
-
-router.get('/reviews', (req, res) => console.log(req))
 
 module.exports = router;

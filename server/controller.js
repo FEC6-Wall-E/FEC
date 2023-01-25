@@ -52,20 +52,41 @@ module.exports = {
       })
       .catch(err => {
         res.sendStatus(500);
-        console.error('err');
+        console.error(err);
       })
     },
     getMeta: (req, res) => {
+      return api.get(`reviews/meta/?product_id=${req.params.pid}`)
+      .then(reviews => {
+        res.status(200).json(reviews.data);
+      })
+      .catch(err => {
+        res.sendStatus(500);
+        console.error(err);
+      })
+    },
+    post: (req, res) => { // NEED TO WAIT FOR A CLIENT TO TEST FROM
       res.status(500).json('This function hasnt been created yet!')
     },
-    post: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+    helpful: (req, res) => { // This seems to not actually update the API, but the doc for the API's put has no paramaters other than r_id...
+      return api.put(`reviews/${req.params.rid}/helpful`)
+      .then(reviews => {
+        res.sendStatus(204)
+      })
+      .catch(err => {
+        res.sendStatus(500);
+        console.error(err.data);
+      })
     },
-    helpful: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
-    },
-    report: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+    report: (req, res) => {// This seems to not actually update the API, but the doc for the API's put has no paramaters other than r_id...
+      return api.put(`reviews/${req.params.rid}/report`)
+      .then(reviews => {
+        res.sendStatus(204)
+      })
+      .catch(err => {
+        res.sendStatus(500);
+        console.error(err.data);
+      })
     }
   },
 
