@@ -33,7 +33,14 @@ module.exports = {
         })
     },
     getRelated: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      return api.get(`products/${req.params.pid}/related`)
+      .then(products => {
+        res.status(200).json(products.data);
+      })
+      .catch(err => {
+        res.sendStatus(500);
+        console.error(err);
+      })
     }
   },
 
