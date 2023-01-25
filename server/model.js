@@ -4,27 +4,28 @@ const axios = require('axios')
 const headers = {
   'Authorization': process.env.AUTH_KEY
 }
+const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/'
 
 module.exports = {
-  get: url => {
+  get: (extension) => {
     return axios({
       method: 'GET',
-      url: url,
+      url: url + extension,
       headers: headers
     })
   },
-  post: (url, data) => {
+  post: (extension, data) => {
     return axios({
       method: 'POST',
-      url: url,
+      url: url + extension,
       data: data,
       headers: headers
     })
   },
-  put: (url, data) => {
+  put: (extension) => {
     return axios({
       method: 'PUT',
-      url: url,
+      url: url + extension,
       headers: headers
     })
   }

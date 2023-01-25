@@ -3,10 +3,24 @@ const api = require('./model.js');
 module.exports = {
   products: {
     getAll: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      return api.get(`products`)
+        .then(products => {
+          res.status(200).json(products.data);
+        })
+        .catch(err => {
+          res.sendStatus(500);
+          console.error(err);
+        })
     },
     getOne: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      return api.get(`products/${req.params.pid}`)
+        .then(products => {
+          res.status(200).json(products.data);
+        })
+        .catch(err => {
+          res.sendStatus(500);
+          console.error(err);
+        })
     },
     getStyles: (req, res) => {
       res.status(500).json('This function hasnt been created yet!')
