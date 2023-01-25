@@ -1,47 +1,43 @@
-# FEC
-
-**-Overview-**
-
-**-Table of Contents-**
-
-**-Description-**
-
-**-Git Work flow-**
-
-Clone FEC
-
-Create and Move to a new feature:
-  git checkout -b featureName
-
-Make frequent Commits
-
-Send push to main
-  git push --set-upstream origin test
-
-Create pull request
-  Add what your PR achieves
-  Include any Questions
-  Await code review
-
-Anything else?
-
-**-Team Members-**
-
-  Alex Libacova
-
-  Daniel Greaves
-
-  Jacob Davis
-  
-  # Project Title
+  # FEC - Front End Capstone
 
 Simple overview of use/purpose.
+
+## Table of Contents
+  * [Description](#description)
+  * [Geting Started](#getting-started)
+    * [Git Workflow](#git-workflow)
+    * [Dependencies](#dependencies)
+    * [Installing](#installing)
+    * [Executing program](#executing-program)
+  * [Help](#help)
+  * [Authors](#authors)
+  * [Version History](#version-history)
+  * [License](#license)
+  * [Acknowledgments](#acknowledgments)
 
 ## Description
 
 An in-depth paragraph about your project and overview of use.
 
 ## Getting Started
+
+### Git Workflow
+
+* Clone FEC
+
+* Create and Move to a new feature:
+    * git checkout -b featureName
+
+* Make frequent commits
+
+* Send push to main
+    * git push --set-upstream origin featureName
+
+* Create pull request
+    * Add what your PR achieves
+    * Include any Questions
+
+*  Await code review
 
 ### Dependencies
 
@@ -70,10 +66,11 @@ command to run if program contains helper info
 
 ## Authors
 
-Contributors names and contact info
+Alex Libacova
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+Daniel Greaves
+
+Jacob Davis
 
 ## Version History
 
