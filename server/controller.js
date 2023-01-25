@@ -46,7 +46,14 @@ module.exports = {
 
   reviews: {
     getReviews: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      return api.get(`reviews/?product_id=${req.params.pid}&sort=${req.params.sort || 'relevant'}`)
+      .then(reviews => {
+        res.status(200).json(reviews.data);
+      })
+      .catch(err => {
+        res.sendStatus(500);
+        console.error('err');
+      })
     },
     getMeta: (req, res) => {
       res.status(500).json('This function hasnt been created yet!')

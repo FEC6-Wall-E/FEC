@@ -30,4 +30,6 @@ router.put('/products/:pid/questions/:qid/report', controller.questions.question
 router.put('/products/:pid/questions/:qid/answers/:aid/helpful', controller.questions.answerHelpful)
 router.put('/products/:pid/questions/:qid/answers/:aid/report', controller.questions.answerReport)
 
+router.get('/reviews', (req, res) => console.log(req))
+
 module.exports = router;
