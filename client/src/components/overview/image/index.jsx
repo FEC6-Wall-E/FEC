@@ -18,16 +18,22 @@ function Image({ images }) {
 
   let timeout = setTimeout(() => {
     changeIndex(index + 1);
-  }, 10000);
+  }, 2000);
 
   return (
     <div id="overviewImage">
-      <img
-        src={images[index].url}
-        width="670"
-        height="1000"
-        alt="Missing!"
-      />
+      <div className="overViewSlider">
+        {images.map((image) => (
+          <img
+            className="overviewImage"
+            style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+            src={image.url}
+            width="670"
+            height="1000"
+            alt="Missing!"
+          />
+        ))}
+      </div>
       <div>
         {/* Dont always want these to be HTML buttons... */}
         <button className="imageSelector" onClick={() => changeIndex(index - 1)}>left</button>

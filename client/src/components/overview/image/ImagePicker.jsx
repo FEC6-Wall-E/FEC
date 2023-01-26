@@ -4,22 +4,16 @@
 import React from 'react';
 
 function ImagePicker({ images, setImage, currID }) {
-  let index = 0;
-  const displayImages = images.map((image) => {
-    const newImage = image;
-    newImage.id = index++;
-    return image;
-  });
-
   return (
     <div id="overviewImagePicker">
-      {displayImages.map((image) => (
+      {images.map((image, idx) => (
         <img
+          key={idx}
           className="imagePickerImage"
-          width="70"
-          height="100"
-          onClick={() => setImage(image.id)}
-          id={image.id === currID ? 'picked' : null}
+          width="56"
+          height="80"
+          onClick={() => setImage(idx)}
+          id={idx === currID ? 'picked' : null}
           src={image.thumbnail_url}
           alt="X?X?X"
         />
