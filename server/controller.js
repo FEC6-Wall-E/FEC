@@ -136,7 +136,20 @@ module.exports = {
       })
     },
     postQuestion: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      const body = {
+        product_id: 40383,
+        body: "But where did it come from? WHERE DID IT GO?! WHERE DID IT COME FROM, COTTON EYE JOE??!!",
+        name: "Yandlier",
+        email: "bozoIs@yourHouse.org"
+      };
+      return api.post('qa/questions', body)
+      .then(() => {
+        res.sendStatus(200);
+      })
+      .catch(err => {
+        res.sendStatus(500);
+        console.error(err.response.data);
+      })
     },
     postAnswer: (req, res) => {
       res.status(500).json('This function hasnt been created yet!')

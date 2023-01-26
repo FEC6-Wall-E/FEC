@@ -22,8 +22,8 @@ router.put('/reviews/:rid/report', controller.reviews.report)
 router.get('/qa/:pid/questions', controller.questions.getQuestions)
 router.get('/qa/:qid/answers', controller.questions.getAnswers)
 
-router.post('/qa/:pid/questions', controller.questions.postQuestion)
-router.post('/qa/:pid/questions/:qid/answers', controller.questions.postAnswer)
+router.post('/qa/questions', controller.questions.postQuestion)
+router.post('/qa/questions/:qid/answers', controller.questions.postAnswer)
 
 router.put('/qa/:pid/questions/:qid/helpful', controller.questions.questionHelpful)
 router.put('/qa/:pid/questions/:qid/report', controller.questions.questionReport)
