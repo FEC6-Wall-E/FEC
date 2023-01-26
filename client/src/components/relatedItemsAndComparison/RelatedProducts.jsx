@@ -22,7 +22,7 @@ const RelatedProducts = () => { //props that are passed in are {product}, tbd
     <section>
     <h5>RELATED PRODUCTS</h5>
     <section>
-      {relatedList.map((relatedProduct) => <ProductCard productId={relatedProductId}/>)}
+      {relatedList.map((relatedProduct) => <ProductCard key={relatedProduct} productId={relatedProduct}/>)}
     </section>
     </section>
   );
