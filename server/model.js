@@ -1,35 +1,35 @@
-//Integrate API Access
-const axios = require('axios')
+const axios = require('axios');
 
 const headers = {
-  'Authorization': process.env.AUTH_KEY
-}
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/'
+  Authorization: process.env.AUTH_KEY,
+  Content: 'application/json',
+};
+const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
 
 module.exports = {
   get: (extension) => {
-    return axios({
+    const config = {
       method: 'GET',
       url: url + extension,
-      headers: headers
-    })
+      headers,
+    };
+    return axios(config);
   },
   post: (extension, data) => {
-    console.log('DATA: ', data)
-    return axios({
+    const config = {
       method: 'POST',
       url: url + extension,
-      data: data,
-      headers: headers
-    })
+      data,
+      headers,
+    };
+    return axios(config);
   },
   put: (extension) => {
     const config = {
       method: 'PUT',
       url: url + extension,
-      headers: headers
-    }
-    console.log('CONFIG: ', config)
-    return axios(config)
-  }
-}
+      headers,
+    };
+    return axios(config);
+  },
+};

@@ -1,170 +1,165 @@
-const api = require('./model.js');
+const api = require('./model');
+
+const baseCount = 2;
 
 module.exports = {
   products: {
-    getAll: (req, res) => {
-      return api.get(`products`)
-        .then(products => {
-          res.status(200).json(products.data);
-        })
-        .catch(err => {
-          res.sendStatus(500);
-          console.error(err);
-        })
-    },
-    getOne: (req, res) => {
-      return api.get(`products/${req.params.pid}`)
-        .then(products => {
-          res.status(200).json(products.data);
-        })
-        .catch(err => {
-          res.sendStatus(500);
-          console.error(err);
-        })
-    },
-    getStyles: (req, res) => {
-      return api.get(`products/${req.params.pid}/styles`)
-        .then(products => {
-          res.status(200).json(products.data);
-        })
-        .catch(err => {
-          res.sendStatus(500);
-          console.error(err);
-        })
-    },
-    getRelated: (req, res) => {
-      return api.get(`products/${req.params.pid}/related`)
-      .then(products => {
+    getAll: (req, res) => api.get('products')
+      .then((products) => {
         res.status(200).json(products.data);
       })
-      .catch(err => {
+      .catch(() => {
         res.sendStatus(500);
-        console.error(err);
+      }),
+    getOne: (req, res) => api.get(`products/${req.params.pid}`)
+      .then((product) => {
+        res.status(200).json(product.data);
       })
-    }
+      .catch(() => {
+        res.sendStatus(500);
+      }),
+    getStyles: (req, res) => api.get(`products/${req.params.pid}/styles`)
+      .then((styles) => {
+        res.status(200).json(styles.data);
+      })
+      .catch(() => {
+        res.sendStatus(500);
+      }),
+    getRelated: (req, res) => api.get(`products/${req.params.pid}/related`)
+      .then((products) => {
+        res.status(200).json(products.data);
+      })
+      .catch(() => {
+        res.sendStatus(500);
+      }),
   },
 
   reviews: {
     getReviews: (req, res) => {
-      const sort = req.queries.sort
-      return api.get(`reviews/?product_id=${req.params.pid}&sort=${req.params.sort || 'relevant'}`)
-      .then(reviews => {
+      const sort = req.params.sort || 'relevant';
+      const count = req.params.count || baseCount;
+      return api.get(`reviews/?product_id=${req.params.pid}&sort=${sort}&count=${count}`)
+        .then((reviews) => {
+          res.status(200).json(reviews.data);
+        })
+        .catch(() => {
+          res.sendStatus(500);
+        });
+    },
+    getMeta: (req, res) => api.get(`reviews/meta/?product_id=${req.params.pid}`)
+      .then((reviews) => {
         res.status(200).json(reviews.data);
       })
-      .catch(err => {
+      .catch(() => {
         res.sendStatus(500);
-        console.error(err);
-      })
-    },
-    getMeta: (req, res) => {
-      return api.get(`reviews/meta/?product_id=${req.params.pid}`)
-      .then(reviews => {
-        res.status(200).json(reviews.data);
-      })
-      .catch(err => {
-        res.sendStatus(500);
-        console.error(err);
-      })
-    },
-    post: (req, res) => { // NEED TO WAIT FOR A CLIENT TO TEST FROM
-      // const body = {
-      //   product_id: 40383,
-      //   rating: 5,
-      //   summary: "It Okay",
-      //   body: "Actually, I quite like it...",
-      //   recommend: true,
-      //   name: "Yandlier",
-      //   email: "bozoIs@yourHouse.org",
-      //   photos: [],
-      //   characteristics: {}
-      // }
-      const body = req.body;
+      }),
+    post: (req, res) => {
+      const { body } = req;
       return api.post('reviews', body)
+        .then(() => {
+          res.sendStatus(200);
+        })
+        .catch(() => {
+          res.sendStatus(500);
+        });
+    },
+    helpful: (req, res) => api.put(`reviews/${req.params.rid}/helpful`)
       .then(() => {
-        res.sendStatus(200);
-      })
-      .catch(err => {
-        res.sendStatus(500);
-        console.error(err.response.data);
-      })
-    },
-    helpful: (req, res) => { // This seems to not actually update the API, but the doc for the API's put has no paramaters other than r_id...
-      return api.put(`reviews/${req.params.rid}/helpful`)
-      .then(reviews => {
         res.sendStatus(204);
       })
-      .catch(err => {
+      .catch(() => {
         res.sendStatus(500);
-        console.error(err);
-      })
-    },
-    report: (req, res) => {// This seems to not actually update the API, but the doc for the API's put has no paramaters other than r_id...
-      return api.put(`reviews/${req.params.rid}/report`)
-      .then(reviews => {
+      }),
+    report: (req, res) => api.put(`reviews/${req.params.rid}/report`)
+      .then(() => {
         res.sendStatus(204);
       })
-      .catch(err => {
+      .catch(() => {
         res.sendStatus(500);
-        console.error(err);
-      })
-    }
+      }),
   },
 
-  questions: {
+  qa: {
     getQuestions: (req, res) => {
-      const pid = req.params.pid;
-      const page = req.query.page || 1
-      return api.get(`qa/questions/?product_id=${pid}&page=${page}&count=2`)
-      .then(questions => {
-        res.status(200).json(questions.data);
-      })
-      .catch(err => {
-        res.sendStatus(500);
-        console.error(err);
-      })
+      const pid = req.query.product_id;
+      const count = req.params.count || baseCount;
+      const page = req.query.page || 1;
+      return api.get(`qa/questions?product_id=${pid}&page=${page}&count=${count}`)
+        .then((questions) => {
+          res.status(200).json(questions.data);
+        })
+        .catch(() => {
+          res.sendStatus(500);
+        });
     },
     getAnswers: (req, res) => {
-      const qid = req.params.qid;
-      const page = req.query.page || 1
-      return api.get(`qa/questions/${qid}/answers?page=${page}&count=2`)
-      .then(answers => {
-        res.status(200).json(answers.data);
-      })
-      .catch(err => {
-        res.sendStatus(500);
-        console.error(err);
-      })
+      const { qid } = req.params;
+      const count = req.params.count || baseCount;
+      const page = req.query.page || 1;
+      return api.get(`qa/questions/${qid}/answers?page=${page}&count=${count}`)
+        .then((answers) => {
+          res.status(200).json(answers.data);
+        })
+        .catch(() => {
+          res.sendStatus(500);
+        });
     },
-    postQuestion: (req, res) => {
-      const body = {
-        product_id: 40383,
-        body: "But where did it come from? WHERE DID IT GO?! WHERE DID IT COME FROM, COTTON EYE JOE??!!",
-        name: "Yandlier",
-        email: "bozoIs@yourHouse.org"
-      };
-      return api.post('qa/questions', body)
+    postQuestion: (req, res) => api.post('qa/questions', req.body)
       .then(() => {
-        res.sendStatus(200);
+        res.sendStatus(201);
       })
-      .catch(err => {
+      .catch(() => {
         res.sendStatus(500);
-        console.error(err.response.data);
-      })
-    },
+      }),
     postAnswer: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      const { qid } = req.params;
+      return api.post(`qa/questions/${qid}/answers`, req.body)
+        .then(() => {
+          res.sendStatus(201);
+        })
+        .catch(() => {
+          res.sendStatus(500);
+        });
     },
     questionHelpful: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      const { qid } = req.params;
+      return api.post(`qa/questions/${qid}/helpful`)
+        .then(() => {
+          res.sendStatus(204);
+        })
+        .catch(() => {
+          res.sendStatus(500);
+        });
     },
     questionReport: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      const { qid } = req.params;
+      return api.post(`qa/questions/${qid}/report`)
+        .then(() => {
+          res.sendStatus(204);
+        })
+        .catch(() => {
+          res.sendStatus(500);
+        });
     },
     answerHelpful: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      const { aid } = req.params;
+      return api.post(`qa/answers/${aid}/helpful`)
+        .then(() => {
+          res.sendStatus(204);
+        })
+        .catch(() => {
+          res.sendStatus(500);
+        });
     },
     answerReport: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
-    }
-  }
-}
+      const { aid } = req.params;
+      return api.post(`qa/answers/${aid}/report`)
+        .then(() => {
+          res.sendStatus(204);
+        })
+        .catch(() => {
+          res.sendStatus(500);
+        });
+    },
+  },
+};
