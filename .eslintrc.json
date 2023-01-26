@@ -1,4 +1,7 @@
 {
-  "extends": "airbnb"
-  // "no-console": ["error", { "allow": ["warn", "error"] }]
+  "extends": "airbnb",
+  "rules": {
+    "react/prop-types": "off",
+    "import/extensions": "off"
+  }
 }
