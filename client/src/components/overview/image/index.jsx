@@ -2,7 +2,6 @@ import React from 'react';
 
 function Image({ images }) {
   const [index, setIndex] = React.useState(0);
-
   if (index < 0) {
     setIndex(images.length - 1);
   } else if (index >= images.length) {
@@ -10,6 +9,8 @@ function Image({ images }) {
   }
 
   const changeIndex = (i) => {
+    // eslint-disable-next-line no-use-before-define
+    clearTimeout(timeout);
     if (i < 0) {
       setIndex(images.length - 1);
     } else if (i >= images.length) {
@@ -18,6 +19,10 @@ function Image({ images }) {
       setIndex(i);
     }
   };
+
+  let timeout = setTimeout(() => {
+    changeIndex(index + 1);
+  }, 1000);
 
   return (
     <div id="overviewImage">
