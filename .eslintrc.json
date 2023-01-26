@@ -3,6 +3,7 @@
   "rules": {
     "react/prop-types": "off",
     "import/extensions": "off",
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "no-plusplus": "off"
   }
 }
