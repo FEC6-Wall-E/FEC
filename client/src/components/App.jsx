@@ -1,9 +1,16 @@
 import React from 'react';
+import Overview from './overview/index.jsx';
+import QandA from './qa/QandA.jsx';
 
-const App = () => {
+function App() {
+  const test = { name: 'test ' };
   return (
-    <div>Hello World</div>
-  )
+    <div>
+      <Overview product={test} />
+      Hello World
+      <QandA />
+    </div>
+  );
 }
 
 export default App;
