@@ -15,6 +15,7 @@ module.exports = {
     })
   },
   post: (extension, data) => {
+    console.log('DATA: ', data)
     return axios({
       method: 'POST',
       url: url + extension,
@@ -23,10 +24,12 @@ module.exports = {
     })
   },
   put: (extension) => {
-    return axios({
+    const config = {
       method: 'PUT',
       url: url + extension,
       headers: headers
-    })
+    }
+    console.log('CONFIG: ', config)
+    return axios(config)
   }
 }
