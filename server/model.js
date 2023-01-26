@@ -5,11 +5,14 @@ const headers = {
   'Authorization': process.env.AUTH_KEY
 }
 
+const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
+
 module.exports = {
-  get: url => {
+  get: (extension) => {
+    console.log(extension);
     return axios({
       method: 'GET',
-      url: url,
+      url: url + extension,
       headers: headers
     })
   },
