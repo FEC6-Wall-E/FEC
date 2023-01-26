@@ -115,7 +115,7 @@ module.exports = {
     }
   },
 
-  questions: {
+  qa: {
     getQuestions: (req, res) => {
       const pid = req.query.product_id;
       const count = req.params.count || baseCount;
