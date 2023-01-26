@@ -3,9 +3,9 @@ import ProductCard from "./ProductCard.jsx";
 import Comparison from "./Comparison.jsx"
 import axios from "axios";
 
-const RelatedProducts = () => { //props that are passed in are {product}, tbd
+const RelatedProducts = () => { //props that are passed in are {product} or {productId}, tbd
   const [relatedList, setRelatedList] = useState([]);
-  const pid = 40344;
+  const pid = 40344; //hard coded for now
 
   const getRelatedProducts = () => {
     axios.get(`/products/${pid}/related`) //change pid to product.id when you actually start passing the props
