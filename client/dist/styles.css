@@ -27,3 +27,26 @@
   overflow: hidden;
   max-width: 670px;
 }
+.imageSelectorLeft{
+  border-color: transparent;
+  position: absolute;
+  top: 8px;
+  opacity: 0;
+  width: 80px;
+  height: 1000px;
+}
+.imageSelectorLeft:hover {
+  opacity: 0.3;
+}
+.imageSelectorRight:hover {
+  opacity: 0.3;
+}
+.imageSelectorRight{
+  border-color: transparent;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  width: 80px;
+  left: 600px;
+  height: 1000px;
+}

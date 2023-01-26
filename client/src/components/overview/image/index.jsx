@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import ImagePicker from './ImagePicker.jsx';
 
@@ -18,7 +19,7 @@ function Image({ images }) {
 
   let timeout = setTimeout(() => {
     changeIndex(index + 1);
-  }, 2000);
+  }, 6000);
 
   return (
     <div id="overviewImage">
@@ -36,8 +37,8 @@ function Image({ images }) {
       </div>
       <div>
         {/* Dont always want these to be HTML buttons... */}
-        <button className="imageSelector" onClick={() => changeIndex(index - 1)}>left</button>
-        <button className="imageSelector" onClick={() => changeIndex(index + 1)}>right</button>
+        <button className="imageSelectorLeft" onClick={() => changeIndex(index - 1)} />
+        <button className="imageSelectorRight" onClick={() => changeIndex(index + 1)} />
       </div>
       <ImagePicker images={images} setImage={changeIndex} currID={index} />
     </div>
