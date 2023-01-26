@@ -19,7 +19,7 @@ router.put('/reviews/:rid/report', controller.reviews.report)
 
 
 // Q&A ROUTES
-router.get('/qa/:pid/questions', controller.questions.getQuestions)
+router.get('/qa/questions', controller.questions.getQuestions)
 router.get('/qa/:qid/answers', controller.questions.getAnswers)
 
 router.post('/qa/questions', controller.questions.postQuestion)

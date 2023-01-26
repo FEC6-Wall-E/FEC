@@ -89,8 +89,10 @@ module.exports = {
       })
     },
     helpful: (req, res) => { // This seems to not actually update the API, but the doc for the API's put has no paramaters other than r_id...
+      console.log('RID', req.params.rid)
       return api.put(`reviews/${req.params.rid}/helpful`)
       .then(reviews => {
+        console.log(reviews)
         res.sendStatus(204);
       })
       .catch(err => {
@@ -112,9 +114,10 @@ module.exports = {
 
   questions: {
     getQuestions: (req, res) => {
-      const pid = req.params.pid;
+      const pid = req.query.product_id;
+      console.log(pid);
       const page = req.query.page || 1
-      return api.get(`qa/questions/?product_id=${pid}&page=${page}&count=2`)
+      return api.get(`qa/questions?product_id=${pid}&page=${page}&count=50`)
       .then(questions => {
         res.status(200).json(questions.data);
       })
@@ -142,9 +145,9 @@ module.exports = {
         name: "Yandlier",
         email: "bozoIs@yourHouse.org"
       };
-      return api.post('qa/questions', body)
+      return api.post(`qa/questions?product_id=40383`, body)
       .then(() => {
-        res.sendStatus(200);
+        res.sendStatus(201);
       })
       .catch(err => {
         res.sendStatus(500);
@@ -161,7 +164,7 @@ module.exports = {
       const qid = req.params.qid;
       return api.post(`qa/questions/${qid}/answers`, body)
       .then(() => {
-        res.sendStatus(200);
+        res.sendStatus(201);
       })
       .catch(err => {
         res.sendStatus(500);
