@@ -1,9 +1,12 @@
 import React from 'react';
 
-const App = () => {
+function App(props) {
   return (
-    <div>Hello World</div>
-  )
+    <div>
+      Hello World
+      {props}
+    </div>
+  );
 }
 
 export default App;

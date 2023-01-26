@@ -16,4 +16,5 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/dist'))); // SERVE CLIENT FILES
 
 app.listen(port);
+// eslint-disable-next-line no-console
 console.log(`LISTENING AT PORT: ${port}`);
