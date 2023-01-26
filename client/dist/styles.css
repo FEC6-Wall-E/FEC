@@ -13,8 +13,11 @@
 #overviewImagePicker {
   position: absolute;
   width: 76px;
-  top: 20px;
-  left: 20px;
+  left: 10px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .overViewSlider {
   white-space: nowrap;
@@ -25,6 +28,7 @@
 }
 #overviewImage {
   overflow: hidden;
+  position: relative;
   max-width: 670px;
 }
 .imageSelectorLeft{
