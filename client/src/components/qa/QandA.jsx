@@ -5,13 +5,13 @@ import MoreAnswers from './MoreAnswers.jsx';
 import AddQuestion from './AddQuestion.jsx';
 
 function QandA() {
-  const [questionList, setQuestionList] = useState([1, 2, 3]);
+  const [questionList, setQuestionList] = useState([1, 2]);
 
   return (
     <div>
       <b>Questions and Answers</b>
       <SearchQuestions />
-      <QuestionList list={questionList} />
+      <QuestionList qList={questionList} />
       <MoreAnswers />
       <AddQuestion />
     </div>
