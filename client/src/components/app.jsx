@@ -4,11 +4,11 @@ import examples from '../examples.js';
 
 function App() {
   const [product, setProduct] = React.useState(examples.product);
-  const [style, setStyle] = React.useState(examples.styles.results[0]);
+  const [styles, setStyles] = React.useState(examples.styles.results);
 
   return (
     <div>
-      <Overview product={product} style={style} setStyle={setStyle} />
+      <Overview product={product} styles={styles} setStyles={setStyles} />
     </div>
   );
 }
