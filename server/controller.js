@@ -46,8 +46,8 @@ module.exports = {
 
   reviews: {
     getReviews: (req, res) => {
-      const sort = req.queries.sort
-      return api.get(`reviews/?product_id=${req.params.pid}&sort=${req.params.sort || 'relevant'}`)
+      const sort = req.params.sort || 'relevant'
+      return api.get(`reviews/?product_id=${req.params.pid}&sort=${sort}`)
       .then(reviews => {
         res.status(200).json(reviews.data);
       })
@@ -135,7 +135,7 @@ module.exports = {
         console.error(err);
       })
     },
-    postQuestion: (req, res) => {
+    postQuestion: (req, res) => { // BROKEN
       const body = {
         product_id: 40383,
         body: "But where did it come from? WHERE DID IT GO?! WHERE DID IT COME FROM, COTTON EYE JOE??!!",
@@ -152,7 +152,21 @@ module.exports = {
       })
     },
     postAnswer: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      const body = {
+        body: "It came from the stars, a blessing from the greater beings of out vast vast universe. No mere mortal, such as yourself, could ever comprehend. Your mind would explode",
+        name: "Yandlier",
+        email: "bozoIs@yourHouse.org",
+        photos: []
+      };
+      const qid = req.params.qid;
+      return api.post(`qa/questions/${qid}/answers`, body)
+      .then(() => {
+        res.sendStatus(200);
+      })
+      .catch(err => {
+        res.sendStatus(500);
+        console.error(err.response.data);
+      })
     },
     questionHelpful: (req, res) => {
       res.status(500).json('This function hasnt been created yet!')

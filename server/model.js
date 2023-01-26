@@ -2,7 +2,8 @@
 const axios = require('axios')
 
 const headers = {
-  'Authorization': process.env.AUTH_KEY
+  'Authorization': process.env.AUTH_KEY,
+  'Content': 'application/json'
 }
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/'
 
