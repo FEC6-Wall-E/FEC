@@ -1,5 +1,7 @@
 const api = require('./model.js');
 
+var baseCount = 2;
+
 module.exports = {
   products: {
     getAll: (req, res) => {
@@ -46,8 +48,9 @@ module.exports = {
 
   reviews: {
     getReviews: (req, res) => {
-      const sort = req.params.sort || 'relevant'
-      return api.get(`reviews/?product_id=${req.params.pid}&sort=${sort}`)
+      const sort = req.params.sort || 'relevant';
+      const count = req.params.count || baseCount;
+      return api.get(`reviews/?product_id=${req.params.pid}&sort=${sort}&count=${count}`)
       .then(reviews => {
         res.status(200).json(reviews.data);
       })
@@ -115,9 +118,9 @@ module.exports = {
   questions: {
     getQuestions: (req, res) => {
       const pid = req.query.product_id;
-      console.log(pid);
+      const count = req.params.count || baseCount;
       const page = req.query.page || 1
-      return api.get(`qa/questions?product_id=${pid}&page=${page}&count=50`)
+      return api.get(`qa/questions?product_id=${pid}&page=${page}&count=${count}`)
       .then(questions => {
         res.status(200).json(questions.data);
       })
@@ -128,8 +131,9 @@ module.exports = {
     },
     getAnswers: (req, res) => {
       const qid = req.params.qid;
+      const count = req.params.count || baseCount;
       const page = req.query.page || 1
-      return api.get(`qa/questions/${qid}/answers?page=${page}&count=2`)
+      return api.get(`qa/questions/${qid}/answers?page=${page}&count=${count}`)
       .then(answers => {
         res.status(200).json(answers.data);
       })
@@ -172,16 +176,48 @@ module.exports = {
       })
     },
     questionHelpful: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      const qid = req.params.qid;
+      return api.post(`qa/questions/${qid}/helpful`)
+      .then(() => {
+        res.sendStatus(204);
+      })
+      .catch(err => {
+        res.sendStatus(500);
+        console.error(err.response.data);
+      })
     },
     questionReport: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      const qid = req.params.qid;
+      return api.post(`qa/questions/${qid}/report`)
+      .then(() => {
+        res.sendStatus(204);
+      })
+      .catch(err => {
+        res.sendStatus(500);
+        console.error(err.response.data);
+      })
     },
     answerHelpful: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      const aid = req.params.aid;
+      return api.post(`qa/answers/${aid}/helpful`)
+      .then(() => {
+        res.sendStatus(204);
+      })
+      .catch(err => {
+        res.sendStatus(500);
+        console.error(err.response.data);
+      })
     },
     answerReport: (req, res) => {
-      res.status(500).json('This function hasnt been created yet!')
+      const aid = req.params.aid;
+      return api.post(`qa/answers/${aid}/report`)
+      .then(() => {
+        res.sendStatus(204);
+      })
+      .catch(err => {
+        res.sendStatus(500);
+        console.error(err.response.data);
+      })
     }
   }
 }

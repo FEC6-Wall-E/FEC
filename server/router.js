@@ -25,9 +25,9 @@ router.get('/qa/:qid/answers', controller.questions.getAnswers)
 router.post('/qa/questions', controller.questions.postQuestion)
 router.post('/qa/questions/:qid/answers', controller.questions.postAnswer)
 
-router.put('/qa/:pid/questions/:qid/helpful', controller.questions.questionHelpful)
-router.put('/qa/:pid/questions/:qid/report', controller.questions.questionReport)
-router.put('/qa/:pid/questions/:qid/answers/:aid/helpful', controller.questions.answerHelpful)
-router.put('/qa/:pid/questions/:qid/answers/:aid/report', controller.questions.answerReport)
+router.put('/qa/questions/:qid/helpful', controller.questions.questionHelpful)
+router.put('/qa/questions/:qid/report', controller.questions.questionReport)
+router.put('/qa/answers/:aid/helpful', controller.questions.answerHelpful)
+router.put('/qa/answers/:aid/report', controller.questions.answerReport)
 
 module.exports = router;
