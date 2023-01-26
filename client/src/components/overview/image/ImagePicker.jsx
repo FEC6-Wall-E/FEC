@@ -14,16 +14,15 @@ function ImagePicker({ images, setImage, currID }) {
   return (
     <div id="overviewImagePicker">
       {displayImages.map((image) => (
-        <div className="imagePickerImage" onClick={() => setImage(image.id)}>
-          <img
-            width="70"
-            height="100"
-            onClick={() => setImage(image.id)}
-            className={image.id === currID ? 'pickedImage' : 'not'}
-            src={image.thumbnail_url}
-            alt="X?X?X"
-          />
-        </div>
+        <img
+          className="imagePickerImage"
+          width="70"
+          height="100"
+          onClick={() => setImage(image.id)}
+          id={image.id === currID ? 'picked' : null}
+          src={image.thumbnail_url}
+          alt="X?X?X"
+        />
       ))}
     </div>
   );

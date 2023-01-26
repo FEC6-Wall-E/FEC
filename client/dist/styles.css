@@ -1,8 +1,22 @@
 .pickedImage img {
-  border: 100px;
+  border: 3px solid blueviolet;
   margin: 100%;
-  border-color: blue;
+  padding-bottom: -5px;
 }
 .imagePickerImage {
-  display: inline;
+  border: 3px solid white;
+  padding-bottom: -5px;
+}
+.imagePickerImage:hover {
+  border: 3px solid blueviolet;
+  color: whitesmoke
+}
+#overviewImagePicker {
+  position: absolute;
+  width: 76px;
+  top: 20px;
+  left: 20px;
+  padding-bottom: -3px;
+  padding: 1px;
+
 }
