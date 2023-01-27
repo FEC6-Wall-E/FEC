@@ -47,7 +47,7 @@
   position: relative;
   max-width: 670px;
 }
-.imageSelectorLeft{
+.imageSelector{
   border-color: transparent;
   position: absolute;
   top: 0px;
@@ -55,18 +55,9 @@
   width: 80px;
   height: 1000px;
 }
-.imageSelectorLeft:hover {
+.imageSelector:hover {
   opacity: 0.3;
 }
-.imageSelectorRight:hover {
-  opacity: 0.3;
-}
-.imageSelectorRight{
-  border-color: transparent;
-  opacity: 0;
-  position: absolute;
-  top: 0px;
-  width: 80px;
+.right{
   left: 600px;
-  height: 1000px;
 }

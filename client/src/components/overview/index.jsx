@@ -2,7 +2,7 @@
 import React from 'react';
 import Image from './image/index.jsx';
 
-function Overview({ product, styles }) {
+function Overview({ product, styles, setStyles }) {
   const [style, setStyle] = React.useState(styles[0]);
 
   return (
