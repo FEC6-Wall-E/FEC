@@ -1,0 +1,11 @@
+.price {
+  color: black;
+}
+
+.sale {
+  color: red;
+}
+
+.struckthrough {
+  text-decoration: line-through;
+}
