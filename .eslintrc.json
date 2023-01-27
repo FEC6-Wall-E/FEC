@@ -2,6 +2,9 @@
   "extends": "airbnb",
   "rules": {
     "react/prop-types": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "react/button-has-type": "off",
+    "no-plusplus": "off",
+    "react/no-array-index-key": "off"
   }
 }
