@@ -34,7 +34,7 @@
 .imageSelectorLeft{
   border-color: transparent;
   position: absolute;
-  top: 8px;
+  top: 0px;
   opacity: 0;
   width: 80px;
   height: 1000px;
@@ -49,7 +49,7 @@
   border-color: transparent;
   opacity: 0;
   position: absolute;
-  top: 8px;
+  top: 0px;
   width: 80px;
   left: 600px;
   height: 1000px;
