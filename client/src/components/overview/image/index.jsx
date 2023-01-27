@@ -1,9 +1,12 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import ImagePicker from './ImagePicker.jsx';
+import ImageModal from './ImageModal.jsx';
 
 function Image({ images }) {
+  const baseModal = { hidden: true, url: '', click: null };
   const [index, setIndex] = React.useState(0);
+  const [modal, setModal] = React.useState(baseModal);
 
   const changeIndex = (i) => {
     // eslint-disable-next-line no-use-before-define
@@ -22,25 +25,32 @@ function Image({ images }) {
   }, 6000);
 
   return (
-    <div id="overviewImage">
-      <div className="overViewSlider">
-        {images.map((image) => (
-          <img
-            className="overviewImage"
-            style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-            src={image.url}
-            width="670"
-            height="1000"
-            alt="Missing!"
-          />
-        ))}
+    <div>
+      <div id="overviewImage">
+        <div className="overViewSlider">
+          {images.map((image) => (
+            <img
+              onClick={() => setModal({
+                hidden: false,
+                url: image.url,
+              })}
+              className="overviewImage"
+              style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+              src={image.url}
+              width="670"
+              height="1000"
+              alt="Missing!"
+            />
+          ))}
+        </div>
+        <div>
+          {/* Dont always want these to be HTML buttons... */}
+          <button className="imageSelectorLeft" onClick={() => changeIndex(index - 1)} />
+          <button className="imageSelectorRight" onClick={() => changeIndex(index + 1)} />
+        </div>
+        <ImagePicker images={images} setImage={changeIndex} currID={index} />
       </div>
-      <div>
-        {/* Dont always want these to be HTML buttons... */}
-        <button className="imageSelectorLeft" onClick={() => changeIndex(index - 1)} />
-        <button className="imageSelectorRight" onClick={() => changeIndex(index + 1)} />
-      </div>
-      <ImagePicker images={images} setImage={changeIndex} currID={index} />
+      <ImageModal hidden={modal.hidden} url={modal.url} click={() => setModal(baseModal)} />
     </div>
   );
 }
