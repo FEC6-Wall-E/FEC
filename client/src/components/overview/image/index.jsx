@@ -35,6 +35,7 @@ function Image({ images }) {
                 url: image.url,
               })}
               className="overviewImage"
+              cursor="zoom-in"
               style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
               src={image.url}
               width="670"
