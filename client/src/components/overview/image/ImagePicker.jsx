@@ -10,8 +10,8 @@ function ImagePicker({ images, setImage, currID }) {
         <img
           key={idx}
           className="imagePickerImage"
-          width="56"
-          height="80"
+          width="70"
+          height="100"
           onClick={() => setImage(idx)}
           id={idx === currID ? 'picked' : null}
           src={image.thumbnail_url}
