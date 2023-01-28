@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ThumbnailsList from './ThumbnailsList.jsx';
 
 function ProductCard({ productId }) {
   const initialDefault = {
@@ -18,6 +19,8 @@ function ProductCard({ productId }) {
   const [relatedProduct, setRelatedProduct] = useState({});
   const [defaultStyle, setDefaultStyle] = useState(initialDefault);
   const [rating, setRating] = useState(0);
+  const [primaryImage, setPrimaryImage] = useState('');
+  // const [thumbnails, setThumbnails] = useState([]);
 
   // get info for the current related product (needed for )
   const getRelatedProduct = () => {
@@ -78,27 +81,21 @@ function ProductCard({ productId }) {
 
   return (
     <div>
-      {
-        !defaultStyle.photos[0].thumbnail_url
-        ?
-          <img src='https://www.freeiconspng.com/uploads/no-image-icon-6.png'/>
-        :
-        <img src={`${defaultStyle.photos[0].thumbnail_url}`}/>
-       }
+     <ThumbnailsList thumbnails={defaultStyle.photos}/>
       <h4>{relatedProduct.name}</h4>
       <div className="category">{relatedProduct.category}</div>
+      {/* do we want to have decimal point and decimals for price? */}
       {
         defaultStyle.sale_price
         ?
         <div className="price">
           <span className="sale"> {`$${defaultStyle.sale_price} `} </span>
           <span className="struckthrough"> {`$${defaultStyle.original_price}`} </span>
-          </div> //do we want to have decimal point and decimals?
+        </div>
         :
-        <div className="price default">{`$${defaultStyle.original_price}`}</div> //do we want to have decimal point and decimals?
+        <div className="price default">{`$${defaultStyle.original_price}`}</div>
       }
-
-      Rating:{rating}
+      <span>Rating:{rating}</span>
     </div>
   );
 }
