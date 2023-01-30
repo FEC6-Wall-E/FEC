@@ -74,3 +74,11 @@
   transform: scale(2);
   cursor: zoom-out
 }
+
+/* StarRatingCSS */
+.val0 {
+  color: gray;
+}
+.val1 {
+  color: gold;
+}
