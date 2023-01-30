@@ -82,3 +82,10 @@
 .val1 {
   color: gold;
 }
+.star {
+  display: inline;
+}
+.reviewCount {
+  display: inline;
+  padding-left: 10px;
+}

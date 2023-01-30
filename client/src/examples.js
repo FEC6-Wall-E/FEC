@@ -379,4 +379,36 @@ module.exports = {
       },
     ],
   },
+  meta: {
+    product_id: '40344',
+    ratings: {
+      1: '99',
+      2: '168',
+      3: '295',
+      4: '266',
+      5: '619',
+    },
+    recommended: {
+      false: '377',
+      true: '1070',
+    },
+    characteristics: {
+      Fit: {
+        id: 135219,
+        value: '3.3906976744186047',
+      },
+      Length: {
+        id: 135220,
+        value: '3.4142857142857143',
+      },
+      Comfort: {
+        id: 135221,
+        value: '3.4278481012658228',
+      },
+      Quality: {
+        id: 135222,
+        value: '3.3997524752475248',
+      },
+    },
+  },
 };
