@@ -1,9 +1,11 @@
 import React from 'react';
 
-function Answer() {
+function Answer({ body }) {
   return (
     <div>
-      Answer
+      <b>A:</b>
+      {' '}
+      {body}
     </div>
   );
 }

@@ -4,9 +4,13 @@ import Question from './Question.jsx';
 function QuestionList({ qList }) {
   return (
     <div>
-      List of questions
+      -----------------List of questions-----------------
       {qList.map((question) => (
-        <Question key={question} />
+        <Question
+          body={question.question_body}
+          key={question.question_id}
+          answers={question.answers}
+        />
       ))}
     </div>
 
