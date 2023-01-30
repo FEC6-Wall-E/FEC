@@ -2,24 +2,17 @@
 import React from 'react';
 import Image from './image/index.jsx';
 import StarRating from '../sharedComponents/StarRating.jsx';
+import getRatingData from '../sharedComponents/lib/averageRating.js';
 
 function Overview({
-  product, styles, setStyles, meta,
+  product, styles, setStyles, metaData,
 }) {
   const [style, setStyle] = React.useState(styles[0]);
-  const ratings = +meta.recommended.false + +meta.recommended.true;
-  let averageRating = 5;
-
-  // eslint-disable-next-line guard-for-in, no-restricted-syntax
-  for (const value in meta.ratings) {
-    averageRating += (value * meta.ratings[value]);
-  }
-
-  averageRating /= ratings;
+  const ratingData = getRatingData(metaData);
 
   return (
     <div id="overview">
-      <StarRating rating={averageRating} count={ratings} />
+      <StarRating count={ratingData.ratings} rating={ratingData.averageRating} />
       <Image images={style.photos} />
     </div>
   );

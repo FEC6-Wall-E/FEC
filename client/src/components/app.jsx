@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div>
-      <Overview product={product} styles={styles} setStyles={setStyles} meta={meta} />
+      <Overview product={product} styles={styles} setStyles={setStyles} metaData={meta} />
     </div>
   );
 }
