@@ -76,14 +76,44 @@
 }
 
 /* StarRatingCSS */
-.val0 {
+.star {
+  font-size: x-large;
+  width: 30px;
+  display: inline-block;
   color: gray;
 }
-.val1 {
+.star:last-child {
+  margin-right: 0;
+}
+.star:before {
+  content:'\2605';
+}
+.star.val100 {
   color: gold;
 }
-.star {
-  display: inline;
+.star.val25:after {
+  content:'\2605';
+  color: gold;
+  position: absolute;
+  margin-left: -24px;
+  width: 8px;
+  overflow: hidden;
+}
+.star.val50:after {
+  content:'\2605';
+  color: gold;
+  position: absolute;
+  margin-left: -24px;
+  width: 12px;
+  overflow: hidden;
+}
+.star.val75:after {
+  content:'\2605';
+  color: gold;
+  position: absolute;
+  margin-left: -24px;
+  width: 15px;
+  overflow: hidden;
 }
 .reviewCount {
   display: inline;

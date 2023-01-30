@@ -19,7 +19,7 @@ function Overview({
 
   return (
     <div id="overview">
-      <StarRating rating={averageRating} />
+      <StarRating rating={averageRating} count={ratings} />
       <Image images={style.photos} />
     </div>
   );
