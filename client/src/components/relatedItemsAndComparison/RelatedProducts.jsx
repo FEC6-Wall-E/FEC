@@ -1,16 +1,17 @@
 import React, {useState, useEffect} from "react";
 import ProductCard from "./ProductCard.jsx";
 import Comparison from "./Comparison.jsx"
+import Carousel from './Carousel.jsx';
 import axios from "axios";
 
-const RelatedProducts = () => { //props that are passed in are {product} or {productId}, tbd
+function RelatedProducts () { //props that are passed in are {product} or {productId}, {setProductId} for re-rendering the page when a card is clicked
   const [relatedList, setRelatedList] = useState([]);
-  const pid = 40344; //hard coded for now
+  const pid = 40346; //hard coded for now
 
   const getRelatedProducts = () => {
     axios.get(`/products/${pid}/related`) //change pid to product.id when you actually start passing the props
       .then((products) => {
-        setRelatedList(products.data);
+        setRelatedList(products.data); //are we sure that every product has a related product ?
       })
       .catch((err) => console.error(err));
   }
@@ -19,11 +20,12 @@ const RelatedProducts = () => { //props that are passed in are {product} or {pro
   }, []);
 
   return (
-    <section>
+    <section id="related-products">
     <h5>RELATED PRODUCTS</h5>
-    <section>
-      {relatedList.map((relatedProduct) => <ProductCard key={relatedProduct} productId={relatedProduct}/>)}
-    </section>
+    <div className="slider-container">
+      {/* {relatedList.map((relatedProduct) => <ProductCard key={relatedProduct} productId={relatedProduct} />)} */}
+      <Carousel relatedList={relatedList}/>
+    </div>
     </section>
   );
 }
