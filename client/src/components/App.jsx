@@ -8,11 +8,11 @@ import YourOutfitList from './relatedItemsAndComparison/YourOutfitList.jsx';
 function App() {
   const test = { name: 'test ' };
   return (
-    <div>
+    <div className="app">
       <Overview product={test} />
       <RelatedProducts />
-      <YourOutfitList />
-      <QandA />
+      {/* <YourOutfitList /> */}
+      {/* <QandA /> */}
     </div>
   );
 }
