@@ -3,13 +3,14 @@ import { flushSync } from 'react-dom';
 import ProductCard from './ProductCard.jsx';
 
 function Carousel({ relatedList }) {
+  // const [length, setLength] = useState(relatedList.length);
   const [index, setIndex] = useState(0);
-  const [length, setLength] = useState(relatedList.length);
   const ref = useRef(null);
+  const length = relatedList.length;
 
-  useEffect(() => {
-    setLength(relatedList.length);
-  }, [relatedList]);
+  // useEffect(() => {
+  //   setLength(relatedList.length);
+  // }, [relatedList]);
 
   const handleNav = (direction) => {
     flushSync(() => {
