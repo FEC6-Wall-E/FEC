@@ -1,3 +1,11 @@
+#app {
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: lightgray;
+}
+
+
+
 #imageModalImage #PanAndZoomImage-container{
   margin: 0;
   background: black;
@@ -54,14 +62,14 @@
   position: absolute;
   top: 0px;
   opacity: 0;
-  width: 80px;
+  width: 150px;
   height: 1000px;
 }
 .imageSelector:hover {
   opacity: 0.3;
 }
 .right{
-  left: 600px;
+  left: 850px;
 }
 .click-zoom input[type=checkbox] {
   display: none

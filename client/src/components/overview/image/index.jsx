@@ -7,10 +7,11 @@ function Image({ images }) {
   const baseModal = { hidden: true, url: '', click: null };
   const [index, setIndex] = React.useState(0);
   const [modal, setModal] = React.useState(baseModal);
+  let timeout;
 
   const changeIndex = (i) => {
     // eslint-disable-next-line no-use-before-define
-    clearTimeout(timeout);
+    if (timeout) clearTimeout(timeout);
 
     if (i < 0) {
       setIndex(images.length - 1);
@@ -21,9 +22,11 @@ function Image({ images }) {
     }
   };
 
-  const timeout = setTimeout(() => {
-    changeIndex(index + 1);
-  }, 6000);
+  React.useEffect(() => {
+    timeout = setTimeout(() => {
+      changeIndex(index + 1);
+    }, 6000);
+  }, [index]);
 
   return (
     <div>

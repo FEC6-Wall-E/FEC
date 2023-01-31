@@ -9,7 +9,7 @@ function App() {
   const [meta, setMeta] = React.useState(examples.meta);
 
   return (
-    <div>
+    <div id="app">
       <Overview product={product} styles={styles} setStyles={setStyles} metaData={meta} />
     </div>
   );
