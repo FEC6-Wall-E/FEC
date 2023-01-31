@@ -1,3 +1,51 @@
+/* ALL & BODY */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  padding: 0;
+}
+
+/* RELATED PRODUCTS */
+
+
+/* CAROUSEL */
+/* ul {
+  padding-left: 20px;
+} */
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+}
+
+nav {
+  text-align: center;
+}
+
+button {
+  margin: .25rem;
+  cursor: pointer;
+}
+
+/* PRODUCT CARD */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  margin: -10px;
+  transition: background-color 0.2s linear;
+}
+
+.active {
+  background: rgba(0, 100, 150, 0.4);
+}
+
+/* PRICES */
 .price {
   color: black;
 }
