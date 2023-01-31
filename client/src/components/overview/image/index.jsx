@@ -45,8 +45,8 @@ function Image({ images }) {
         </div>
         <div>
           {/* Dont always want these to be HTML buttons... */}
-          <button className="imageSelectorLeft" onClick={() => changeIndex(index - 1)} />
-          <button className="imageSelectorRight" onClick={() => changeIndex(index + 1)} />
+          <button className="imageSelector left" onClick={() => changeIndex(index - 1)} />
+          <button className="imageSelector right" onClick={() => changeIndex(index + 1)} />
         </div>
         <ImagePicker images={images} setImage={changeIndex} currID={index} />
       </div>

@@ -1,10 +1,10 @@
-#imageModalImage {
+#imageModalImage #PanAndZoomImage-container{
   margin: 0;
   background: black;
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0%;
+  left: 0%;
+  transition: all .2s ease;
   /* padding: 100% */
 }
 #imageModalBG {
@@ -41,13 +41,14 @@
 .overviewImage {
   transition: ease-out 1s;
   display: inline-block;
+  cursor: zoom-in;
 }
 #overviewImage {
   overflow: hidden;
   position: relative;
   max-width: 670px;
 }
-.imageSelectorLeft{
+.imageSelector{
   border-color: transparent;
   position: absolute;
   top: 0px;
@@ -55,18 +56,66 @@
   width: 80px;
   height: 1000px;
 }
-.imageSelectorLeft:hover {
+.imageSelector:hover {
   opacity: 0.3;
 }
-.imageSelectorRight:hover {
-  opacity: 0.3;
-}
-.imageSelectorRight{
-  border-color: transparent;
-  opacity: 0;
-  position: absolute;
-  top: 0px;
-  width: 80px;
+.right{
   left: 600px;
-  height: 1000px;
+}
+.click-zoom input[type=checkbox] {
+  display: none
+}
+.click-zoom img {
+  margin: 100px;
+  transition: transform 0.25s ease;
+  cursor: zoom-in
+}
+.click-zoom input[type=checkbox]:checked~img {
+  transform: scale(2);
+  cursor: zoom-out
+}
+
+/* StarRatingCSS */
+.star {
+  font-size: x-large;
+  width: 30px;
+  display: inline-block;
+  color: gray;
+}
+.star:last-child {
+  margin-right: 0;
+}
+.star:before {
+  content:'\2605';
+}
+.star.val100 {
+  color: gold;
+}
+.star.val25:after {
+  content:'\2605';
+  color: gold;
+  position: absolute;
+  margin-left: -24px;
+  width: 8px;
+  overflow: hidden;
+}
+.star.val50:after {
+  content:'\2605';
+  color: gold;
+  position: absolute;
+  margin-left: -24px;
+  width: 12px;
+  overflow: hidden;
+}
+.star.val75:after {
+  content:'\2605';
+  color: gold;
+  position: absolute;
+  margin-left: -24px;
+  width: 15px;
+  overflow: hidden;
+}
+.reviewCount {
+  display: inline;
+  padding-left: 10px;
 }
