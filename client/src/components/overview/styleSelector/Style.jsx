@@ -10,7 +10,7 @@ function Style({ style, setStyle, selected }) {
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div className="styleContainer" onClick={onClick}>
-      {selected ? <i className="checkmark fa-brands fa-twitter fa-2xl shareButton" /> : null}
+      {selected ? <i className="checkmark fa-solid fa-check fa-2xl" /> : null}
       <img
         className={selected ? 'selected style' : 'style'}
         width="100px"
