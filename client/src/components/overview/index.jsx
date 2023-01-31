@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from './image/index.jsx';
 import ProductInfo from './info/index.jsx';
+import StyleSelector from './styleSelector/index.jsx';
 
 function Overview({
   product, styles, setStyles, metaData,
@@ -10,6 +11,7 @@ function Overview({
 
   return (
     <div id="overview">
+      <StyleSelector currentStyle={style} allStyles={styles} setStyle={setStyle} />
       <ProductInfo metaData={metaData} product={product} style={style} />
       <Image images={style.photos} />
     </div>

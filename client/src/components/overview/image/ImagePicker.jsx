@@ -12,6 +12,7 @@ function ImagePicker({ images, setImage, currID }) {
           className="imagePickerImage"
           width="70"
           height="100"
+          style={{ objectFit: 'cover' }}
           onClick={() => setImage(idx)}
           id={idx === currID ? 'picked' : null}
           src={image.thumbnail_url}

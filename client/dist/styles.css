@@ -46,7 +46,8 @@
 #overviewImage {
   overflow: hidden;
   position: relative;
-  max-width: 670px;
+  max-width: 1000px;
+  object-fit: cover;
 }
 .imageSelector{
   border-color: transparent;
@@ -132,4 +133,9 @@ Product Info */
 }
 .shareButton:hover {
   color:gray;
+}
+/*
+StyleSelector */
+.style {
+  border-radius: 50%;
 }

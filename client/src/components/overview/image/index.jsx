@@ -11,6 +11,7 @@ function Image({ images }) {
   const changeIndex = (i) => {
     // eslint-disable-next-line no-use-before-define
     clearTimeout(timeout);
+
     if (i < 0) {
       setIndex(images.length - 1);
     } else if (i >= images.length) {
@@ -20,7 +21,7 @@ function Image({ images }) {
     }
   };
 
-  let timeout = setTimeout(() => {
+  const timeout = setTimeout(() => {
     changeIndex(index + 1);
   }, 6000);
 
@@ -35,10 +36,10 @@ function Image({ images }) {
                 url: image.url,
               })}
               className="overviewImage"
-              style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+              style={{ transform: `translate3d(${-index * 100}%, 0, 0)`, objectFit: 'cover' }}
               src={image.url}
-              width="670"
-              height="1000"
+              width="1000px"
+              height="1000px"
               alt="Missing!"
             />
           ))}
