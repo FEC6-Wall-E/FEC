@@ -18,6 +18,7 @@ function StyleSelector({ currentStyle, allStyles, setStyle }) {
 
   return (
     <div id="StyleSelector">
+      <h1 id="CurrentStyle">{currentStyle.name}</h1>
       {stylesMatrix.map((styles) => (
         <div className="styleRow">
           {styles.map((style) => (

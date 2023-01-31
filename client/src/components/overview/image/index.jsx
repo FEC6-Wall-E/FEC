@@ -29,7 +29,7 @@ function Image({ images }) {
   }, [index]);
 
   return (
-    <div>
+    <div id="Image">
       <div id="overviewImage">
         <div className="overViewSlider">
           {images.map((image) => (
