@@ -19,10 +19,11 @@ function StyleSelector({ currentStyle, allStyles, setStyle }) {
   return (
     <div id="StyleSelector">
       <h1 id="CurrentStyle">{currentStyle.name}</h1>
-      {stylesMatrix.map((styles) => (
-        <div className="styleRow">
-          {styles.map((style) => (
+      {stylesMatrix.map((styles, idx) => (
+        <div key={idx} className="styleRow">
+          {styles.map((style, idx2) => (
             <Style
+              key={idx2}
               style={style}
               setStyle={setStyle}
               selected={style.style_id === currentStyle.style_id}
