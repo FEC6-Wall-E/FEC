@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { forwardRef } from 'react';
 import axios from 'axios';
 import ThumbnailsList from './ThumbnailsList.jsx';
-import { forwardRef } from 'react';
 
 const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, ref) { //add setProduct
 
@@ -41,7 +41,7 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
           }]);
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
   };
 
   const getRating = () => {
@@ -67,9 +67,8 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
     if (productId) {
       getRelatedProduct();
     }
-    // getDefaultRelatedProduct();
+    // getStyles();
   }, [productId]);
-
 
   useEffect(() => {
     if (images.length > 0) {
