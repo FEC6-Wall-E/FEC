@@ -13,38 +13,60 @@ body {
 
 
 /* CAROUSEL */
-/* ul {
-  padding-left: 20px;
-} */
-
 .slider {
-  width: 100%;
-  overflow: hidden;
   display: flex;
+  overflow: hidden;
+  width: 100%;
+  /* white-space: nowrap; ? */
 }
 
 nav {
   text-align: center;
+  cursor: pointer;
 }
 
 button {
   margin: .25rem;
-  cursor: pointer;
 }
 
 /* PRODUCT CARD */
 .product-card {
   display: flex;
   flex-direction: column;
+  margin: 0.6rem;
   padding: 0.5rem;
-  margin: -10px;
+  width: 25vw;
   transition: background-color 0.2s linear;
+}
+
+.mainImg {
+  width: auto;
+  height: 100%;
 }
 
 .active {
   background: rgba(0, 100, 150, 0.4);
 }
 
+/* THUMBNAILS CAROUSEL*/
+.thumbnails-slider {
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+  /* width: 100%; */
+}
+
+/* THUMBNAILS*/
+.thumbnail {
+  margin: 0.6rem;
+  padding: 0.5rem;
+  width: 25%;
+  transition: background-color 0.2s linear;
+}
+
+.thumbnail img {
+  max-width: 35px;
+}
 /* PRICES */
 .price {
   color: black;
