@@ -2,6 +2,8 @@ import React from 'react';
 import roundRating from './lib/getNearestRating.js';
 
 function StarRating({ rating, count, link }) {
+  if (count === 0) return null;
+
   let rounded = roundRating(rating);
 
   const stars = [];

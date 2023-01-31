@@ -119,3 +119,17 @@
   display: inline;
   padding-left: 10px;
 }
+/*
+Product Info */
+.sale {
+  display: inline;
+  margin-right: 5px;
+  color: red;
+}
+.original {
+  display: inline;
+  text-decoration: Line-through;
+}
+.shareButton:hover {
+  color:gray;
+}
