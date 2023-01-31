@@ -120,7 +120,7 @@
   padding-left: 10px;
 }
 /*
-Product Info Price */
+Product Info */
 .sale {
   display: inline;
   margin-right: 5px;
@@ -129,4 +129,7 @@ Product Info Price */
 .original {
   display: inline;
   text-decoration: Line-through;
+}
+.shareButton:hover {
+  color:gray;
 }
