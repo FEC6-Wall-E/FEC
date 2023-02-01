@@ -6,8 +6,6 @@
   margin-right: auto;
 }
 
-
-
 #imageModalImage #PanAndZoomImage-container{
   margin: 0;
   background: black;
@@ -17,6 +15,7 @@
   transition: all .2s ease;
   /* padding: 100% */
 }
+
 #imageModalBG {
   position: fixed;
   top: 0%;
@@ -25,18 +24,22 @@
   padding-top: 50%;
   padding: 100%;
 }
+
 #picked {
   border: 3px solid rgb(246, 20, 65);
   color: whitesmoke
 }
+
 .imagePickerImage {
   border: 3px solid white;
   padding-bottom: -5px;
 }
+
 .imagePickerImage:hover {
   border: 3px solid blueviolet;
   color: whitesmoke
 }
+
 #overviewImagePicker {
   width: 76px;
   left: 10px;
@@ -45,9 +48,11 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
 .overViewSlider {
   white-space: nowrap;
 }
+
 .overviewImage {
   transition: ease-out 1s;
   display: inline-block;
@@ -59,6 +64,7 @@
   max-width: 1000px;
   object-fit: cover;
 }
+
 .imageSelector{
   border-color: transparent;
   position: absolute;
@@ -67,15 +73,19 @@
   width: 150px;
   height: 1000px;
 }
+
 .imageSelector:hover {
   opacity: 0.3;
 }
+
 .right{
   left: 850px;
 }
+
 .click-zoom input[type=checkbox] {
   display: none
 }
+
 .click-zoom img {
   margin: 100px;
   transition: transform 0.25s ease;
@@ -130,8 +140,8 @@
   display: inline;
   padding-left: 10px;
 }
-/*
-Product Info */
+
+/* Product Info */
 .sale {
   display: inline;
   margin-right: 5px;
@@ -199,3 +209,62 @@ Overview Structure */
   flex-direction: column;
   align-items: flex-start;
 }
+
+/* RELATED PRODUCTS */
+
+/* CAROUSEL */
+.slider {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  /* white-space: nowrap; ? */
+}
+
+.slider-buttons {
+  text-align: center;
+  cursor: pointer;
+}
+
+.slider-buttons button {
+  margin: .25rem;
+}
+
+/* PRODUCT CARD */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0.6rem;
+  padding: 0.5rem;
+  width: 25vw;
+  transition: background-color 0.2s linear;
+}
+
+.mainImg {
+  width: auto;
+  height: 100%;
+}
+
+.active {
+  background: rgba(0, 100, 150, 0.4);
+}
+
+/* THUMBNAILS CAROUSEL*/
+.thumbnails-slider {
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+  /* width: 100%; */
+}
+
+/* THUMBNAILS*/
+.thumbnail {
+  margin: 0.6rem;
+  padding: 0.5rem;
+  width: 25%;
+  transition: background-color 0.2s linear;
+}
+
+.thumbnail img {
+  max-width: 35px;
+}
+

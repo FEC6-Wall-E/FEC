@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react";
-import ProductCard from "./ProductCard.jsx";
-import axios from "axios";
+// import React, {useState, useEffect} from 'react';
+// import axios from 'axios';
+// import ProductCard from './ProductCard.jsx';
 
 function Comparison() {
-  return;
+
 }
 
 export default Comparison;
