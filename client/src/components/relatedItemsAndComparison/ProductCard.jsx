@@ -8,7 +8,7 @@ import averageRating from '../sharedComponents/lib/averageRating.js';
 const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, ref) {
   const [relatedProduct, setRelatedProduct] = useState({});
   const [defaultStyle, setDefaultStyle] = useState({});
-  const [rating, setRating] = useState([]);
+  // const [rating, setRating] = useState([]);
   const [images, setImages] = useState([]);
   const [mainImg, setMainImg] = useState('');
 
@@ -16,7 +16,8 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
     if (productId) {
       axios.get(`/meta/${productId}`)
         .then((meta) => {
-          setRating(averageRating(meta));
+          console.log(meta);
+          // setRating(averageRating(meta));
         })
         .catch((err) => console.error(err));
     }
@@ -48,7 +49,7 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
     axios.get(`/products/${productId}`)
       .then((product) => {
         setRelatedProduct(product.data);
-        getRating();
+        // getRating();
       })
       .catch((err) => console.error(err))
       .then(() => getStyles());
@@ -83,7 +84,6 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
       <button className="compare">Compare</button>
       <div className="category">{relatedProduct.category}</div>
       <h4 className="product-name">{relatedProduct.name}</h4>
-      {/* do we want to have decimal point and decimals for price? */}
       {defaultStyle.sale_price
         ? (
           <div className="price">
