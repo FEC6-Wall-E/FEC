@@ -3,13 +3,13 @@ import { flushSync } from 'react-dom';
 import ProductCard from './ProductCard.jsx';
 
 function Carousel({ relatedList }) {
-  // const [length, setLength] = useState(relatedList.length);
+  const numberOfSlides = relatedList.length;
+  // const [numberOfSlides, setNumberOfSlides] = useState(numberOfSlides);
   const [index, setIndex] = useState(0);
   const ref = useRef(null);
-  const numberOfSlides = relatedList.length;
 
   // useEffect(() => {
-  //   setLength(relatedList.length);
+  //   setNumberOfSlides(relatedList.length);
   // }, [relatedList]);
 
   const handleNav = (direction) => {
@@ -29,7 +29,7 @@ function Carousel({ relatedList }) {
 
   return (
     <>
-      <nav>
+      <div className="slider-buttons">
         {index > 0 && (
         <button
           className="left"
@@ -46,7 +46,7 @@ function Carousel({ relatedList }) {
           next
         </button>
         )}
-      </nav>
+      </div>
       <div className="slider">
         {relatedList.map((relatedProduct, idx) => (
           <ProductCard

@@ -29,10 +29,10 @@ function ThumbnailsList({ images, setMainImg }) {
 
   return (
     <div className="thumbnails-slider-container">
-      <nav>
+      <div className="slider-button">
         {index > 0 && <button className="thumbnails left" onClick={() => handleNav('prev')}> previous </button>}
         {index < length - 1 && <button className="thumbnails right" onClick={() => handleNav('next')}> next </button>}
-      </nav>
+      </div>
       <div className="thumbnails-slider">
         {images.map((thumbnail, idx) => (
           <Thumbnail
