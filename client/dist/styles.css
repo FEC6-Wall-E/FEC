@@ -1,7 +1,7 @@
 #app {
   background-color: lightgray;
   display: flex;
-  width: 60%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -30,6 +30,8 @@
   color: whitesmoke
 }
 .imagePickerImage {
+  width: 3vw;
+  height: 10vh;
   border: 3px solid white;
   padding-bottom: -5px;
 }
@@ -38,7 +40,7 @@
   color: whitesmoke
 }
 #overviewImagePicker {
-  width: 76px;
+  width: 3vw;
   left: 10px;
   margin: 0;
   position: absolute;
@@ -56,23 +58,27 @@
 #overviewImage {
   overflow: hidden;
   position: relative;
-  max-width: 1000px;
+  max-width: 30vw;
   object-fit: cover;
 }
+/*
+Image Buttons */
 .imageSelector{
   border-color: transparent;
   position: absolute;
-  top: 0px;
+  top: 0%;
   opacity: 0;
-  width: 150px;
-  height: 1000px;
+  width: 5vw;
+  height: 80vh;
 }
 .imageSelector:hover {
   opacity: 0.3;
 }
 .right{
-  left: 850px;
+  right: 0%;
 }
+/*
+ImageModalZoom */
 .click-zoom input[type=checkbox] {
   display: none
 }
@@ -85,8 +91,8 @@
   transform: scale(2);
   cursor: zoom-out
 }
-
-/* StarRatingCSS */
+/*
+StarRatingCSS */
 .star {
   font-size: x-large;
   width: 30px;
@@ -157,18 +163,18 @@ StyleSelector */
   left: 35%;
   top: 50%;
 }
+.style, .styleContainer {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: white;
+}
 .style {
   position: absolute;
-  border-radius: 50%;
   transition: .3s ease;
-  background-color: white;
 }
 .styleContainer {
   display: inline-flex;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: white;
 }
 .style:hover {
   opacity: 0.3;

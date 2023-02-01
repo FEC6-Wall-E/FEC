@@ -4,12 +4,13 @@ import QuantitySelector from './QuantitySelector.jsx';
 import SizeSelector from './SizeSelector.jsx';
 
 function AddToCart({ currentStyle }) {
-  const [size, setSize] = useState(null);
+  const [sku, setSku] = useState(null);
   const [quantity, setQuantity] = useState(1);
 
   return (
     <div id="AddToCart">
-      <SizeSelector currentStyle={currentStyle} currentSize={size} setSize={setSize} />
+      <SizeSelector currentStyle={currentStyle} setSku={setSku} />
+      <QuantitySelector currentStyle={currentStyle} currentSku={sku} setQuantity={setQuantity} />
     </div>
   );
 }
