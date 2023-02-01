@@ -7,11 +7,9 @@ function Image({ images }) {
   const baseModal = { hidden: true, url: '', click: null };
   const [index, setIndex] = React.useState(0);
   const [modal, setModal] = React.useState(baseModal);
-  let timeout;
 
   const changeIndex = (i) => {
     // eslint-disable-next-line no-use-before-define
-    if (timeout) clearTimeout(timeout);
 
     if (i < 0) {
       setIndex(images.length - 1);
@@ -23,16 +21,22 @@ function Image({ images }) {
   };
 
   React.useEffect(() => {
-    timeout = setTimeout(() => {
+    changeIndex(0);
+  }, [images]);
+
+  React.useEffect(() => {
+    const timeoutID = setTimeout(() => {
       changeIndex(index + 1);
     }, 6000);
+
+    return () => clearTimeout(timeoutID);
   }, [index]);
 
   return (
     <div id="Image">
       <div id="overviewImage">
         <div className="overViewSlider">
-          {images.map((image) => (
+          {images.map((image, idx) => (
             <img
               onClick={() => setModal({
                 hidden: false,
@@ -44,6 +48,7 @@ function Image({ images }) {
               width="1000px"
               height="1000px"
               alt="Missing!"
+              key={idx}
             />
           ))}
         </div>

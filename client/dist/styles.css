@@ -1,5 +1,9 @@
 #app {
   background-color: lightgray;
+  display: flex;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #imageModalImage #PanAndZoomImage-container{
@@ -183,15 +187,15 @@ StyleSelector */
 Overview Structure */
 #Image {
   float: left;
-  width: 1000px;
-  display: flex;
-  margin: 0;
+  width: auto;
+  display: inline-block;
+  margin-right: 20px;
 }
 #ProductInfo {
   margin: 0;
   position: flex;
-  float: right;
-  width: 50%;
+  float: left;
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -199,8 +203,8 @@ Overview Structure */
 #StyleSelector {
   margin: 0;
   position: flex;
-  float: right;
-  width: 50%;
+  float: left;
+  width: 30%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
