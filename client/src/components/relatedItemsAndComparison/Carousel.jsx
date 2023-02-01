@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import ProductCard from './ProductCard.jsx';
 
@@ -6,7 +6,7 @@ function Carousel({ relatedList }) {
   // const [length, setLength] = useState(relatedList.length);
   const [index, setIndex] = useState(0);
   const ref = useRef(null);
-  const length = relatedList.length;
+  const numberOfSlides = relatedList.length;
 
   // useEffect(() => {
   //   setLength(relatedList.length);
@@ -14,7 +14,7 @@ function Carousel({ relatedList }) {
 
   const handleNav = (direction) => {
     flushSync(() => {
-      if (direction === 'next' && index < length - 1) {
+      if (direction === 'next' && index < numberOfSlides - 1) {
         setIndex(index + 1);
       } else if (direction === 'prev' && index > 0) {
         setIndex(index - 1);
@@ -23,28 +23,32 @@ function Carousel({ relatedList }) {
     ref.current.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
-      inline: 'center'
+      inline: 'center',
     });
   };
 
   return (
     <>
       <nav>
-        {index > 0 && < button
+        {index > 0 && (
+        <button
           className="left"
           onClick={() => handleNav('prev')}
         >
           previous
-        </button>}
-        {index < length - 1 && <button
+        </button>
+        )}
+        {index < numberOfSlides - 1 && (
+        <button
           className="right"
           onClick={() => handleNav('next')}
         >
           next
-        </button>}
+        </button>
+        )}
       </nav>
       <div className="slider">
-        {relatedList.map((relatedProduct, idx) =>
+        {relatedList.map((relatedProduct, idx) => (
           <ProductCard
             key={relatedProduct}
             ref={ref}
@@ -52,10 +56,10 @@ function Carousel({ relatedList }) {
             index={index}
             idx={idx}
           />
-        )}
+        ))}
       </div>
     </>
   );
-};
+}
 
 export default Carousel;

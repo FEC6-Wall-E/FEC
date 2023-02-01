@@ -1,35 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { forwardRef } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import axios from 'axios';
 import ThumbnailsList from './ThumbnailsList.jsx';
+import averageRating from '../sharedComponents/lib/averageRating.js';
+// import StarRating from '../sharedComponents/StarRating.jsx';
 
-const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, ref) { //add setProduct
-
+/* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
+const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, ref) {
   const [relatedProduct, setRelatedProduct] = useState({});
   const [defaultStyle, setDefaultStyle] = useState({});
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState([]);
   const [images, setImages] = useState([]);
   const [mainImg, setMainImg] = useState('');
 
-  // get info for the current related product (needed for )
-  const getRelatedProduct = () => {
-    axios.get(`/products/${productId}`)
-      .then((product) => {
-        setRelatedProduct(product.data);
-        getRating();
-      })
-      .catch((err) => console.error(err))
-      .then(() => getStyles());
+  const getRating = () => {
+    if (productId) {
+      axios.get(`/meta/${productId}`)
+        .then((meta) => {
+          setRating(averageRating(meta));
+        })
+        .catch((err) => console.error(err));
+    }
   };
 
-  //get default style for the current related product (needed for images and price)
+  // get default style for the current related product (needed for images and price)
   const getStyles = () => {
     axios.get(`/products/${productId}/styles`)
       .then((product) => {
-        const defaultStyles = product.data.results.filter((style) =>
-          style['default?']);
-        const newDefaultStyle = defaultStyles.length > 0 ?
-          defaultStyles[0] : product.data.results[0];
+        const defaultStyles = product.data.results.filter((style) => style['default?']);
+        const newDefaultStyle = defaultStyles.length > 0
+          ? defaultStyles[0] : product.data.results[0];
         setDefaultStyle(newDefaultStyle);
 
         if (newDefaultStyle.photos[0].thumbnail_url !== null) {
@@ -41,26 +40,18 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
           }]);
         }
       })
+      .catch((err) => console.error(err));
+  };
+
+  // get info for the current related product (needed for )
+  const getRelatedProduct = () => {
+    axios.get(`/products/${productId}`)
+      .then((product) => {
+        setRelatedProduct(product.data);
+        getRating();
+      })
       .catch((err) => console.error(err))
-  };
-
-  const getRating = () => {
-    if (productId) { //had to add the condition for initial render when no
-      //productId was provided; adjust when change useEffect
-      //dependencies
-      axios.get(`/meta/${productId}`)
-        .then((meta) => {
-          setRating(calculateRating(meta.data.ratings));
-        })
-        .catch((err) => console.error(err))
-    }
-  };
-
-  const calculateRating = (data) => {
-    var ratings = Object.values(data);
-    var dividend = ratings.reduce((accumulator, currentValue, currentIndex) => accumulator + +currentValue * (currentIndex + 1), 0);
-    var divisor = ratings.reduce((accumulator, currentValue) => accumulator + +currentValue, 0);
-    return Math.round(dividend / divisor * 10) / 10;
+      .then(() => getStyles());
   };
 
   useEffect(() => {
@@ -86,14 +77,15 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
       className={index === idx ? 'active product-card' : 'product-card'}
       ref={index === idx ? ref : null}
     >
-      <img className="mainImg" src={mainImg} />
+      <img className="mainImg" src={mainImg} alt="Missing" />
       <ThumbnailsList images={images} setMainImg={setMainImg} />
-      {/* add onClick={handleCompare} to the button*/}
+      {/* add onClick={handleCompare} to the button */}
       <button className="compare">Compare</button>
       <div className="category">{relatedProduct.category}</div>
       <h4 className="product-name">{relatedProduct.name}</h4>
       {/* do we want to have decimal point and decimals for price? */}
-      {defaultStyle.sale_price ?
+      {defaultStyle.sale_price
+        ? (
           <div className="price">
             <span className="sale">
               {`$${defaultStyle.sale_price}`}
@@ -102,12 +94,15 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
               {`$${defaultStyle.original_price}`}
             </span>
           </div>
-        :
+        )
+        : (
           <div className="price default">
             {`$${defaultStyle.original_price}`}
           </div>
-      }
-      <span className="rating">Rating:{rating}</span>
+        )}
+      <span className="rating">
+        {/* <StarRating rating={rating[0]} count={rating[1]} link={}/> */}
+      </span>
     </div>
   );
 });

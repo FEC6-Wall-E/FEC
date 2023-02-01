@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import Thumbnail from './Thumbnail.jsx';
 
-function ThumbnailsList ({ images, id, setMainImg }) {
+function ThumbnailsList({ images, setMainImg }) {
   const [index, setIndex] = useState(0);
   const [length, setLength] = useState(images.length);
   const ref = useRef(null);
@@ -10,7 +10,7 @@ function ThumbnailsList ({ images, id, setMainImg }) {
 
   useEffect(() => {
     setLength(images.length);
-  }, [images] );
+  }, [images]);
 
   const handleNav = (direction) => {
     flushSync(() => {
@@ -23,30 +23,18 @@ function ThumbnailsList ({ images, id, setMainImg }) {
     ref.current.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
-      inline: 'center'
+      inline: 'center',
     });
   };
 
   return (
     <div className="thumbnails-slider-container">
       <nav>
-        {index > 0 &&
-          <button
-            className="thumbnails left"
-            onClick={() => handleNav('prev')}
-          >
-            previous
-          </button>}
-        {index < length - 1 &&
-          <button
-            className="thumbnails right"
-            onClick={() => handleNav('next')}
-          >
-            next
-          </button>}
+        {index > 0 && <button className="thumbnails left" onClick={() => handleNav('prev')}> previous </button>}
+        {index < length - 1 && <button className="thumbnails right" onClick={() => handleNav('next')}> next </button>}
       </nav>
       <div className="thumbnails-slider">
-        {images.map((thumbnail, idx) =>
+        {images.map((thumbnail, idx) => (
           <Thumbnail
             key={idx}
             thumbnail={thumbnail}
@@ -55,11 +43,11 @@ function ThumbnailsList ({ images, id, setMainImg }) {
             idx={idx}
             setMainImg={setMainImg}
           />
-        )}
+        ))}
       </div>
     </div>
   );
 }
 
 export default ThumbnailsList;
-{/* style={{ transform: `translateX(-${index * (100 / imgsToDisplay)}%)`}}> */}
+// style={{ transform: `translateX(-${index * (100 / imgsToDisplay)}%)`}}>

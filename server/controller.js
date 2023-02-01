@@ -82,7 +82,7 @@ module.exports = {
   qa: {
     getQuestions: (req, res) => {
       const pid = req.query.product_id;
-      const count = req.params.count || baseCount;
+      const count = req.query.count || baseCount;
       const page = req.query.page || 1;
       return api.get(`qa/questions?product_id=${pid}&page=${page}&count=${count}`)
         .then((questions) => {
@@ -94,7 +94,7 @@ module.exports = {
     },
     getAnswers: (req, res) => {
       const { qid } = req.params;
-      const count = req.params.count || baseCount;
+      const count = req.query.count || baseCount;
       const page = req.query.page || 1;
       return api.get(`qa/questions/${qid}/answers?page=${page}&count=${count}`)
         .then((answers) => {

@@ -10,8 +10,8 @@ const port = process.env.PORT;
 
 // MIDDLE WARE
 app.use(morgan('dev'));
-app.use('/', router);
 app.use(express.json());
+app.use('/', router);
 
 app.use(express.static(path.join(__dirname, '../client/dist'))); // SERVE CLIENT FILES
 

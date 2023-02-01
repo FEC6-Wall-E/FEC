@@ -1,28 +1,34 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Carousel from './Carousel.jsx';
-import axios from "axios";
 
-function RelatedProducts () { //props that are passed in are {product} or {productId}, {setProductId} for re-rendering the page when a card is clicked
+function RelatedProducts() {
+  // props that are passed in are {product} or {productId},
+  // {setProductId} for re-rendering the page when a card is clicked
   const [relatedList, setRelatedList] = useState([]);
-  const pid = 40346; //hard coded for now
+  // hard coded for now
+  const pid = 40346;
 
   const getRelatedProducts = () => {
-    axios.get(`/products/${pid}/related`) //change pid to product.id when you actually start passing the props
+    // change pid to product.id when you actually start passing the props
+    axios.get(`/products/${pid}/related`)
       .then((products) => {
-        setRelatedList(products.data); //are we sure that every product has a related product ?
+        // are we sure that every product has a related product ?
+        setRelatedList(products.data);
       })
       .catch((err) => console.error(err));
-  }
+  };
+
   useEffect(() => {
     getRelatedProducts();
   }, []);
 
   return (
     <section id="related-products">
-    <h5>RELATED PRODUCTS</h5>
-    <div className="slider-container">
-      <Carousel relatedList={relatedList}/>
-    </div>
+      <h5>RELATED PRODUCTS</h5>
+      <div className="slider-container">
+        <Carousel relatedList={relatedList} />
+      </div>
     </section>
   );
 }
