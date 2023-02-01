@@ -8,7 +8,7 @@ import Price from './price.jsx';
 function ProductInfo({ metaData, product, style }) {
   const ratingData = getRatingData(metaData);
   const href = 'http://localhost:3000/';
-  const twitterText = `Checkout this ${product.name} from Atelier! Get it at ${href}/${product.id}`;
+  const twitterText = `Checkout this ${product.name} from Atelier! Get it at ${href}${product.id}`;
 
   return (
     <div id="ProductInfo">

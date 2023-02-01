@@ -21,7 +21,7 @@ function StarRating({ rating, count, link }) {
 
   return (
     <div className="starRating">
-      {stars.map((star) => <span className={`star val${star * 100}`} />)}
+      {stars.map((star, idx) => <span key={idx} className={`star val${star * 100}`} />)}
       <p className="reviewCount" href={link}>{`See all ${count} reviews!`}</p>
     </div>
   );
