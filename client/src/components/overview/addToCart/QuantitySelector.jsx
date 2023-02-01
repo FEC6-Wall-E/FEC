@@ -1,4 +1,6 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Select from 'react-select';
 
 function QuantitySelector({ currentStyle, currentSku, setQuantity }) {
   const quantityArray = [];
@@ -16,26 +18,29 @@ function QuantitySelector({ currentStyle, currentSku, setQuantity }) {
   if (totalNum === 0) {
     return (
       <span id="QuantitySelector">
-        <select disabled name="Quantity" value="-">
-          <option value="-">-</option>
-        </select>
+        <Select
+          defaultValue={{ value: null, label: '-' }}
+          className="quantitySelect"
+          name="quantity"
+          isDisabled
+        />
       </span>
     );
   }
 
+  const options = quantityArray.map((quantity) => ({ value: quantity, label: quantity }));
+
   return (
     <span id="QuantitySelector">
-      <select name="Quantity" onChange={(e) => setQuantity(e.target.value)}>
-        <option selected key={-1} value={1}>1</option>
-        {quantityArray.map((quantity, idx) => (
-          <option
-            key={idx}
-            value={quantity}
-          >
-            {quantity}
-          </option>
-        ))}
-      </select>
+      <Select
+        defaultValue={options[0]}
+        key={`my_unique_select_key__${currentStyle.style_id}`}
+        maxMenuHeight={180}
+        menuPosition="fixed"
+        options={options}
+        onChange={(e) => setQuantity(e.value)}
+        isSearchable={false}
+      />
     </span>
   );
 }

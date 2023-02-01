@@ -179,10 +179,14 @@ StyleSelector */
 .style:hover {
   opacity: 0.3;
 }
+
+#SizeSelector{
+  height: 35px;
+ }
 /*
 Overview Structure */
 #Image {
-  float: left;
+  float: left; /*It isnt though*/
   width: auto;
   display: inline-block;
   margin-right: 20px;

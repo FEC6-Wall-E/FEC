@@ -14,7 +14,7 @@ function Style({ style, setStyle, selected }) {
       <img
         className={selected ? 'selected style' : 'style'}
         width="100vw"
-        height="100%"
+        height="100vh"
         style={{ objectFit: 'cover' }}
         src={style.photos[0].thumbnail_url}
         alt="ERROR"

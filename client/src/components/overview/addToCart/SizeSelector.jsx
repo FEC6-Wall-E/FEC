@@ -1,37 +1,51 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Select from 'react-select';
 
-function SizeSelector({ currentStyle, setSku }) {
-  const sizes = [];
-  Object.keys(currentStyle.skus).forEach((sku) => {
-    if (currentStyle.skus[sku].quantity !== 0) {
-      sizes.push(currentStyle.skus[sku].size);
-    }
-  });
-
-  const sizeToSku = (size) => {
+const SizeSelector = React.forwardRef(({
+  currentStyle, setSku, sizes, size,
+}, ref) => {
+  const sizeToSku = (sizeToConvert) => {
     // eslint-disable-next-line no-restricted-syntax
     for (const sku in currentStyle.skus) {
-      if (currentStyle.skus[sku].size === size) {
+      if (currentStyle.skus[sku].size === sizeToConvert) {
         setSku(sku);
         return;
       }
     }
   };
 
+  if (size) sizeToSku(size);
+
+  const options = [
+    { value: null, label: 'Select Size' },
+  ];
+  sizes.forEach((option) => options.push({ value: option, label: option }));
+
   return sizes.length === 0 ? (
     <span id="SizeSelector">
-      <select name="size" disabled>
-        <option key="-1" value="OOS" selected>OUT OF STOCK</option>
-      </select>
+      <Select
+        defaultValue={{ value: null, label: 'OUT OF STOCK' }}
+        className="sizeSelect"
+        name="size"
+        isDisabled
+      />
     </span>
   ) : (
     <span id="SizeSelector">
-      <select name="size" onChange={(e) => sizeToSku(e.target.value)}>
-        <option selected key="-1" value="Select Size">Select Size</option>
-        {sizes.map((size, idx) => <option key={idx} value={size}>{size}</option>)}
-      </select>
+      <Select
+        key={`my_unique_select_key__${currentStyle.style_id}`}
+        defaultValue={options[0]}
+        maxMenuHeight={180}
+        menuPosition="fixed"
+        openMenuOnFocus
+        ref={ref}
+        options={options}
+        onChange={(e) => sizeToSku(e.value)}
+        isSearchable={false}
+      />
     </span>
   );
-}
+});
 
 export default SizeSelector;

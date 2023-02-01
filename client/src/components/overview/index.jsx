@@ -10,12 +10,19 @@ function Overview({
 }) {
   const [style, setStyle] = React.useState(styles[2]);
 
+  const sizes = [];
+  Object.keys(style.skus).forEach((sku) => {
+    if (style.skus[sku].quantity !== 0) {
+      sizes.push(style.skus[sku].size);
+    }
+  });
+
   return (
     <div id="overview">
       <Image images={style.photos} />
       <ProductInfo metaData={metaData} product={product} style={style} />
       <StyleSelector currentStyle={style} allStyles={styles} setStyle={setStyle} />
-      <AddToCart currentStyle={style} />
+      <AddToCart currentStyle={style} sizes={sizes} />
     </div>
   );
 }
