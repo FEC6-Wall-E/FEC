@@ -1,7 +1,6 @@
 #app {
   background-color: lightgray;
   display: flex;
-  width: 70%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -187,25 +186,42 @@ StyleSelector */
 Overview Structure */
 #Image {
   float: left; /*It isnt though*/
+  margin: auto;
   width: auto;
   display: inline-block;
   margin-right: 20px;
 }
 #ProductInfo {
   margin: 0;
+  margin: auto;
   position: flex;
   float: left;
-  width: 30%;
+  width: auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 #StyleSelector {
-  margin: 0;
+  margin: auto;
   position: flex;
   float: left;
-  width: 30%;
+  width: auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+}
+#AddToCart {
+  margin: auto;
+  position: flex;
+  float: left;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+#overview {
+  margin: auto;
+}
+.leftSide {
+  float: left;
+}
+.rightSide {
+  float: right;
 }

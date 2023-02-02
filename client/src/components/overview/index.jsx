@@ -8,7 +8,11 @@ import AddToCart from './addToCart/index.jsx';
 function Overview({
   product, styles, setStyles, metaData,
 }) {
-  const [style, setStyle] = React.useState(styles[2]);
+  const [style, setStyle] = React.useState(styles[0]);
+
+  React.useEffect(() => {
+    setStyle(styles[0]);
+  }, [styles]);
 
   const sizes = [];
   Object.keys(style.skus).forEach((sku) => {
@@ -19,10 +23,14 @@ function Overview({
 
   return (
     <div id="overview">
-      <Image images={style.photos} />
-      <ProductInfo metaData={metaData} product={product} style={style} />
-      <StyleSelector currentStyle={style} allStyles={styles} setStyle={setStyle} />
-      <AddToCart currentStyle={style} sizes={sizes} />
+      <div className="leftSide">
+        <Image images={style.photos} />
+      </div>
+      <div className="rightSide">
+        <ProductInfo metaData={metaData} product={product} style={style} />
+        <StyleSelector currentStyle={style} allStyles={styles} setStyle={setStyle} />
+        <AddToCart currentStyle={style} sizes={sizes} />
+      </div>
     </div>
   );
 }
