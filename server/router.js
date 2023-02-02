@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const controller = require('./controller');
 
+router.get('/', (req, res) => {
+  res.render('index', { pid: req.query.pid || 40367 });
+});
 // PRODUCT ROUTES
 router.get('/products', controller.products.getAll);
 router.get('/products/:pid', controller.products.getOne);

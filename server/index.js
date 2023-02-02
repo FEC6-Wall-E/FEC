@@ -11,8 +11,12 @@ const port = process.env.PORT;
 // MIDDLE WARE
 app.use(morgan('dev'));
 app.use(express.json());
-app.use('/', router);
 
+app.set('views', path.join(__dirname, '../client/dist'));
+app.set('view engine', 'ejs');
+
+app.use('/', router);
+// app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, '../client/dist'))); // SERVE CLIENT FILES
 
 app.listen(port);

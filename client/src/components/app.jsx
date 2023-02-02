@@ -8,7 +8,8 @@ function App() {
   const [product, setProduct] = React.useState(null);
   const [styles, setStyles] = React.useState(null);
   const [meta, setMeta] = React.useState(null);
-  const seedPID = 40346;
+  // eslint-disable-next-line no-undef
+  const seedPID = +document.querySelector('main').getAttribute('pid');
 
   React.useEffect(() => {
     Promise.all([
