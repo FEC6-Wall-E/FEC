@@ -42,6 +42,7 @@ function ThumbnailsList({ images, setMainImg }) {
             index={index}
             idx={idx}
             setMainImg={setMainImg}
+            setIndex={setIndex}
           />
         ))}
       </div>

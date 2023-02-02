@@ -10,7 +10,10 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
   const [relatedProduct, setRelatedProduct] = useState({});
   const [defaultStyle, setDefaultStyle] = useState({});
   const [rating, setRating] = useState({});
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState([{
+    thumbnail_url: 'https://www.freeiconspng.com/uploads/no-image-icon-6.png',
+    url: 'https://www.freeiconspng.com/uploads/no-image-icon-6.png',
+  }]);
   const [mainImg, setMainImg] = useState('');
 
   const getRating = () => {
@@ -34,11 +37,6 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
 
         if (newDefaultStyle.photos[0].thumbnail_url !== null) {
           setImages(newDefaultStyle.photos);
-        } else {
-          setImages([{
-            thumbnail_url: 'https://www.freeiconspng.com/uploads/no-image-icon-6.png',
-            url: 'https://www.freeiconspng.com/uploads/no-image-icon-6.png',
-          }]);
         }
       })
       .catch((err) => console.error(err));
@@ -51,6 +49,7 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
         setRelatedProduct(product.data);
         getRating();
         getStyles();
+
       })
       .catch((err) => console.error(err))
   };
@@ -66,6 +65,7 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
       setMainImg(images[0].thumbnail_url);
     }
   }, [images]);
+
 
   // const handleNavigate = () => {
   //   setProduct(productId);

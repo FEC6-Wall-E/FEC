@@ -1,11 +1,13 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState } from 'react';
 
 /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
 const Thumbnail = forwardRef(function Thumbnail({
-  thumbnail, index, setMainImg, idx}, ref) {
+  thumbnail, index, setMainImg, idx, setIndex}, ref) {
     // {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+
   const handleClick = () => {
-    setMainImg(thumbnail);
+    setMainImg(thumbnail.thumbnail_url);
+    setIndex(idx);
   };
 
   return (
