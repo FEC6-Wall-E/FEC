@@ -239,6 +239,10 @@ Overview Structure */
   transition: background-color 0.2s linear;
 }
 
+.product-card .reviewCount {
+  display: none;
+}
+
 .mainImg {
   width: auto;
   height: 100%;

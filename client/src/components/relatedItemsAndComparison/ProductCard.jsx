@@ -9,7 +9,7 @@ import StarRating from '../sharedComponents/StarRating.jsx';
 const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, ref) {
   const [relatedProduct, setRelatedProduct] = useState({});
   const [defaultStyle, setDefaultStyle] = useState({});
-  const [rating, setRating] = useState([]);
+  const [rating, setRating] = useState({});
   const [images, setImages] = useState([]);
   const [mainImg, setMainImg] = useState('');
 
@@ -17,8 +17,6 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
     if (productId) {
       axios.get(`/meta/${productId}`)
         .then((meta) => {
-          console.log(meta);
-          const rating = averageRating(meta.data);
           setRating(averageRating(meta.data));
         })
         .catch((err) => console.error(err));
@@ -47,21 +45,20 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
   };
 
   // get info for the current related product (needed for )
-  const getRelatedProduct = () => {
+  const getRelatedProductData = () => {
     axios.get(`/products/${productId}`)
       .then((product) => {
         setRelatedProduct(product.data);
         getRating();
+        getStyles();
       })
       .catch((err) => console.error(err))
-      .then(() => getStyles());
   };
 
   useEffect(() => {
     if (productId) {
-      getRelatedProduct();
+      getRelatedProductData();
     }
-    // getStyles();
   }, [productId]);
 
   useEffect(() => {
@@ -103,7 +100,7 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
           </div>
         )}
       <span className="rating">
-        <StarRating rating={rating[0]} count={rating[1]} />
+        <StarRating rating={rating.averageRating} count={rating.ratings} />
       </span>
     </div>
   );

@@ -1,3 +1,4 @@
+// tried to separate api calls into this file, but can't make it work inside of product card
 import axios from 'axios';
 import averageRating from './components/sharedComponents/lib/averageRating.js';
 
