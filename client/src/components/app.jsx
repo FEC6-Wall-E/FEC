@@ -33,13 +33,13 @@ function App() {
         // eslint-disable-next-line no-console
         console.error(err);
       });
-  }, []);
+  }, [seedPID]);
 
   return product && styles && meta ? (
     <div id="app">
       <Overview product={product} styles={styles} setStyles={setStyles} metaData={meta} />
-      <RelatedProducts />
-      <YourOutfitList />
+      {/* <RelatedProducts />
+      <YourOutfitList /> */}
       <QandA />
     </div>
   ) : null;

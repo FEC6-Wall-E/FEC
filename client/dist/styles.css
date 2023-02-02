@@ -1,8 +1,7 @@
 #app {
   background-color: lightgray;
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
+
 }
 
 #imageModalImage #PanAndZoomImage-container{
@@ -42,12 +41,14 @@
 }
 
 #overviewImagePicker {
-  width: 3vw;
+  width: 3.5vw;
   left: 10px;
   margin: 0;
   position: absolute;
+  height: 70vh;
   top: 50%;
   transform: translateY(-50%);
+  overflow: hidden;
 }
 
 .overViewSlider {
@@ -160,6 +161,7 @@ StarRatingCSS */
 /*
 StyleSelector */
 .styleRow {
+  width: 400px;
   display: flex;
 }
 .selected {
@@ -173,6 +175,7 @@ StyleSelector */
 .style, .styleContainer {
   width: 80px;
   height: 80px;
+  margin: auto;
   border-radius: 50%;
   background-color: white;
 }
@@ -197,98 +200,22 @@ Overview Structure */
   margin: auto;
   width: auto;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 50px;
 }
-#ProductInfo {
+#ProductInfo, #StyleSelector, #StyleSelector, #AddToCart {
+  display: block;
+  width: 50%;
   margin: 0;
   margin: auto;
-  position: flex;
   float: left;
-  width: auto;
-  display: flex;
-  flex-direction: column;
-}
-#StyleSelector {
-  margin: 0;
-  position: flex;
-  float: left;
-  width: auto;
-  display: flex;
-  flex-direction: column;
-}
-#AddToCart {
-  margin: auto;
-  position: flex;
-  float: left;
-  width: auto;
-  display: flex;
   flex-direction: column;
 }
 #overview {
   margin: auto;
 }
-.leftSide {
-  float: left;
-}
-.rightSide {
-  float: right;
-}
-
-/* RELATED PRODUCTS */
-
-/* CAROUSEL */
-.slider {
-  display: flex;
-  overflow: hidden;
-  width: 100%;
-  /* white-space: nowrap; ? */
-}
-
-.slider-buttons {
-  text-align: center;
-  cursor: pointer;
-}
-
-.slider-buttons button {
-  margin: .25rem;
-}
-
-/* PRODUCT CARD */
-.product-card {
-  display: flex;
-  flex-direction: column;
-  margin: 0.6rem;
-  padding: 0.5rem;
-  width: 25vw;
-  transition: background-color 0.2s linear;
-}
-
-.mainImg {
-  width: auto;
+.leftSide, .rightSide {
+  top: 0px;
+  display: inline;
+  width: 50%;
   height: 100%;
 }
-
-.active {
-  background: rgba(0, 100, 150, 0.4);
-}
-
-/* THUMBNAILS CAROUSEL*/
-.thumbnails-slider {
-  align-items: center;
-  display: flex;
-  overflow: hidden;
-  /* width: 100%; */
-}
-
-/* THUMBNAILS*/
-.thumbnail {
-  margin: 0.6rem;
-  padding: 0.5rem;
-  width: 25%;
-  transition: background-color 0.2s linear;
-}
-
-.thumbnail img {
-  max-width: 35px;
-}
-
