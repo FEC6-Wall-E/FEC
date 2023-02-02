@@ -13,10 +13,10 @@ function App() {
 
   return (
     <div id="app">
-      <Overview product={product} styles={styles} setStyles={setStyles} metaData={meta} />
+      {/* <Overview product={product} styles={styles} setStyles={setStyles} metaData={meta} /> */}
       <RelatedProducts />
-      <YourOutfitList />
-      <QandA />
+      {/* <YourOutfitList />
+      <QandA /> */}
     </div>
   );
 }

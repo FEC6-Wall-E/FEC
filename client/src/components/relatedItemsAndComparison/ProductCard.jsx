@@ -1,14 +1,15 @@
 import React, { useState, useEffect, forwardRef } from 'react';
 import axios from 'axios';
+import { API } from '../.././api.js';
 import ThumbnailsList from './ThumbnailsList.jsx';
 import averageRating from '../sharedComponents/lib/averageRating.js';
-// import StarRating from '../sharedComponents/StarRating.jsx';
+import StarRating from '../sharedComponents/StarRating.jsx';
 
 /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
 const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, ref) {
   const [relatedProduct, setRelatedProduct] = useState({});
   const [defaultStyle, setDefaultStyle] = useState({});
-  // const [rating, setRating] = useState([]);
+  const [rating, setRating] = useState([]);
   const [images, setImages] = useState([]);
   const [mainImg, setMainImg] = useState('');
 
@@ -17,7 +18,8 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
       axios.get(`/meta/${productId}`)
         .then((meta) => {
           console.log(meta);
-          // setRating(averageRating(meta));
+          const rating = averageRating(meta.data);
+          setRating(averageRating(meta.data));
         })
         .catch((err) => console.error(err));
     }
@@ -49,7 +51,7 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
     axios.get(`/products/${productId}`)
       .then((product) => {
         setRelatedProduct(product.data);
-        // getRating();
+        getRating();
       })
       .catch((err) => console.error(err))
       .then(() => getStyles());
@@ -101,7 +103,7 @@ const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, r
           </div>
         )}
       <span className="rating">
-        {/* <StarRating rating={rating[0]} count={rating[1]} link={}/> */}
+        <StarRating rating={rating[0]} count={rating[1]} />
       </span>
     </div>
   );
