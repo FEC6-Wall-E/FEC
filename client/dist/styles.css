@@ -5,7 +5,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-
 #imageModalImage #PanAndZoomImage-container{
   margin: 0;
   background: black;
@@ -15,7 +14,6 @@
   transition: all .2s ease;
   /* padding: 100% */
 }
-
 #imageModalBG {
   position: fixed;
   top: 0%;
@@ -24,22 +22,18 @@
   padding-top: 50%;
   padding: 100%;
 }
-
 #picked {
   border: 3px solid rgb(246, 20, 65);
   color: whitesmoke
 }
-
 .imagePickerImage {
   border: 3px solid white;
   padding-bottom: -5px;
 }
-
 .imagePickerImage:hover {
   border: 3px solid blueviolet;
   color: whitesmoke
 }
-
 #overviewImagePicker {
   width: 76px;
   left: 10px;
@@ -48,11 +42,9 @@
   top: 50%;
   transform: translateY(-50%);
 }
-
 .overViewSlider {
   white-space: nowrap;
 }
-
 .overviewImage {
   transition: ease-out 1s;
   display: inline-block;
@@ -64,7 +56,6 @@
   max-width: 1000px;
   object-fit: cover;
 }
-
 .imageSelector{
   border-color: transparent;
   position: absolute;
@@ -73,19 +64,15 @@
   width: 150px;
   height: 1000px;
 }
-
 .imageSelector:hover {
   opacity: 0.3;
 }
-
 .right{
   left: 850px;
 }
-
 .click-zoom input[type=checkbox] {
   display: none
 }
-
 .click-zoom img {
   margin: 100px;
   transition: transform 0.25s ease;
@@ -95,7 +82,6 @@
   transform: scale(2);
   cursor: zoom-out
 }
-
 /* StarRatingCSS */
 .star {
   font-size: x-large;
@@ -140,7 +126,6 @@
   display: inline;
   padding-left: 10px;
 }
-
 /* Product Info */
 .sale {
   display: inline;
@@ -219,12 +204,10 @@ Overview Structure */
   width: 100%;
   /* white-space: nowrap; ? */
 }
-
 .slider-buttons {
   text-align: center;
   cursor: pointer;
 }
-
 .slider-buttons button {
   margin: .25rem;
 }
@@ -237,22 +220,28 @@ Overview Structure */
   padding: 0.5rem;
   width: 25vw;
   transition: background-color 0.2s linear;
+  cursor:pointer;
 }
-
 .product-card .reviewCount {
   display: none;
 }
-
 .mainImg {
   width: auto;
   height: 100%;
 }
-
 .active {
   background: rgba(0, 100, 150, 0.4);
 }
 
 /* THUMBNAILS CAROUSEL*/
+.thumbnails-slider-container {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+}
+.mainImg:hover + .thumbnails-slider-container{
+  display: block;
+}
 .thumbnails-slider {
   align-items: center;
   display: flex;
@@ -266,8 +255,8 @@ Overview Structure */
   padding: 0.5rem;
   width: 25%;
   transition: background-color 0.2s linear;
+  /* cursor: pointer; */
 }
-
 .thumbnail img {
   max-width: 35px;
 }
