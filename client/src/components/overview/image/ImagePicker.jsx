@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
+import PickerImage from './PickerImage.jsx';
 
 function ImagePicker({ images, setImage, currID }) {
   let transform = 0;
@@ -11,26 +12,15 @@ function ImagePicker({ images, setImage, currID }) {
   }
   return (
     <div id="overviewImagePicker">
-      {images.map((image, idx) => {
-        const src = image.thumbnail_url || 'https://www.freeiconspng.com/uploads/no-image-icon-6.png';
-        return (
-          <img
-            key={idx}
-            className="imagePickerImage"
-            width="70"
-            height="100"
-            style={{
-              objectFit: 'cover',
-              transform: `translate3d(0, ${-transform * 100}px, 0)`,
-              transition: 'all .5s ease',
-            }}
-            onClick={() => setImage(idx)}
-            id={idx === currID ? 'picked' : null}
-            src={src}
-            alt="?"
-          />
-        );
-      })}
+      {images.map((image, idx) => (
+        <PickerImage
+          idx={idx}
+          url={image.thumbnail_url}
+          setImage={setImage}
+          currID={currID}
+          transform={transform}
+        />
+      ))}
     </div>
   );
 }
