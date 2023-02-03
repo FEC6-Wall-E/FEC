@@ -123,7 +123,7 @@ module.exports = {
     },
     questionHelpful: (req, res) => {
       const { qid } = req.params;
-      return api.post(`qa/questions/${qid}/helpful`)
+      return api.put(`qa/questions/${qid}/helpful`)
         .then(() => {
           res.sendStatus(204);
         })
@@ -133,7 +133,7 @@ module.exports = {
     },
     questionReport: (req, res) => {
       const { qid } = req.params;
-      return api.post(`qa/questions/${qid}/report`)
+      return api.put(`qa/questions/${qid}/report`)
         .then(() => {
           res.sendStatus(204);
         })
@@ -143,7 +143,7 @@ module.exports = {
     },
     answerHelpful: (req, res) => {
       const { aid } = req.params;
-      return api.post(`qa/answers/${aid}/helpful`)
+      return api.put(`qa/answers/${aid}/helpful`)
         .then(() => {
           res.sendStatus(204);
         })
@@ -153,7 +153,7 @@ module.exports = {
     },
     answerReport: (req, res) => {
       const { aid } = req.params;
-      return api.post(`qa/answers/${aid}/report`)
+      return api.put(`qa/answers/${aid}/report`)
         .then(() => {
           res.sendStatus(204);
         })
