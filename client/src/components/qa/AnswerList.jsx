@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Answer from './Answer.jsx';
 
-function AnswerList({ answerList }) {
+function AnswerList({ answerList, getQuestions }) {
   const [answerCount, setAnswerCount] = useState(2);
   const [moreAnswers, setMoreAnswers] = useState('See More Answers');
 
@@ -29,10 +29,12 @@ function AnswerList({ answerList }) {
         {ansArr.slice(0, answerCount).map((answer) => (
           <Answer
             key={answer.id}
+            id={answer.id}
             body={answer.body}
             helpfulness={answer.helpfulness}
             name={answer.answerer_name}
             date={answer.date}
+            getQuestions={getQuestions}
           />
         ))}
         <form onClick={handleMoreAnswers}>
@@ -46,6 +48,7 @@ function AnswerList({ answerList }) {
       {ansArr.slice(0, answerCount).map((answer) => (
         <Answer
           key={answer.id}
+          id={answer.id}
           body={answer.body}
           helpfulness={answer.helpfulness}
           name={answer.answerer_name}

@@ -1,17 +1,53 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-one-expression-per-line */
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import { parseISO, format } from 'date-fns';
 
 function Answer({
-  body, helpfulness, name, date,
+  id, body, helpfulness, name, date, getQuestions,
 }) {
+  const [ansHelpfulClicked, setAnsHelpfulClicked] = useState(false);
+  const handleAHelpful = (e) => {
+    e.preventDefault();
+    if (!ansHelpfulClicked) {
+      axios({
+        method: 'put',
+        url: `/qa/answers/${id}/helpful`,
+      })
+        .then(() => {
+          getQuestions();
+        })
+        .then(() => {
+          setAnsHelpfulClicked(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+  const handleAReport = (e) => {
+    e.preventDefault();
+    axios({
+      method: 'put',
+      url: `/qa/answers/${id}/report`,
+    })
+      .then(() => {
+        alert('Answer reported!');
+        getQuestions();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div id="Answer">
       <span id="aBody"><b>A: </b>{body}</span>
       <br />
       <span id="aHelpful">
         by {name}, {format(parseISO(date), 'MMMM dd, yyyy')}  |
-        Helpful? <u>Yes</u> ({helpfulness})  |  <u>Report</u>
+        Helpful? <span id="aHelp" onClick={handleAHelpful}><u>Yes</u></span> ({helpfulness})  |
+        <span id="aReport" onClick={handleAReport}><u>Report</u></span>
       </span>
     </div>
   );
