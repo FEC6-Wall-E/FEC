@@ -213,6 +213,11 @@ Overview Structure */
 /* Q and A */
 #QandA {
   width: 100%;
+  height: 550px;
+}
+#QuestionList {
+  height: 80%;
+  overflow: auto;
 }
 #Question {
   margin: 10px;
@@ -227,8 +232,11 @@ Overview Structure */
   float: right;
   font-size: 80%;
 }
-#answer {
-  padding: 10px 0px;
+#qHelp:hover {
+  background-color: chartreuse;
+}
+#Answer {
+  padding: 10px 0px 5px 10px;
 }
 #aBody {
   padding: 10px 10px 10px 0px;
@@ -236,6 +244,12 @@ Overview Structure */
 #aHelpful {
   padding: 20px;
   font-size: 80%;
+}
+#aHelp:hover {
+  background-color: chartreuse;
+}
+#aReport:hover {
+  background-color: crimson;
 }
 #moreAnswers {
   padding: 10px 0px 0px 20px;
