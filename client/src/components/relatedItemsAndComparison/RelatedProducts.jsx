@@ -1,29 +1,34 @@
-import React, {useState, useEffect} from "react";
-import ProductCard from "./ProductCard.jsx";
-import Comparison from "./Comparison.jsx"
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Carousel from './Carousel.jsx';
 
-const RelatedProducts = () => { //props that are passed in are {product} or {productId}, tbd
+function RelatedProducts() {
+  // props that are passed in are {product} or {productId},
+  // {setProductId} for re-rendering the page when a card is clicked
   const [relatedList, setRelatedList] = useState([]);
-  const pid = 40344; //hard coded for now
+  // hard coded for now
+  const pid = 40346;
 
   const getRelatedProducts = () => {
-    axios.get(`/products/${pid}/related`) //change pid to product.id when you actually start passing the props
+    // change pid to product.id when you actually start passing the props
+    axios.get(`/products/${pid}/related`)
       .then((products) => {
+        // are we sure that every product has a related product ?
         setRelatedList(products.data);
       })
       .catch((err) => console.error(err));
-  }
+  };
+
   useEffect(() => {
     getRelatedProducts();
   }, []);
 
   return (
-    <section>
-    <h5>RELATED PRODUCTS</h5>
-    <section>
-      {relatedList.map((relatedProduct) => <ProductCard key={relatedProduct} productId={relatedProduct}/>)}
-    </section>
+    <section id="related-products">
+      <h5>RELATED PRODUCTS</h5>
+      <div className="slider-container">
+        <Carousel relatedList={relatedList} />
+      </div>
     </section>
   );
 }
