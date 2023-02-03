@@ -10,13 +10,17 @@ function CompareModal({ product2, setShowModal }) {
     <div id="comparison-modal">
       <table>
         <tr>
-          <th>Product 1 name</th>
+          <th>{examples.product.name}</th>
           <th></th>
-          <th>Product 2 name</th>
+          <th>{product2.name}</th>
         </tr>
-        <tr>Feature value for product 1</tr>
-        <tr>Feature name</tr>
-        <tr>Feature value for product 2</tr>
+        {features.map((feature) => (
+          <tr>
+            <td>{feature.value1 ? feature.value1 : ''}</td>
+            <td>{feature.feature}</td>
+            <td>{feature.value2 ? feature.value2 : ''}</td>
+          </tr>
+        ))}
       </table>
       <button onClick={() => setShowModal(false)}>Close</button>
     </div>
