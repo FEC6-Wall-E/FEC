@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchQuestions from './SearchQuestions.jsx';
 import QuestionList from './QuestionList.jsx';
-import MoreAnswers from './MoreAnswers.jsx';
 import AddQuestion from './AddQuestion.jsx';
 
 function QandA({ product }) {
@@ -21,9 +21,22 @@ function QandA({ product }) {
     setFilteredQuestions(ans);
   };
 
+  const filterBySearch = () => {
+    if (searchInput.length >= 3) {
+      const searched = questionList.filter((question) => question.question_body.toUpperCase()
+        .includes(searchInput.toUpperCase()));
+      if (searched.length === 0) {
+        // eslint-disable-next-line no-alert, no-undef
+        alert('No questions matched your search, try again');
+      } else {
+        setFilteredQuestions(searched);
+      }
+    } else {
+      filterByAnswers(questionList);
+    }
+  };
   // const productId = 40383;
-
-  useEffect(() => {
+  const getQuestions = () => {
     axios({
       method: 'GET',
       url: `/qa/questions?product_id=${product.id}&page=1&count=200`,
@@ -36,16 +49,14 @@ function QandA({ product }) {
       .catch((err) => {
         console.error('Error getting questions for this product', err);
       });
+  };
+
+  useEffect(() => {
+    getQuestions();
   }, []);
 
   useEffect(() => {
-    if (searchInput.length >= 3) {
-      const searched = questionList.filter((question) => question.question_body.toUpperCase()
-        .includes(searchInput.toUpperCase()));
-      setFilteredQuestions(searched);
-    } else {
-      filterByAnswers(questionList);
-    }
+    filterBySearch();
   }, [searchInput]);
 
   if (questionList.length === 0) {
@@ -62,8 +73,8 @@ function QandA({ product }) {
       <SearchQuestions setSearchInput={setSearchInput} />
       <QuestionList
         questionList={filteredQuestions.length > 0 ? filteredQuestions : questionList}
+        getQuestions={getQuestions}
       />
-      <AddQuestion />
     </div>
   );
 }
