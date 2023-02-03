@@ -199,3 +199,45 @@ Overview Structure */
   flex-direction: column;
   align-items: flex-start;
 }
+
+/* Q and A */
+#QandA {
+  width: 100%;
+}
+#Question {
+  margin: 10px;
+}
+#qBody {
+  padding: 10px 0px;
+}
+#qBodyText {
+  padding: 0px 30px 0px 0px;
+}
+#qHelpful {
+  float: right;
+  font-size: 80%;
+}
+#answer {
+  padding: 10px 0px;
+}
+#aBody {
+  padding: 10px 10px 10px 0px;
+}
+#aHelpful {
+  padding: 20px;
+  font-size: 80%;
+}
+#moreAnswers {
+  padding: 10px 0px 0px 20px;
+  text-decoration: underline;
+}
+#SearchQuestions {
+  min-width: 100px;
+}
+#SearchBar {
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 20px;
+  width: 40%;
+  padding: 2px 23px 2px 30px;
+}
