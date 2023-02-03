@@ -1,37 +1,14 @@
-import React, { useState } from 'react';
-// import axios from 'axios';
+/* eslint-disable react/jsx-one-expression-per-line */
+import React from 'react';
 import AnswerList from './AnswerList.jsx';
-import AddAnswer from './AddAnswer.jsx';
 
-function Question({ body, answers }) {
-  // eslint-disable-next-line no-unused-vars
-  const [answerList, setAnswerList] = useState(answers);
-  //  use question ID to make a get request to API on load
-  //    setAnswerList to passed in answer list
-
-  // answers already exists in the question object, no need to get again??
-  // useEffect(() => {
-  //   axios({
-  //     method: 'GET',
-  //     url: 'http://localhost:3000/qa/329323/answers',
-  //   })
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.log('Error getting answers for this question', err);
-  //     });
-  // }, []);
-
+function Question({ body, answers, helpfulness }) {
   return (
-    <div>
-      <p>
-        <b>Q:</b>
-        {' '}
-        {body}
-      </p>
-      <AnswerList list={answerList} />
-      <AddAnswer />
+    <div id="Question">
+      <div id="qBody">
+        <span id="qBodyText"><b>Q: </b>{body}</span><span id="qHelpful">Helpful? <u>Yes</u> ({helpfulness}) | <u>Add Answer</u></span>
+      </div>
+      <AnswerList answerList={answers} />
     </div>
   );
 }

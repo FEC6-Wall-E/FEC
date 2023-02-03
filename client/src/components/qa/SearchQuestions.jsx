@@ -1,9 +1,9 @@
 import React from 'react';
 
-function SearchQuestions() {
+function SearchQuestions({ setSearchInput }) {
   return (
-    <form>
-      <input type="text" placeholder="Have a question? Search for answers..." />
+    <form id="SearchQuestions" onSubmit={(e) => { e.preventDefault(); }}>
+      <input id="SearchBar" type="text" onChange={(e) => { setSearchInput(e.target.value); }} placeholder="Have a question? Search for answers..." />
     </form>
   );
 }
