@@ -28,12 +28,20 @@ function Carousel({ relatedList }) {
     <>
       {index > 0 && (
       <button
-        className="slider-button left"
+        className="slider-button prev"
         onClick={() => handleNav('prev')}
       >
         <IoIosArrowBack />
       </button>
       )}
+      {index < numberOfSlides - 1 && (
+        <button
+          className="slider-button next"
+          onClick={() => handleNav('next')}
+        >
+          <IoIosArrowForward />
+        </button>
+        )}
       <div className="slider" >
         {relatedList.map((relatedProduct, idx) => (
           <ProductCard
@@ -45,14 +53,6 @@ function Carousel({ relatedList }) {
           />
         ))}
       </div>
-      {index < numberOfSlides - 1 && (
-        <button
-          className="slider-button right"
-          onClick={() => handleNav('next')}
-        >
-          <IoIosArrowForward />
-        </button>
-        )}
     </>
   );
 }

@@ -199,17 +199,19 @@ Overview Structure */
 /* RELATED PRODUCTS */
 
 /* CAROUSEL */
-
+.slider-container {
+  position: relative;
+}
 .slider {
-  /* display: flex; */
   display: grid;
+  overflow-x: hidden;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scroll-behavior: smooth;
   gap: 0.6rem;
   grid-auto-flow: column;
   grid-auto-columns: 23%;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  padding: 0  0.6rem 0.6rem;
-  scroll-snap-type: inline mandatory;
+  padding: 0 0.6rem 0.6rem;
   scroll-padding-inline: 0.6rem 1rem;
 }
 .slider > * {
@@ -219,7 +221,9 @@ Overview Structure */
   padding: 0.3rem;
   display: flex;
   flex-direction: column;
-  border: 2px green;
+}
+.active {
+  background: rgba(0, 100, 150, 0.4);
 }
 .mainImg {
   inline-size: 100%;
@@ -230,4 +234,10 @@ Overview Structure */
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+}
+.slider-button.prev {
+  left: -1rem;
+}
+.slider-button.next {
+  right: -1rem;
 }

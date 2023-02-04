@@ -7,7 +7,7 @@ function RelatedProducts() {
   // {setProductId} for re-rendering the page when a card is clicked
   const [relatedList, setRelatedList] = useState([]);
   // hard coded for now
-  const pid = 40346;
+  const pid = 40350;
 
   const getRelatedProducts = () => {
     // change pid to product.id when you actually start passing the props
