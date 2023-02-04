@@ -28,8 +28,8 @@ const SizeSelector = React.forwardRef(({
       borderBottom: '1px dotted pink',
       color: state.isSelected ? 'red' : 'blue',
       padding: 5,
-      margin: 20,
-      width: '20%',
+      margin: 10,
+      width: '12vw',
     }),
   };
 

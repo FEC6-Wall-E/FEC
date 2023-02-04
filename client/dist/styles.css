@@ -244,9 +244,24 @@ StyleSelector */
 .style:hover, .selected {
   opacity: 0.3;
 }
-.sizeSelect{
-  height: 5px;
- }
+.cartButtonContainer, #overviewSelectors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+#CartButton {
+  border: transparent;
+  background-color: red;
+  height: 5vh;
+  width: 25vw;
+  font-size: 3em;
+  font-weight: bold;
+  border-radius: 10px;
+}
+#CartButton:hover {
+  background-color: rgb(250, 92, 92);
+}
 /*
 Overview Structure */
 #Image {
@@ -281,4 +296,9 @@ Overview Structure */
 }
 .dropShadow {
   filter: drop-shadow(0 0 0.25rem black);
+}
+
+#overviewSelectors {
+  display: flex;
+  width: 100%;
 }
