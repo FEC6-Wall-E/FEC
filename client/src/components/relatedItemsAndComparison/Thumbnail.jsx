@@ -21,7 +21,7 @@ const Thumbnail = forwardRef(function Thumbnail({
         :
         `${thumbnail.thumbnail_url}
         `}
-        alt='Is missing'
+        alt='Missing'
       />
     </div>
   );

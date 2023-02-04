@@ -4,13 +4,8 @@ import ProductCard from './ProductCard.jsx';
 
 function Carousel({ relatedList }) {
   const numberOfSlides = relatedList.length;
-  // const [numberOfSlides, setNumberOfSlides] = useState(numberOfSlides);
   const [index, setIndex] = useState(0);
   const ref = useRef(null);
-
-  // useEffect(() => {
-  //   setNumberOfSlides(relatedList.length);
-  // }, [relatedList]);
 
   const handleNav = (direction) => {
     flushSync(() => {
@@ -23,43 +18,42 @@ function Carousel({ relatedList }) {
     ref.current.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
-      inline: 'center',
+      inline: 'nearest',
     });
   };
 
   return (
     <>
-      <div className="slider-buttons">
-        {index > 0 && (
-        <button
-          className="left"
-          onClick={() => handleNav('prev')}
-        >
-          previous
-        </button>
-        )}
-        {index < numberOfSlides - 1 && (
-        <button
-          className="right"
-          onClick={() => handleNav('next')}
-        >
-          next
-        </button>
-        )}
-      </div>
-      <div className="slider">
+      {index > 0 && (
+      <button
+        className="slider-button left"
+        onClick={() => handleNav('prev')}
+      >
+        previous
+      </button>
+      )}
+      <div className="slider" >
         {relatedList.map((relatedProduct, idx) => (
           <ProductCard
             key={relatedProduct}
             ref={ref}
-            productId={relatedProduct}
+            relatedProductId={relatedProduct}
             index={index}
             idx={idx}
           />
         ))}
       </div>
+      {index < numberOfSlides - 1 && (
+        <button
+          className="slider-button right"
+          onClick={() => handleNav('next')}
+        >
+          next
+        </button>
+        )}
     </>
   );
 }
 
 export default Carousel;
+//style={{ transform: `translateX(-${index * 100}%)` }

@@ -23,16 +23,13 @@ function ThumbnailsList({ images, setMainImg }) {
     ref.current.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
-      inline: 'center',
+      inline: 'nearest',
     });
   };
 
   return (
     <div className="thumbnails-slider-container">
-      <div className="slider-button">
-        {index > 0 && <button className="thumbnails left" onClick={() => handleNav('prev')}> previous </button>}
-        {index < length - 1 && <button className="thumbnails right" onClick={() => handleNav('next')}> next </button>}
-      </div>
+      {index > 0 && <button className="thumbnails-slider-button left" onClick={() => handleNav('prev')}> previous </button>}
       <div className="thumbnails-slider">
         {images.map((thumbnail, idx) => (
           <Thumbnail
@@ -46,9 +43,9 @@ function ThumbnailsList({ images, setMainImg }) {
           />
         ))}
       </div>
+      {index < length - 1 && <button className="thumbnails-slider-button right" onClick={() => handleNav('next')}> next </button>}
     </div>
   );
 }
 
 export default ThumbnailsList;
-// style={{ transform: `translateX(-${index * (100 / imgsToDisplay)}%)`}}>

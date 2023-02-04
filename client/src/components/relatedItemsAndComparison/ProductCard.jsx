@@ -8,6 +8,7 @@ import CompareModal from './CompareModal.jsx'
 
 /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
 const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, idx }, ref) {
+// function ProductCard({ relatedProductId, index, idx }) {
   const [relatedProduct, setRelatedProduct] = useState({});
   const [defaultStyle, setDefaultStyle] = useState({});
   const [rating, setRating] = useState({});
@@ -74,8 +75,10 @@ const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, i
       className={index === idx ? 'active product-card' : 'product-card'}
       ref={index === idx ? ref : null}
     >
-      <img className="mainImg" src={mainImg} alt="Missing" />
-      <ThumbnailsList images={images} setMainImg={setMainImg} />
+      <div className="productImgs">
+        <img className="mainImg" src={mainImg} alt="Missing" />
+        <ThumbnailsList images={images} setMainImg={setMainImg} />
+      </div>
       {/* add onClick={handleCompare} to the button */}
       <button className="compare" onClick={() => setShowModal(true)}>Compare</button>
       {showModal && <CompareModal product2={relatedProduct} setShowModal={setShowModal} />}
