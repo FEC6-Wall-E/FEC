@@ -19,8 +19,15 @@ function ImageModal({
   };
 
   const button = (side) => {
-    if (side === 'l' && idx !== 0) setIdx(idx - 1);
-    if (side === 'r' && idx !== images.length - 1) setIdx(idx + 1);
+    if (side === 'l' && idx !== 0) {
+      setIdx(idx - 1);
+    } else if (side === 'l' && idx === 0) {
+      setIdx(images.length - 1);
+    } else if (side === 'r' && idx !== images.length - 1) {
+      setIdx(idx + 1);
+    } else if (side === 'r' && idx === images.length - 1) {
+      setIdx(0);
+    }
   };
 
   function zoomer(e) {
@@ -59,8 +66,9 @@ function ImageModal({
         />
       </figure>
       <span id="modalControls">
-        <button className="modalLeft" onClick={() => button('l')}>{'<-'}</button>
-        <button className="modalLeft" onClick={() => button('r')}>{'->'}</button>
+        <button className="modalLeft" onClick={() => button('l')}>{'<'}</button>
+        <span id="indicatorsContainer">{images.map((image, index) => <span className={idx === index ? 'selected modalIndicator' : 'modalIndicator'} onClick={() => setIdx(index)} />)}</span>
+        <button className="modalLeft" onClick={() => button('r')}>{'>'}</button>
       </span>
     </div>
   );

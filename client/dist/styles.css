@@ -40,10 +40,38 @@
   overflow: hidden;
 }
 #modalControls {
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
+  display: flex;
   bottom: 0px;
   width: 40vw;
   z-index: 2;
+  height: 3vh;
+}
+#modalControls button {
+  width: 6vw;
+  border: transparent;
+  background-color: gainsboro;
+  font-weight: bolder;
+  font-size: large;
+}
+.modalIndicator {
+  border: solid white 2px;
+  width: 0.7vw;
+  height: 0.7vw;
+  margin: 0.2vw;
+  border-radius: 50%;
+}
+.modalIndicator.selected {
+  background-color: white;
+  color: white;
+  opacity: 1;
+}
+#indicatorsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%
 }
 
 .pickerImageBG {
