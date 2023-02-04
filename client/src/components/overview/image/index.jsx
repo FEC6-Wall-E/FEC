@@ -42,7 +42,7 @@ function Image({ style }) {
             <img
               onClick={() => setModal({
                 hidden: false,
-                url: image.url,
+                currIdx: idx,
               })}
               className="overviewImage"
               style={{
@@ -64,7 +64,12 @@ function Image({ style }) {
         </div>
         <ImagePicker images={images} setImage={changeIndex} currID={index} />
       </div>
-      <ImageModal hidden={modal.hidden} url={modal.url} click={() => setModal(baseModal)} />
+      <ImageModal
+        images={images}
+        hidden={modal.hidden}
+        currIdx={modal.currIdx}
+        click={() => setModal(baseModal)}
+      />
     </div>
   );
 }

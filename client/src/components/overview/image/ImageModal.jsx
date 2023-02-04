@@ -1,11 +1,26 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 
-function ImageModal({ hidden, url, click }) {
+function ImageModal({
+  hidden,
+  currIdx,
+  images,
+  click,
+}) {
   const [show, setShow] = React.useState(false);
+  const [idx, setIdx] = React.useState(currIdx || 0);
+
+  React.useEffect(() => {
+    setIdx(currIdx || 0);
+  }, [currIdx]);
 
   const clickHandler = () => {
     setShow(!show);
+  };
+
+  const button = (side) => {
+    if (side === 'l' && idx !== 0) setIdx(idx - 1);
+    if (side === 'r' && idx !== images.length - 1) setIdx(idx + 1);
   };
 
   function zoomer(e) {
@@ -22,7 +37,7 @@ function ImageModal({ hidden, url, click }) {
   }
 
   const style = {
-    backgroundImage: `url(${url})`,
+    backgroundImage: `url(${images[idx].url})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: '250%',
   };
@@ -39,10 +54,14 @@ function ImageModal({ hidden, url, click }) {
       >
         <img
           className={show ? 'show' : 'noShow'}
-          src={url}
+          src={images[idx].url}
           alt="missing"
         />
       </figure>
+      <span id="modalControls">
+        <button className="modalLeft" onClick={() => button('l')}>{'<-'}</button>
+        <button className="modalLeft" onClick={() => button('r')}>{'->'}</button>
+      </span>
     </div>
   );
 }
