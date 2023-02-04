@@ -4,8 +4,9 @@ import React from 'react';
 import ImagePicker from './ImagePicker.jsx';
 import ImageModal from './ImageModal.jsx';
 
-function Image({ images }) {
+function Image({ style }) {
   const baseModal = { hidden: true, url: '', click: null };
+  const images = style.photos;
   const [index, setIndex] = React.useState(0);
   const [modal, setModal] = React.useState(baseModal);
 
@@ -51,8 +52,6 @@ function Image({ images }) {
                 objectFit: 'cover',
               }}
               src={image.url}
-              width="1000px"
-              height="1000px"
               alt="Missing!"
               key={idx}
             />

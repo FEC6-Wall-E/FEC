@@ -12,37 +12,44 @@ function App() {
   const [styles, setStyles] = React.useState(null);
   const [meta, setMeta] = React.useState(null);
   // eslint-disable-next-line no-undef
-  const seedPID = +document.querySelector('main').getAttribute('pid');
+  const initID = document.querySelector('main') ? +document.querySelector('main').getAttribute('pid') : 40344;
+  const [pid, setPid] = React.useState(initID);
+
+  if (window.location.href === 'http://localhost:3000/') window.location.href = ('http://localhost:3000/?pid=40349');
 
   React.useEffect(() => {
     Promise.all([
-      axios.get(`/products/${seedPID}`)
+      axios.get(`/products/${pid}`)
         .then((result) => {
           setProduct(result.data);
         }),
-      axios.get(`/products/${seedPID}/styles`)
+      axios.get(`/products/${pid}/styles`)
         .then((result) => {
           setStyles(result.data.results);
         }),
-      axios.get(`/meta/${seedPID}`)
+      axios.get(`/meta/${pid}`)
         .then((result) => {
           setMeta(result.data);
         }),
     ])
       .catch((err) => {
+        const errStatus = err.response.status;
         // eslint-disable-next-line no-console
-        console.error(err);
+        console.log(errStatus, err);
+        if (errStatus === 500) window.location.href = ('http://localhost:3000/?pid=40349');
       });
-  }, [seedPID]);
+  }, [pid]);
 
-  return product && styles && meta ? (
+  return (
     <div id="app">
-      <Overview product={product} styles={styles} setStyles={setStyles} metaData={meta} />
+      {product && styles && meta
+        ? <Overview product={product} styles={styles} setStyles={setStyles} metaData={meta} />
+        : null}
       {/* <RelatedProducts />
       <YourOutfitList /> */}
       {/* <QandA /> */}
     </div>
-  ) : null;
+  );
 }
 
 export default App;

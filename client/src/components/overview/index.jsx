@@ -24,7 +24,7 @@ function Overview({
   return (
     <div id="overview">
       <div className="leftSide">
-        <Image images={style.photos} />
+        <Image style={style} />
       </div>
       <div className="rightSide">
         <ProductInfo metaData={metaData} product={product} style={style} />

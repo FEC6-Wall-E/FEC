@@ -6,9 +6,13 @@ import React from 'react';
 import PickerImage from './PickerImage.jsx';
 
 function ImagePicker({ images, setImage, currID }) {
+  console.log(images)
   let transform = 0;
   if (currID > 3 && images.length > 7) {
     transform = currID - 3;
+  }
+  if (currID > images.length - 3 && images.length > 7) {
+    transform = images.length - 6;
   }
   return (
     <div id="overviewImagePicker">
