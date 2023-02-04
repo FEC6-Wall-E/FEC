@@ -218,8 +218,9 @@ StarRatingCSS */
 /*
 StyleSelector */
 .styleRow {
-  width: 400px;
+  width: 80%;
   display: flex;
+  justify-content: center;
 }
 .checkmark {
   position: absolute;
@@ -228,19 +229,20 @@ StyleSelector */
 }
 .style, .styleContainer {
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 8vh;
+  height: 8vh;
   margin: auto;
   border-radius: 50%;
   background-color: white;
 }
+#CurrentStyle {
+  font-size: 4em;
+  margin: 0;
+}
 .style {
-  position: absolute;
-  transition: .3s ease;
+   transition: .3s ease;
 }
-.styleContainer {
-  display: inline-flex;
-}
+
 .style:hover, .selected {
   opacity: 0.3;
 }
@@ -277,12 +279,44 @@ Overview Structure */
   max-height: 33.33%;
   padding: 2em;
 }
+#StyleSelector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#AddToCart {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+}
 #overview {
   display: flex;
+}
+#overviewContainer {
   margin: auto;
 }
-#overview * {
+#overviewContainer * {
   box-sizing: border-box;
+}
+#ProductDetails {
+  display: flex;
+  margin: 10px, 0px;
+}
+#ProductDetails .productDetails {
+  border-right: solid gray 3px;
+  width: 45vw;
+}
+#ProductDetails .features {
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.features .feature {
+  color: gray;
+  font-size: large;
 }
 .leftSide, .rightSide {
   min-height: 100%;

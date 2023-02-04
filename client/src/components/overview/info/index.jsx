@@ -16,7 +16,6 @@ function ProductInfo({ metaData, product, style }) {
       <h2 className="infoCategory">{product.category}</h2>
       <h1 className="infoName">{product.name}</h1>
       <Price original={style.original_price} sale={style.sale_price} />
-      <p className="infoDescription">{product.description}</p>
       <div id="shareButtons">
         <i
           // eslint-disable-next-line no-undef

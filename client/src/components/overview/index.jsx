@@ -4,6 +4,7 @@ import Image from './image/index.jsx';
 import ProductInfo from './info/index.jsx';
 import StyleSelector from './styleSelector/index.jsx';
 import AddToCart from './addToCart/index.jsx';
+import Details from './details/index.jsx';
 
 function Overview({
   product, styles, setStyles, metaData,
@@ -22,15 +23,18 @@ function Overview({
   });
 
   return (
-    <div id="overview">
-      <div className="leftSide">
-        <Image style={style} />
+    <div id="overviewContainer">
+      <div id="overview">
+        <div className="leftSide">
+          <Image style={style} />
+        </div>
+        <div className="rightSide">
+          <ProductInfo metaData={metaData} product={product} style={style} />
+          <StyleSelector currentStyle={style} allStyles={styles} setStyle={setStyle} />
+          <AddToCart currentStyle={style} sizes={sizes} />
+        </div>
       </div>
-      <div className="rightSide">
-        <ProductInfo metaData={metaData} product={product} style={style} />
-        <StyleSelector currentStyle={style} allStyles={styles} setStyle={setStyle} />
-        <AddToCart currentStyle={style} sizes={sizes} />
-      </div>
+      <Details product={product} />
     </div>
   );
 }
