@@ -75,10 +75,8 @@ const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, i
       className={index === idx ? 'active product-card' : 'product-card'}
       ref={index === idx ? ref : null}
     >
-      <div className="productImgs">
-        <img className="mainImg" src={mainImg} alt="Missing" />
-        <ThumbnailsList images={images} setMainImg={setMainImg} />
-      </div>
+      <img className="mainImg" src={mainImg} alt="Missing" />
+      {/* <ThumbnailsList images={images} setMainImg={setMainImg} /> */}
       {/* add onClick={handleCompare} to the button */}
       <button className="compare" onClick={() => setShowModal(true)}>Compare</button>
       {showModal && <CompareModal product2={relatedProduct} setShowModal={setShowModal} />}
