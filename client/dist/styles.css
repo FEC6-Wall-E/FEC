@@ -221,7 +221,12 @@ Overview Structure */
   z-index: 10;
   cursor: pointer;
   font-size: 15px;
-  transform: translateY(-50%)
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #ddd;
 }
 .left {
   left: -40px;
@@ -305,8 +310,13 @@ Overview Structure */
   top: 50%;
   z-index: 10;
   cursor: pointer;
-  font-size: 15px;
-  transform: translateY(-50%)
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  transform: translateY(-50%);
+
 }
 .thumbnails-slider-container > .left {
   left: -10px;

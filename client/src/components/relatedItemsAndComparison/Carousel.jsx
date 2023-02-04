@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import ProductCard from './ProductCard.jsx';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+
 
 function Carousel({ relatedList }) {
   const numberOfSlides = relatedList.length;
@@ -29,7 +31,7 @@ function Carousel({ relatedList }) {
         className="slider-button left"
         onClick={() => handleNav('prev')}
       >
-        previous
+        <IoIosArrowBack />
       </button>
       )}
       <div className="slider" >
@@ -48,7 +50,7 @@ function Carousel({ relatedList }) {
           className="slider-button right"
           onClick={() => handleNav('next')}
         >
-          next
+          <IoIosArrowForward />
         </button>
         )}
     </>

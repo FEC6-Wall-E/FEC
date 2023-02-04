@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import Thumbnail from './Thumbnail.jsx';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 function ThumbnailsList({ images, setMainImg }) {
   const [index, setIndex] = useState(0);
@@ -29,7 +30,7 @@ function ThumbnailsList({ images, setMainImg }) {
 
   return (
     <div className="thumbnails-slider-container">
-      {index > 0 && <button className="thumbnails-slider-button left" onClick={() => handleNav('prev')}> previous </button>}
+      {index > 0 && <button className="thumbnails-slider-button left" onClick={() => handleNav('prev')}> <IoIosArrowBack /> </button>}
       <div className="thumbnails-slider">
         {images.map((thumbnail, idx) => (
           <Thumbnail
@@ -43,7 +44,7 @@ function ThumbnailsList({ images, setMainImg }) {
           />
         ))}
       </div>
-      {index < length - 1 && <button className="thumbnails-slider-button right" onClick={() => handleNav('next')}> next </button>}
+      {index < length - 1 && <button className="thumbnails-slider-button right" onClick={() => handleNav('next')}> <IoIosArrowForward /> </button>}
     </div>
   );
 }
