@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import ProductCard from './ProductCard.jsx';
+import Thumbnail from './Thumbnail.jsx';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 
-function Carousel({ relatedList }) {
-  const numberOfSlides = relatedList.length;
+function Carousel({ items, classname, setMainImg }) {
+  const numberOfSlides = items.length;
   const [index, setIndex] = useState(0);
   const ref = useRef(null);
 
@@ -25,10 +26,10 @@ function Carousel({ relatedList }) {
   };
 
   return (
-    <>
+    <div className={`${classname}-slider-container`}>
       {index > 0 && (
       <button
-        className="slider-button prev"
+        className={`${classname}-slider-button prev`}
         onClick={() => handleNav('prev')}
       >
         <IoIosArrowBack />
@@ -36,26 +37,39 @@ function Carousel({ relatedList }) {
       )}
       {index < numberOfSlides - 1 && (
         <button
-          className="slider-button next"
+          className={`${classname}-slider-button next`}
           onClick={() => handleNav('next')}
         >
           <IoIosArrowForward />
         </button>
         )}
-      <div className="slider" >
-        {relatedList.map((relatedProduct, idx) => (
-          <ProductCard
-            key={relatedProduct}
-            ref={ref}
-            relatedProductId={relatedProduct}
-            index={index}
-            idx={idx}
-          />
-        ))}
-      </div>
-    </>
+        <div className={`${classname}-slider`} >
+          {classname === 'product-card' ?
+            items.map((item, idx) =>
+              <ProductCard
+                key={item}
+                ref={ref}
+                relatedProductId={item}
+                index={index}
+                idx={idx}
+              />
+            )
+            :
+            items.map((item, idx) =>
+              <Thumbnail
+                key={idx}
+                thumbnail={item}
+                ref={ref}
+                index={index}
+                idx={idx}
+                setMainImg={setMainImg}
+                setIndex={setIndex}
+              />
+            )
+          }
+        </div>
+    </div>
   );
 }
 
 export default Carousel;
-//style={{ transform: `translateX(-${index * 100}%)` }

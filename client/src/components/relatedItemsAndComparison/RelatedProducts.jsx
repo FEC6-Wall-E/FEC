@@ -26,9 +26,7 @@ function RelatedProducts() {
   return (
     <section id="related-products">
       <h5>RELATED PRODUCTS</h5>
-      <div className="slider-container">
-        <Carousel relatedList={relatedList} />
-      </div>
+      <Carousel items={relatedList} classname='product-card'/>
     </section>
   );
 }

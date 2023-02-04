@@ -4,7 +4,8 @@ import { API } from '../.././api.js';
 import ThumbnailsList from './ThumbnailsList.jsx';
 import averageRating from '../sharedComponents/lib/averageRating.js';
 import StarRating from '../sharedComponents/StarRating.jsx';
-import CompareModal from './CompareModal.jsx'
+import CompareModal from './CompareModal.jsx';
+import Carousel from './Carousel.jsx';
 
 /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
 const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, idx }, ref) {
@@ -77,6 +78,7 @@ const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, i
     >
       <img className="mainImg" src={mainImg} alt="Missing" />
       {/* <ThumbnailsList images={images} setMainImg={setMainImg} /> */}
+      <Carousel items={images} classname='thumbnail' setMainImg={setMainImg}/>
       {/* add onClick={handleCompare} to the button */}
       <button className="compare" onClick={() => setShowModal(true)}>Compare</button>
       {showModal && <CompareModal product2={relatedProduct} setShowModal={setShowModal} />}
@@ -99,7 +101,7 @@ const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, i
           </div>
         )}
       <span className="rating">
-        <StarRating rating={rating.averageRating} count={rating.ratings} />
+        {/* <StarRating rating={rating.averageRating} count={rating.ratings} /> */}
       </span>
     </div>
   );
