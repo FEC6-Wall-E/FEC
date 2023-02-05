@@ -1,7 +1,6 @@
 import React, { useState, useEffect, forwardRef } from 'react';
 import axios from 'axios';
 import { API } from '../.././api.js';
-import ThumbnailsList from './ThumbnailsList.jsx';
 import averageRating from '../sharedComponents/lib/averageRating.js';
 import StarRating from '../sharedComponents/StarRating.jsx';
 import CompareModal from './CompareModal.jsx';
@@ -76,9 +75,10 @@ const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, i
       className={index === idx ? 'active product-card' : 'product-card'}
       ref={index === idx ? ref : null}
     >
-      <img className="mainImg" src={mainImg} alt="Missing" />
-      {/* <ThumbnailsList images={images} setMainImg={setMainImg} /> */}
-      <Carousel items={images} classname='thumbnail' setMainImg={setMainImg}/>
+      <div className='images'>
+        <img className="mainImg" src={mainImg} alt="Missing" />
+        <Carousel items={images} classname='thumbnail' setMainImg={setMainImg}/>
+      </div>
       {/* add onClick={handleCompare} to the button */}
       <button className="compare" onClick={() => setShowModal(true)}>Compare</button>
       {showModal && <CompareModal product2={relatedProduct} setShowModal={setShowModal} />}

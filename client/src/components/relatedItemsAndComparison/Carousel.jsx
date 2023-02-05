@@ -26,22 +26,19 @@ function Carousel({ items, classname, setMainImg }) {
   };
 
   return (
-    <div className={`${classname}-slider-container`}>
-      {index > 0 && (
-      <button
-        className={`${classname}-slider-button prev`}
-        onClick={() => handleNav('prev')}
-      >
-        <IoIosArrowBack />
-      </button>
-      )}
-      {index < numberOfSlides - 1 && (
-        <button
-          className={`${classname}-slider-button next`}
-          onClick={() => handleNav('next')}
-        >
-          <IoIosArrowForward />
-        </button>
+    <div className={`${classname}-slider-wrapper`}>
+      <div className={`${classname}-slider-container`}>
+        {index > 0 && (
+          <IoIosArrowBack
+            className={`${classname}-slider-button prev`}
+            onClick={() => handleNav('prev')}
+          />
+        )}
+        {index < numberOfSlides - 1 && (
+          <IoIosArrowForward
+            className={`${classname}-slider-button next`}
+            onClick={() => handleNav('next')}
+          />
         )}
         <div className={`${classname}-slider`} >
           {classname === 'product-card' ?
@@ -54,7 +51,7 @@ function Carousel({ items, classname, setMainImg }) {
                 idx={idx}
               />
             )
-            :
+          :
             items.map((item, idx) =>
               <Thumbnail
                 key={idx}
@@ -68,6 +65,7 @@ function Carousel({ items, classname, setMainImg }) {
             )
           }
         </div>
+      </div>
     </div>
   );
 }

@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 #app {
   background-color: lightgray;
   display: flex;
@@ -223,32 +226,39 @@ Overview Structure */
   display: flex;
   flex-direction: column;
   background:whitesmoke;
+  border: 0.125rem solid grey;
 }
 .images {
   position: relative;
+  cursor: pointer;
+  width: 100%
 }
-/* .active {
-  border: 3px solid rgb(246, 20, 65);
-} */
+.active {
+  border: 0.125rem solid red;
+}
 .mainImg {
   inline-size: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border: 1px solid grey;
+  border: 0.125rem solid grey;
+  display: block;
 }
 .product-card-slider-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+  font-size: 2rem;
 }
 .product-card-slider-button.prev {
-  left: -1rem;
+  left: -2rem;
 }
 .product-card-slider-button.next {
-  right: -1rem;
+  right: -2rem;
 }
 /* THUMBNAILS */
-.thumbnail-slider-container {
+.thumbnail-slider-wrapper {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -256,17 +266,19 @@ Overview Structure */
   width: 100%;
   height: 0;
   transition: .5s ease;
-  background: darkgray;
+  background: lightgray;
+  opacity: 0.8;
   overflow: hidden;
 }
-.images:hover .thumbnail-slider-container {
-  height: 20%;
+.images:hover .thumbnail-slider-wrapper {
+  height: 24%;
 }
-.thumbnail-slider {
+.thumbnail-slider-container {
   position: relative;
 }
-.thumbnail-slider-wrapper {
+.thumbnail-slider {
   display: grid;
+  /* width: 100%; */
   overflow-x: hidden;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
@@ -274,10 +286,10 @@ Overview Structure */
   gap: 0.6rem;
   grid-auto-flow: column;
   grid-auto-columns: 20%;
-  padding: 0 0.6rem 0.6rem;
+  padding: 0.6rem 0.6rem;
   scroll-padding-inline: 0.6rem 0.6rem;
 }
-.thumbnail-slider-wrapper > * {
+.thumbnail-slider > * {
   scroll-snap-align: start;
 }
 .thumbnail {
@@ -288,20 +300,21 @@ Overview Structure */
   inline-size: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  /* line 273 gets rid of sliver of white space at the bottom */
+  /* line 273 gets rid of the sliver of white space at the bottom */
   display: block;
-}
-.thumbnail.active {
-  border: 3px solid black;
 }
 .thumbnail-slider-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
+  width: 1.5em;
+  height: 1.5em;
+  color: black;
 }
 .thumbnail-slider-button.prev {
-  left: -1rem;
+  left: -0.2em;
 }
 .thumbnail-slider-button.next {
-  right: -1rem;
+  right: -0.2em;
 }
