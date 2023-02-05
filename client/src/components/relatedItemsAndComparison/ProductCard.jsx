@@ -6,6 +6,7 @@ import StarRating from '../sharedComponents/StarRating.jsx';
 import CompareModal from './CompareModal.jsx';
 import Carousel from './Carousel.jsx';
 import { IoIosStarOutline } from 'react-icons/io';
+import Price from '.././overview/info/price.jsx';
 
 /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
 const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, idx }, ref) {
@@ -80,30 +81,12 @@ const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, i
         <img className="mainImg" src={mainImg} alt="Missing" />
         <Carousel items={images} classname='thumbnail' setMainImg={setMainImg}/>
       </div>
-      {/* add onClick={handleCompare} to the button */}
       <IoIosStarOutline className="compare" onClick={() => setShowModal(true)} />
       {showModal && <CompareModal product2={relatedProduct} setShowModal={setShowModal} />}
       <div className="category">{relatedProduct.category}</div>
-      <h4 className="product-name">{relatedProduct.name}</h4>
-      {defaultStyle.sale_price
-        ? (
-          <div className="price">
-            <span className="sale">
-              {`$${defaultStyle.sale_price}`}
-            </span>
-            <span className="struckthrough">
-              {`$${defaultStyle.original_price}`}
-            </span>
-          </div>
-        )
-        : (
-          <div className="price default">
-            {`$${defaultStyle.original_price}`}
-          </div>
-        )}
-      <span className="rating">
-        {/* <StarRating rating={rating.averageRating} count={rating.ratings} /> */}
-      </span>
+      <div className="product-name">{relatedProduct.name}</div>
+      <Price sale={defaultStyle.sale_price} original={defaultStyle.original_price} />
+      <StarRating rating={rating.averageRating} count={rating.ratings} />
     </div>
   );
 });

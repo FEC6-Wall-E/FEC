@@ -87,6 +87,9 @@
   cursor: zoom-out
 }
 /* StarRatingCSS */
+.starRating {
+  display: flex;
+}
 .star {
   font-size: x-large;
   width: 30px;
@@ -102,29 +105,23 @@
 .star.val100 {
   color: gold;
 }
-.star.val25:after {
-  content:'\2605';
-  color: gold;
-  position: absolute;
-  margin-left: -24px;
-  width: 8px;
-  overflow: hidden;
-}
-.star.val50:after {
-  content:'\2605';
-  color: gold;
-  position: absolute;
-  margin-left: -24px;
-  width: 12px;
-  overflow: hidden;
-}
+.star.val25:after,
+.star.val50:after,
 .star.val75:after {
   content:'\2605';
   color: gold;
   position: absolute;
   margin-left: -24px;
-  width: 15px;
   overflow: hidden;
+}
+.star.val25:after {
+  width: 8px;
+}
+.star.val50:after {
+  width: 12px;
+}
+.star.val75:after {
+  width: 15px;
 }
 .reviewCount {
   display: inline;
@@ -224,6 +221,7 @@ Overview Structure */
   position: relative;
   padding: 0.3rem;
   display: flex;
+  gap: 0.8rem;
   flex-direction: column;
   background:whitesmoke;
   border: 0.125rem solid grey;
@@ -330,4 +328,21 @@ Overview Structure */
 }
 .compare:hover {
   opacity: 0.7;
+}
+.product-card .reviewCount {
+  display: none;
+}
+.category {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+.product-name {
+  font-size: 1rem;
+  font-weight: 600;
+  height: 2rem;
+  overflow: hidden;
+}
+.product-card .price {
+  font-size: 0.9rem;
+  letter-spacing: 0.075em;
 }
