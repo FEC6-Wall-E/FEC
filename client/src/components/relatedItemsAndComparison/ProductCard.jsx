@@ -5,6 +5,7 @@ import averageRating from '../sharedComponents/lib/averageRating.js';
 import StarRating from '../sharedComponents/StarRating.jsx';
 import CompareModal from './CompareModal.jsx';
 import Carousel from './Carousel.jsx';
+import { IoIosStarOutline } from 'react-icons/io';
 
 /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
 const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, idx }, ref) {
@@ -80,7 +81,7 @@ const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, i
         <Carousel items={images} classname='thumbnail' setMainImg={setMainImg}/>
       </div>
       {/* add onClick={handleCompare} to the button */}
-      <button className="compare" onClick={() => setShowModal(true)}>Compare</button>
+      <IoIosStarOutline className="compare" onClick={() => setShowModal(true)} />
       {showModal && <CompareModal product2={relatedProduct} setShowModal={setShowModal} />}
       <div className="category">{relatedProduct.category}</div>
       <h4 className="product-name">{relatedProduct.name}</h4>
