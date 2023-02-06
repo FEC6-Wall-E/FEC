@@ -10,6 +10,7 @@ function QandA({ product }) {
   const [questionList, setQuestionList] = useState([]);
   const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [questOpen, setQuestOpen] = useState(false);
 
   const filterByAnswers = (questions) => {
     const ans = questions.filter((question) => {
@@ -50,6 +51,10 @@ function QandA({ product }) {
         console.error('Error getting questions for this product', err);
       });
   };
+  const toggleAddQuestion = (e) => {
+    e.preventDefault();
+    setQuestOpen(true);
+  };
 
   useEffect(() => {
     getQuestions();
@@ -63,7 +68,15 @@ function QandA({ product }) {
     return (
       <div id="QandA">
         <h3>Questions and Answers</h3>
-        <AddQuestion />
+        <button onClick={toggleAddQuestion}>Add question</button>
+        { questOpen && (
+          <AddQuestion
+            name={product.name}
+            id={product.id}
+            setQuestOpen={setQuestOpen}
+            getQuestions={getQuestions}
+          />
+        )}
       </div>
     );
   }
@@ -74,6 +87,10 @@ function QandA({ product }) {
       <QuestionList
         questionList={filteredQuestions.length > 0 ? filteredQuestions : questionList}
         getQuestions={getQuestions}
+        product={product}
+        toggleAddQuestion={toggleAddQuestion}
+        questOpen={questOpen}
+        setQuestOpen={setQuestOpen}
       />
     </div>
   );
