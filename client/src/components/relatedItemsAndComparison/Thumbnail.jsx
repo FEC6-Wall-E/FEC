@@ -6,7 +6,7 @@ const Thumbnail = forwardRef(function Thumbnail({
     // {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
 
   const handleClick = () => {
-    setMainImg(thumbnail.thumbnail_url);
+    setMainImg(thumbnail.url);
     setIndex(idx);
   };
 

@@ -67,7 +67,7 @@ const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, i
 
   useEffect(() => {
     if (images.length > 0) {
-      setMainImg(images[0].thumbnail_url);
+      setMainImg(images[0].url);
     }
   }, [images]);
 
