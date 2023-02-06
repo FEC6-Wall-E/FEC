@@ -2,21 +2,17 @@
 import axios from 'axios';
 import averageRating from './components/sharedComponents/lib/averageRating.js';
 
-export const API = {
+const API = {
   getRating: (productId) => {
     axios.get(`/meta/${productId}`)
-      .then((meta) => {
-        return averageRating(meta.data);
-      })
+      .then((meta) => averageRating(meta.data))
       .catch((err) => console.error(err));
   },
 
   getRelatedProduct: (productId) => {
     axios.get(`/products/${productId}`)
-      .then((product) => {
-        return product.data
-      })
-      .catch((err) => console.error(err))
+      .then((product) => product.data)
+      .catch((err) => console.error(err));
   },
 
   getStyles: (productId) => {
@@ -28,7 +24,7 @@ export const API = {
         return newDefaultStyle;
       })
       .catch((err) => console.error(err));
-  }
-}
+  },
+};
 
-// export default API;
+export default API;

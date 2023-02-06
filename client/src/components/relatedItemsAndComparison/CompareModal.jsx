@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import React from 'react';
 import getAllFeatures from './getAllFeatures.js';
-import examples from '../.././examples.js';
+import examples from '../../examples.js';
 
 function CompareModal({ product2, setShowModal }) {
   const features = getAllFeatures(examples.product.features, product2.features);
@@ -13,7 +12,7 @@ function CompareModal({ product2, setShowModal }) {
           <header>Comparing</header>
           <div className="comparison-table">
             <div>{examples.product.name}</div>
-            <div></div>
+            <div />
             <div>{product2.name}</div>
             {features.map((feature) => (
               <div className="comparison-table-row">
@@ -26,15 +25,14 @@ function CompareModal({ product2, setShowModal }) {
           <button
             className="comparison-modal-button"
             onClick={() => setShowModal(false)}
-            >
-          &times;
+          >
+            &times;
           </button>
         </div>
       </div>
-      <div className="comparison-modal-overlay">
-      </div>
+      <div className="comparison-modal-overlay" />
     </>
-  )
+  );
 }
 
 export default CompareModal;
