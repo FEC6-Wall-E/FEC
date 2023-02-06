@@ -3,14 +3,15 @@ import React from 'react';
 function Price({ sale, original }) {
   return !sale
     ? (
+      // replaced <p> tags with <spans> for layout of product cards
       <div className="price">
-        <p>{`$${original}`}</p>
+        <span>{`$${original}`}</span>
       </div>
     )
     : (
       <div className="price">
-        <p className="sale">{`$${sale}`}</p>
-        <p className="original">{`$${original}`}</p>
+        <span className="sale">{`$${sale}`}</span>
+        <span className="original">{`$${original}`}</span>
       </div>
     );
 }
