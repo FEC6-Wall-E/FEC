@@ -89,6 +89,7 @@
 /* StarRatingCSS */
 .starRating {
   display: flex;
+  /* flex-shrink: 1; */
 }
 .star {
   font-size: x-large;
@@ -135,7 +136,7 @@
 }
 .original {
   display: inline;
-  text-decoration: Line-through;
+  text-decoration: line-through;
 }
 .shareButton:hover {
   color:gray;
@@ -218,29 +219,30 @@ Overview Structure */
   scroll-snap-align: start;
 }
 .product-card {
-  position: relative;
-  padding: 0.3rem;
-  display: flex;
-  gap: 0.8rem;
-  flex-direction: column;
   background:whitesmoke;
   border: 0.125rem solid grey;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: relative;
+  padding: 0.3rem;
+  width: 100%;
 }
 .images {
-  position: relative;
   cursor: pointer;
+  position: relative;
   width: 100%
 }
 .active {
   border: 0.125rem solid red;
 }
 .mainImg {
-  inline-size: 100%;
   aspect-ratio: 4 / 5;
-  object-fit: cover;
   border: 0.125rem solid grey;
   display: block;
+  inline-size: 100%;
+  object-fit: cover;
 }
 .product-card-slider-button {
   position: absolute;
@@ -256,6 +258,7 @@ Overview Structure */
 .product-card-slider-button.next {
   right: -2rem;
 }
+
 /* THUMBNAILS */
 .thumbnail-slider-wrapper {
   position: absolute;
@@ -277,39 +280,39 @@ Overview Structure */
 }
 .thumbnail-slider {
   display: grid;
-  /* width: 100%; */
-  overflow-x: hidden;
-  overscroll-behavior-inline: contain;
-  scroll-snap-type: inline mandatory;
-  scroll-behavior: smooth;
   gap: 0.6rem;
   grid-auto-flow: column;
   grid-auto-columns: 20%;
+  /* width: 100%; */
+  overflow-x: hidden;
+  overscroll-behavior-inline: contain;
   padding: 0.6rem 0.6rem;
+  scroll-behavior: smooth;
   scroll-padding-inline: 0.6rem 0.6rem;
+  scroll-snap-type: inline mandatory;
 }
 .thumbnail-slider > * {
   scroll-snap-align: start;
 }
 .thumbnail {
-  padding: 0.1rem;
   background:whitesmoke;
+  padding: 0.1rem;
 }
 .thumbnail > img {
-  inline-size: 100%;
   aspect-ratio: 4 / 5;
-  object-fit: cover;
-  /* line 273 gets rid of the sliver of white space at the bottom */
+  /* line 302 gets rid of the sliver of white space at the bottom */
   display: block;
+  inline-size: 100%;
+  object-fit: cover;
 }
 .thumbnail-slider-button {
+  color: black;
+  cursor: pointer;
+  height: 1.5em;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  cursor: pointer;
   width: 1.5em;
-  height: 1.5em;
-  color: black;
 }
 .thumbnail-slider-button.prev {
   left: -0.2em;
@@ -333,13 +336,16 @@ Overview Structure */
   display: none;
 }
 .category {
-  text-transform: uppercase;
   font-size: 0.8rem;
+  text-transform: uppercase;
 }
 .product-name {
+  display: flex;
+  /* flex-grow ensures consistent size across all the
+  cards despite varying name lengths */
+  flex-grow: 1;
   font-size: 1rem;
   font-weight: 600;
-  height: 2rem;
   overflow: hidden;
 }
 .product-card .price {
