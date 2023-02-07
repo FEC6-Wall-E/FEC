@@ -15,25 +15,27 @@ function App() {
   const initID = document.querySelector('main') ? +document.querySelector('main').getAttribute('pid') : 40344;
   const [pid, setPid] = React.useState(initID);
 
+  console.log('PID: ----> ', pid);
+
   if (window.location.href === 'http://localhost:3000/') window.location.href = ('http://localhost:3000/?pid=40349');
 
   React.useEffect(() => {
     Promise.all([
-      axios.get(`/products/${pid}`)
+      axios.get(`http://localhost:3000/products/${pid}`)
         .then((result) => {
           setProduct(result.data);
         }),
-      axios.get(`/products/${pid}/styles`)
+      axios.get(`http://localhost:3000/products/${pid}/styles`)
         .then((result) => {
           setStyles(result.data.results);
         }),
-      axios.get(`/meta/${pid}`)
+      axios.get(`http://localhost:3000/meta/${pid}`)
         .then((result) => {
           setMeta(result.data);
         }),
     ])
       .catch((err) => {
-        const errStatus = err.response.status;
+        const errStatus = err.response ? err.response.status : null;
         // eslint-disable-next-line no-console
         console.log(errStatus, err);
         if (errStatus === 500) window.location.href = ('http://localhost:3000/?pid=40349');

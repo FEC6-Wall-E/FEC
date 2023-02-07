@@ -14,7 +14,7 @@ function ImagePicker({ images, setImage, currID }) {
     transform = images.length - 6;
   }
   return (
-    <div id="overviewImagePicker">
+    <div data-testid="OVERVIEW_IMAGE_PICKER" id="overviewImagePicker">
       {images.map((image, idx) => (
         <PickerImage
           idx={idx}

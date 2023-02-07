@@ -35,11 +35,12 @@ function Image({ style }) {
   }, [index]);
 
   return (
-    <div id="Image">
-      <div id="overviewImage">
-        <div className="overViewSlider">
+    <div data-testid="IMAGE_MAIN" id="Image">
+      <div data-testid="OVERVIEW_IMAGE" id="overviewImage">
+        <div data-testid="OVERVIEW_IMAGE_SCROLL" className="overViewSlider">
           {images.map((image, idx) => (
             <img
+              data-testid={`OVERVIEW_IMAGE_SCROLL_${idx}`}
               onClick={() => setModal({
                 hidden: false,
                 currIdx: idx,
@@ -59,8 +60,8 @@ function Image({ style }) {
         </div>
         <div>
           {/* Dont always want these to be HTML buttons... */}
-          <button className="imageSelector left" onClick={() => changeIndex(index - 1)} />
-          <button className="imageSelector right" onClick={() => changeIndex(index + 1)} />
+          <button data-testid="OVERVIEW_IMAGE_BUTTON_LEFT" className="imageSelector left" onClick={() => changeIndex(index - 1)} />
+          <button data-testid="OVERVIEW_IMAGE_BUTTON_RIGHT" className="imageSelector right" onClick={() => changeIndex(index + 1)} />
         </div>
         <ImagePicker images={images} setImage={changeIndex} currID={index} />
       </div>

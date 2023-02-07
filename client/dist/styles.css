@@ -102,7 +102,7 @@
   left: 10px;
   margin: 0;
   position: absolute;
-  height: 70vh;
+  height: calc(70vh + 70px);
   top: 50%;
   transform: translateY(-50%);
   overflow: hidden;
@@ -164,9 +164,6 @@ StarRatingCSS */
   display: inline-block;
   color: gray;
 }
-.star:last-child {
-  margin-right: 0;
-}
 .star:before {
   content:'\2605';
 }
@@ -215,6 +212,12 @@ StarRatingCSS */
 .shareButton:hover {
   color:gray;
 }
+.shareButton {
+  width: 100%;
+  height: 100%;
+  display:inline;
+  z-index: 1;
+}
 /*
 StyleSelector */
 .styleRow {
@@ -224,7 +227,7 @@ StyleSelector */
 }
 .checkmark {
   position: absolute;
-  left: 30%;
+  left: 37%;
   top: 50%;
 }
 .style, .styleContainer {
@@ -236,7 +239,7 @@ StyleSelector */
   background-color: white;
 }
 #CurrentStyle {
-  font-size: 4em;
+  font-size: 2em;
   margin: 0;
 }
 .style {
@@ -379,11 +382,16 @@ Overview Structure */
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
 }
 .features .feature {
   color: gray;
   font-size: large;
+}
+.feature {
+  margin: 0px;
+}
+.features {
+  padding: 1em;
 }
 .leftSide, .rightSide {
   min-height: 100%;

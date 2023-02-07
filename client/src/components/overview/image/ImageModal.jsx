@@ -32,11 +32,16 @@ function ImageModal({
 
   function zoomer(e) {
     const target = e.currentTarget;
-    let offsetX = e.nativeEvent.offsetX ? e.nativeEvent.offsetX : e.nativeEvent.touches[0].pageX;
+    // eslint-disable-next-line no-nested-ternary
+    let offsetX = e.nativeEvent.offsetX // NESTING NECCESSARY FOR IMAGEMODAL ZOOM TEST
+      ? e.nativeEvent.offsetX
+      : e.nativeEvent.touches
+        ? e.nativeEvent.touches[0].pageX
+        : 0;
     let offsetY = 1;
 
     if (e.nativeEvent.offsetY) offsetY = e.nativeEvent.offsetY;
-    else offsetX = e.nativeEvent.touches[0].pageX;
+    else offsetX = e.nativeEvent.touches ? e.nativeEvent.touches[0].pageX : 0;
 
     const x = (offsetX / target.offsetWidth) * 100;
     const y = (offsetY / target.offsetHeight) * 100;
@@ -50,7 +55,7 @@ function ImageModal({
   };
 
   return hidden ? null : (
-    <div id="ImageModal">
+    <div data-testid="IMAGE_MODAL" id="ImageModal">
       <div className="imageModalBG" onClick={click} />
       <figure
         className="modalZoom"

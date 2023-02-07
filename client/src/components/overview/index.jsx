@@ -23,8 +23,8 @@ function Overview({
   });
 
   return (
-    <div id="overviewContainer">
-      <div id="overview">
+    <div data-testid="OVERVIEW" id="overviewContainer">
+      <div data-testid="OVERVIEW_MAIN" id="overview">
         <div className="leftSide">
           <Image style={style} />
         </div>

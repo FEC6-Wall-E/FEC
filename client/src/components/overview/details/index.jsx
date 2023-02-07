@@ -4,9 +4,9 @@ function Details({ product }) {
   const featureCreator = (feat) => `${feat.feature}   --   ${feat.value}`;
 
   return (
-    <div id="ProductDetails">
+    <div data-testid="OVERVIEW_DETAILS" id="ProductDetails">
       <div className="productDetails">
-        <h2>
+        <h2 className="slogan">
           {product.slogan}
         </h2>
         <p>

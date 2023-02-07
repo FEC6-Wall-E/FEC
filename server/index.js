@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const cors = require('cors');
 const router = require('./router');
 
 const app = express();
@@ -11,6 +12,7 @@ const port = process.env.PORT;
 // MIDDLE WARE
 app.use(morgan('dev'));
 app.use(express.json());
+app.use(cors());
 
 app.set('views', path.join(__dirname, '../client/dist'));
 app.set('view engine', 'ejs');

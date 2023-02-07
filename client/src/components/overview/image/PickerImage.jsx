@@ -22,7 +22,7 @@ function PickerImage({
       className="pickerImageBG"
       style={{
         objectFit: 'cover',
-        transform: `translate3d(0, ${-transform * 10}vh, 0)`,
+        transform: `translate3d(0, calc(${-transform * 10}vh + ${transform * 20}px), 0)`,
         transition: 'all .5s ease',
       }}
     >
