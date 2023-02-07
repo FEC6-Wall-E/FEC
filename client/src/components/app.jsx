@@ -11,6 +11,7 @@ function App() {
   const [product, setProduct] = React.useState(null);
   const [styles, setStyles] = React.useState(null);
   const [meta, setMeta] = React.useState(null);
+  const [relatedList, setRelatedList] = React.useState(null);
   // eslint-disable-next-line no-undef
   const seedPID = +document.querySelector('main').getAttribute('pid');
 
@@ -28,6 +29,10 @@ function App() {
         .then((result) => {
           setMeta(result.data);
         }),
+      axios.get(`/products/${seedPID}/related`)
+        .then((result) => {
+          setRelatedList(result.data);
+        }),
     ])
       .catch((err) => {
         // eslint-disable-next-line no-console
@@ -38,7 +43,7 @@ function App() {
   return product && styles && meta ? (
     <div id="app">
       <Overview product={product} styles={styles} setStyles={setStyles} metaData={meta} />
-      <RelatedProducts />
+      <RelatedProducts relatedList={relatedList} />
       {/* <YourOutfitList /> */}
       {/* <QandA /> */}
     </div>
