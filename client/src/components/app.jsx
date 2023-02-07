@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from './sharedComponents/Header.jsx';
 import Overview from './overview/index.jsx';
 import QandA from './qa/QandA.jsx';
 import RelatedProducts from './relatedItemsAndComparison/RelatedProducts.jsx';
@@ -44,23 +45,26 @@ function App() {
   }, [pid]);
 
   return (
-    <div className={theme} id="app">
-      {product && styles && meta
-        ? (
-          <Overview
-            product={product}
-            styles={styles}
-            setStyles={setStyles}
-            metaData={meta}
-            theme={theme}
-          />
-        )
-        : null}
-      <RelatedProducts />
-      <YourOutfitList />
-      {product
-        ? <QandA product={product} />
-        : null}
+    <div id="AppContainer">
+      <Header theme={theme} setTheme={setTheme} />
+      <div className={theme} id="app">
+        {product && styles && meta
+          ? (
+            <Overview
+              product={product}
+              styles={styles}
+              setStyles={setStyles}
+              metaData={meta}
+              theme={theme}
+            />
+          )
+          : null}
+        <RelatedProducts />
+        <YourOutfitList />
+        {product
+          ? <QandA product={product} />
+          : null}
+      </div>
     </div>
   );
 }
