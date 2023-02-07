@@ -8,9 +8,8 @@ function QuestionList({
   questionList, getQuestions, product, toggleAddQuestion, questOpen, setQuestOpen,
 }) {
   const [questionCount, setQuestionCount] = useState(2);
-
   return (
-    <div id="QuestionList">
+    <div id="question-list">
       {questionList.slice(0, questionCount).map((question) => (
         <Question
           key={question.question_id}
@@ -23,11 +22,19 @@ function QuestionList({
         />
       ))}
       { questionCount < questionList.length && (
-      <button onClick={(e) => { setQuestionCount(questionCount + 2); }}>
-        More Answered Questions
+      <button
+        onClick={(e) => { setQuestionCount(questionCount + 2); }}
+        id="more-questions"
+      >
+        MORE ANSWERED QUESTIONS
       </button>
       )}
-      <button onClick={toggleAddQuestion}>Add question</button>
+      <button
+        onClick={toggleAddQuestion}
+        id="add-question"
+      >
+        ADD QUESTION
+      </button>
       { questOpen && (
         <AddQuestion
           name={product.name}

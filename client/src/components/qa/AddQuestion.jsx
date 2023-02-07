@@ -72,9 +72,9 @@ function AddQuestion({
 
   return (
     <div>
-      <div className="qaModalShadow" onClick={close} />
-      <div className="qaModal">
-        <div className="qaModalContent">
+      <div className="qa-modal-shadow" onClick={close} />
+      <div className="qa-modal">
+        <div className="qa-modal-content">
           <span onClick={close} className="close-button">&times;</span>
           {content}
         </div>

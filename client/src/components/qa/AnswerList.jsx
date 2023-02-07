@@ -39,7 +39,7 @@ function AnswerList({ answerList, getQuestions }) {
       { ansArr.length > 2
       && (
       <form onClick={handleMoreAnswers}>
-        <span className="moreAnswers"><b>{moreAnswers}</b></span>
+        <span className="more-answers"><b>{moreAnswers}</b></span>
       </form>
       )}
     </div>

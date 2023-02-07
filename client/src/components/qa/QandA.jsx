@@ -66,8 +66,8 @@ function QandA({ product }) {
 
   if (questionList.length === 0) {
     return (
-      <div id="QandA">
-        <h3>Questions and Answers</h3>
+      <div id="q-and-a">
+        <h4 id="qa-header">QUESTIONS & ANSWERS</h4>
         <button onClick={toggleAddQuestion}>Add question</button>
         { questOpen && (
           <AddQuestion
@@ -81,8 +81,8 @@ function QandA({ product }) {
     );
   }
   return (
-    <div id="QandA">
-      <h3>Questions and Answers</h3>
+    <div id="q-and-a">
+      <h4 id="qa-header">QUESTIONS & ANSWERS</h4>
       <SearchQuestions setSearchInput={setSearchInput} />
       <QuestionList
         questionList={filteredQuestions.length > 0 ? filteredQuestions : questionList}

@@ -2,13 +2,13 @@ import React from 'react';
 
 function SearchQuestions({ setSearchInput }) {
   return (
-    <form id="SearchQuestions" onSubmit={(e) => { e.preventDefault(); }}>
+    <form id="search-questions" onSubmit={(e) => { e.preventDefault(); }}>
       <input
-        id="SearchBar"
+        id="search-bar"
         type="text"
         onChange={(e) => { setSearchInput(e.target.value); }}
         onFocus={(e) => { e.target.value = ''; }}
-        placeholder="Have a question? Search for answers..."
+        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
       />
     </form>
   );

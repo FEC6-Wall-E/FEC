@@ -36,10 +36,10 @@ function Question({
   };
 
   return (
-    <div className="Question">
-      <div className="qBody">
-        <span className="qBodyText"><b>Q: </b>{body}</span>
-        <span className="qHelpful">Helpful? <span className="qHelp" onClick={handleQHelpful}><u>Yes</u> </span>
+    <div className="question">
+      <div className="q-body">
+        <span className="q-body-text">Q: {body}</span>
+        <span className="q-helpful">Helpful? <span className="q-help" onClick={handleQHelpful}><u>Yes</u> </span>
           ({helpfulness})  |  <u onClick={toggleAddAnswer} style={{ cursor: 'pointer' }}> Add Answer</u>
         </span>
         { ansOpen && (
