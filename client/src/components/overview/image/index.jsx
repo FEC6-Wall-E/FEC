@@ -43,7 +43,12 @@ function Image({ images }) {
                 url: image.url,
               })}
               className="overviewImage"
-              style={{ transform: `translate3d(${-index * 100}%, 0, 0)`, objectFit: 'cover' }}
+              style={{
+                width: '30vw',
+                height: '80vh',
+                transform: `translate3d(${-index * 100}%, 0, 0)`,
+                objectFit: 'cover',
+              }}
               src={image.url}
               width="1000px"
               height="1000px"

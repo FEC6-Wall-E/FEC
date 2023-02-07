@@ -57,27 +57,27 @@ module.exports = {
         ],
         skus: {
           1394769: {
-            quantity: 8,
+            quantity: 0,
             size: 'XS',
           },
           1394770: {
-            quantity: 16,
+            quantity: 0,
             size: 'S',
           },
           1394771: {
-            quantity: 17,
+            quantity: 0,
             size: 'M',
           },
           1394772: {
-            quantity: 10,
+            quantity: 0,
             size: 'L',
           },
           1394773: {
-            quantity: 15,
+            quantity: 0,
             size: 'XL',
           },
           1394774: {
-            quantity: 4,
+            quantity: 0,
             size: 'XL',
           },
         },
