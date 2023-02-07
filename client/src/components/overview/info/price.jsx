@@ -3,12 +3,12 @@ import React from 'react';
 function Price({ sale, original }) {
   return !sale
     ? (
-      <div className="price">
+      <div data-testid="PRICE" className="price">
         <p>{`$${original}`}</p>
       </div>
     )
     : (
-      <div className="price">
+      <div data-testid="PRICE" className="price">
         <p className="sale">{`$${sale}`}</p>
         <p className="original">{`$${original}`}</p>
       </div>

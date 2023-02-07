@@ -7,8 +7,8 @@ import Price from './price.jsx';
 
 function ProductInfo({ metaData, product, style }) {
   const ratingData = getRatingData(metaData);
-  const href = 'http://localhost:3000/';
-  const twitterText = `Checkout this ${product.name} from Atelier! Get it at ${href}${product.id}`;
+  const href = 'http://localhost:3000';
+  const twitterText = `Checkout this ${product.name} from Atelier! Get it at ${href}?pid=${product.id}`;
 
   return (
     <div id="ProductInfo">
@@ -16,7 +16,6 @@ function ProductInfo({ metaData, product, style }) {
       <h2 className="infoCategory">{product.category}</h2>
       <h1 className="infoName">{product.name}</h1>
       <Price original={style.original_price} sale={style.sale_price} />
-      <p className="infoDescription">{product.description}</p>
       <div id="shareButtons">
         <i
           // eslint-disable-next-line no-undef
@@ -31,7 +30,7 @@ function ProductInfo({ metaData, product, style }) {
         />
         <i
           // eslint-disable-next-line no-undef
-          onClick={() => window.open(`https://www.pinterest.com/pin/create/link/?url=${href}&description=${product.slogan}`)}
+          onClick={() => window.open(`https://www.pinterest.com/pin/create/link/?url=${href}/&description=${product.slogan}`)}
           className="fa-brands fa-pinterest fa-2xl shareButton"
         />
       </div>

@@ -3,7 +3,7 @@ import ProductCard from './ProductCard.jsx';
 
 function YourOutfitList() {
   return (
-    <section>
+    <section id="outfitList">
       <h5>YOUR OUTFIT</h5>
       <section>
         <ProductCard />

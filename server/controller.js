@@ -4,13 +4,16 @@ const baseCount = 2;
 
 module.exports = {
   products: {
-    getAll: (req, res) => api.get('products')
-      .then((products) => {
-        res.status(200).json(products.data);
-      })
-      .catch(() => {
-        res.sendStatus(500);
-      }),
+    getAll: (req, res) => {
+      const count = req.query.count || baseCount;
+      api.get(`products?count=${count}`)
+        .then((products) => {
+          res.status(200).json(products.data);
+        })
+        .catch(() => {
+          res.sendStatus(500);
+        });
+    },
     getOne: (req, res) => api.get(`products/${req.params.pid}`)
       .then((product) => {
         res.status(200).json(product.data);
@@ -36,8 +39,8 @@ module.exports = {
 
   reviews: {
     getReviews: (req, res) => {
-      const sort = req.params.sort || 'relevant';
-      const count = req.params.count || baseCount;
+      const sort = req.query.sort || 'relevant';
+      const count = req.query.count || baseCount;
       return api.get(`reviews/?product_id=${req.params.pid}&sort=${sort}&count=${count}`)
         .then((reviews) => {
           res.status(200).json(reviews.data);
