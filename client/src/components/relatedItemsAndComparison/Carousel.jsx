@@ -1,9 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { flushSync } from 'react-dom';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import ProductCard from './ProductCard.jsx';
 import Thumbnail from './Thumbnail.jsx';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-
 
 function Carousel({ items, classname, setMainImg }) {
   const numberOfSlides = items.length;
@@ -26,7 +25,7 @@ function Carousel({ items, classname, setMainImg }) {
   };
 
   return (
-    <div className={`${classname}-slider-wrapper`}>
+    <div data-testid="slider" className={`${classname}-slider-wrapper`}>
       <div className={`${classname}-slider-container`}>
         {index > 0 && (
           <IoIosArrowBack
@@ -40,9 +39,9 @@ function Carousel({ items, classname, setMainImg }) {
             onClick={() => handleNav('next')}
           />
         )}
-        <div className={`${classname}-slider`} >
-          {classname === 'product-card' ?
-            items.map((item, idx) =>
+        <div className={`${classname}-slider`}>
+          {classname === 'product-card'
+            ? items.map((item, idx) => (
               <ProductCard
                 key={item}
                 ref={ref}
@@ -50,9 +49,7 @@ function Carousel({ items, classname, setMainImg }) {
                 index={index}
                 idx={idx}
               />
-            )
-          :
-            items.map((item, idx) =>
+            )) : items.map((item, idx) => (
               <Thumbnail
                 key={idx}
                 thumbnail={item}
@@ -62,8 +59,7 @@ function Carousel({ items, classname, setMainImg }) {
                 setMainImg={setMainImg}
                 setIndex={setIndex}
               />
-            )
-          }
+            ))}
         </div>
       </div>
     </div>

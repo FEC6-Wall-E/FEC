@@ -16,7 +16,7 @@ function App() {
       <Overview product={product} styles={styles} setStyles={setStyles} metaData={meta} />
       <RelatedProducts />
       {/* <YourOutfitList /> */}
-      <QandA />
+      {/* <QandA /> */}
     </div>
   );
 }

@@ -70,13 +70,13 @@ const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, i
       ref={index === idx ? ref : null}
     >
       <div className="images">
-        <img className="mainImg" src={mainImg} alt="Missing" />
+        <img data-testid="main-image" className="mainImg" src={mainImg} alt="Missing" />
         <Carousel items={images} classname="thumbnail" setMainImg={setMainImg} />
       </div>
       <IoIosStarOutline className="compare" onClick={() => setShowModal(true)} />
       {showModal && <CompareModal product2={relatedProduct} setShowModal={setShowModal} />}
-      <div className="category">{relatedProduct.category}</div>
-      <div className="product-name">{relatedProduct.name}</div>
+      <div data-testid="category" className="category">{relatedProduct.category}</div>
+      <div data-testid="product-name" className="product-name">{relatedProduct.name}</div>
       <Price sale={defaultStyle.sale_price} original={defaultStyle.original_price} />
       <StarRating rating={rating.averageRating} count={rating.ratings} />
     </div>

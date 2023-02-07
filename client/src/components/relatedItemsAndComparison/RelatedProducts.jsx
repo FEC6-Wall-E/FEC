@@ -9,24 +9,25 @@ function RelatedProducts() {
   // hard coded for now
   const pid = 40350;
 
-  const getRelatedProducts = () => {
-    // change pid to product.id when you actually start passing the props
-    axios.get(`/products/${pid}/related`)
-      .then((products) => {
-        // are we sure that every product has a related product ?
-        setRelatedList(products.data);
-      })
-      .catch((err) => console.error(err));
-  };
-
   useEffect(() => {
+    const getRelatedProducts = () => {
+      // change pid to product.id when you actually start passing the props
+      axios.get(`/products/${pid}/related`)
+        .then((products) => {
+          // are we sure that every product has a related product ?
+          setRelatedList(products.data);
+        })
+        .catch((err) => console.error(err));
+    };
     getRelatedProducts();
   }, []);
 
   return (
     <section id="related-products">
-      <h5>RELATED PRODUCTS</h5>
-      <Carousel items={relatedList} classname='product-card'/>
+      <h5 data-testid="heading">RELATED PRODUCTS</h5>
+      {relatedList.length ? (
+        <Carousel items={relatedList} classname="product-card" />)
+        : <div data-testid="loading">Loading</div>}
     </section>
   );
 }
