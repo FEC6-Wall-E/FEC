@@ -7,7 +7,7 @@ import AddToCart from './addToCart/index.jsx';
 import Details from './details/index.jsx';
 
 function Overview({
-  product, styles, setStyles, metaData,
+  product, styles, setStyles, metaData, theme,
 }) {
   const [style, setStyle] = React.useState(styles[0]);
 
@@ -29,12 +29,17 @@ function Overview({
           <Image style={style} />
         </div>
         <div className="rightSide">
-          <ProductInfo metaData={metaData} product={product} style={style} />
-          <StyleSelector currentStyle={style} allStyles={styles} setStyle={setStyle} />
-          <AddToCart currentStyle={style} sizes={sizes} />
+          <ProductInfo metaData={metaData} product={product} style={style} theme={theme} />
+          <StyleSelector
+            currentStyle={style}
+            allStyles={styles}
+            setStyle={setStyle}
+            theme={theme}
+          />
+          <AddToCart currentStyle={style} sizes={sizes} theme={theme} />
         </div>
       </div>
-      <Details product={product} />
+      <Details product={product} theme={theme} />
     </div>
   );
 }

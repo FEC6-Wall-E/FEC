@@ -1,7 +1,23 @@
-#app {
-  background-color: lightgray;
-  display: flex;
+* {
+  box-sizing: border-box;
+}
 
+html,body {
+  margin: auto;
+  padding:0;
+  display: flex;
+  flex-direction: column;
+  background-color: #001448;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%239c7dce' fill-opacity='0.6' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+#app.light {
+  background-color: white;
+  padding: 0 10px
+}
+#app.dark {
+  background-color: black;
+  padding: 0 10px
 }
 
 #ImageModal{
@@ -83,7 +99,6 @@
   width: 100%;
   height: 100%;
 }
-
 .imagePickerImage, .pickerImageBG {
   position: relative;
   width: 3vw;
@@ -92,11 +107,9 @@
   transition: all .2s ease;
   object-fit: cover;
 }
-
 .imagePickerImage:hover, #picked {
   opacity: 0.5;
 }
-
 #overviewImagePicker {
   width: 3.5vw;
   left: 10px;
@@ -107,11 +120,9 @@
   transform: translateY(-50%);
   overflow: hidden;
 }
-
 .overViewSlider {
   white-space: nowrap;
 }
-
 .overviewImage {
   transition: ease-out 1s;
   display: inline-block;
@@ -133,28 +144,11 @@ Image Buttons */
   width: 5vw;
   height: 80vh;
 }
-
 .imageSelector:hover {
   opacity: 0.3;
 }
-
 .right{
   right: 0%;
-}
-/*
-ImageModalZoom */
-.click-zoom input[type=checkbox] {
-  display: none
-}
-
-.click-zoom img {
-  margin: 100px;
-  transition: transform 0.25s ease;
-  cursor: zoom-in
-}
-.click-zoom input[type=checkbox]:checked~img {
-  transform: scale(2);
-  cursor: zoom-out
 }
 /*
 StarRatingCSS */
@@ -194,7 +188,11 @@ StarRatingCSS */
   width: 15px;
   overflow: hidden;
 }
-.reviewCount {
+.reviewCount.light {
+  display: inline;
+  padding-left: 10px;
+}
+.reviewCount.dark {
   display: inline;
   padding-left: 10px;
 }
@@ -203,20 +201,32 @@ StarRatingCSS */
 .sale {
   display: inline;
   margin-right: 5px;
-  color: red;
+  color: #e31a3a;
 }
 .original {
   display: inline;
   text-decoration: Line-through;
 }
+.original.light {
+  color: black
+}
+.original.dark {
+  color: white
+}
 .shareButton:hover {
-  color:gray;
+  color:#e31a3a;
 }
 .shareButton {
   width: 100%;
   height: 100%;
   display:inline;
   z-index: 1;
+}
+.shareButton.light {
+  color: black;
+}
+.shareButton.dark {
+  color: white;
 }
 /*
 StyleSelector */
@@ -245,7 +255,6 @@ StyleSelector */
 .style {
    transition: .3s ease;
 }
-
 .style:hover, .selected {
   opacity: 0.3;
 }
@@ -257,12 +266,13 @@ StyleSelector */
 }
 #CartButton {
   border: transparent;
-  background-color: red;
+  background-color: #e31a3a;
   height: 5vh;
   width: 25vw;
   font-size: 3em;
   font-weight: bold;
   border-radius: 10px;
+  transition: ease 0.3s;
 }
 #CartButton:hover {
   background-color: rgb(250, 92, 92);
@@ -295,12 +305,6 @@ Overview Structure */
 }
 #overview {
   display: flex;
-}
-#overviewContainer {
-  margin: auto;
-}
-#overviewContainer * {
-  box-sizing: border-box;
 }
 #ProductDetails {
   display: flex;
@@ -447,8 +451,8 @@ button {
   display: flex;
   margin: 10px, 0px;
 }
-#ProductDetails .productDetails {
-  border-right: solid gray 3px;
+#ProductDetails .productDetails.light {
+  border-right: solid black 3px;
   width: 45vw;
 }
 #ProductDetails .features {
@@ -457,7 +461,7 @@ button {
   justify-content: center;
   flex-direction: column;
 }
-.features .feature {
+.features .feature.light {
   color: gray;
   font-size: large;
 }
@@ -477,10 +481,12 @@ button {
   justify-content: center;
   flex-wrap: wrap;
 }
-.dropShadow {
+.dropShadow.light {
   filter: drop-shadow(0 0 0.25rem black);
 }
-
+.dropShadow.dark {
+  filter: drop-shadow(0 0 0.25rem white);
+}
 #overviewSelectors {
   display: flex;
   width: 100%;

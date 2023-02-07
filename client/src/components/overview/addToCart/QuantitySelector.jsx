@@ -2,7 +2,9 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import Select from 'react-select';
 
-function QuantitySelector({ currentStyle, currentSku, setQuantity }) {
+function QuantitySelector({
+  currentStyle, currentSku, setQuantity, theme,
+}) {
   const quantityArray = [];
   const totalNum = currentSku ? currentStyle.skus[currentSku].quantity : 0;
   let limit = 15;
@@ -31,7 +33,6 @@ function QuantitySelector({ currentStyle, currentSku, setQuantity }) {
       <span id="QuantitySelector">
         <Select
           defaultValue={{ value: null, label: '-' }}
-          className="quantitySelect"
           name="quantity"
           isDisabled
           styles={customStyles}

@@ -1,21 +1,21 @@
 import React from 'react';
 
-function Details({ product }) {
+function Details({ product, theme }) {
   const featureCreator = (feat) => `${feat.feature}   --   ${feat.value}`;
 
   return (
     <div data-testid="OVERVIEW_DETAILS" id="ProductDetails">
-      <div className="productDetails">
-        <h2 className="slogan">
+      <div className={`productDetails ${theme}`}>
+        <h2 className={`slogan ${theme}`}>
           {product.slogan}
         </h2>
-        <p>
+        <p className={`description ${theme}`}>
           {product.description}
         </p>
       </div>
-      <div className="features">
+      <div className={`features ${theme}`}>
         {product.features.map((feat, idx) => (
-          <p className="feature" key={idx}>
+          <p className={`feautre ${theme}`} key={idx}>
             {featureCreator(feat)}
           </p>
         ))}
