@@ -40,7 +40,7 @@ function App() {
       });
   }, []);
 
-  return product && styles && meta ? (
+  return product && styles && meta && relatedList ? (
     <div id="app">
       <Overview product={product} styles={styles} setStyles={setStyles} metaData={meta} />
       <RelatedProducts relatedList={relatedList} />
