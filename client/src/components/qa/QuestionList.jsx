@@ -4,41 +4,38 @@ import axios from 'axios';
 import Question from './Question.jsx';
 import AddQuestion from './AddQuestion.jsx';
 
-function QuestionList({ questionList, getQuestions }) {
+function QuestionList({
+  questionList, getQuestions, product, toggleAddQuestion, questOpen, setQuestOpen,
+}) {
   const [questionCount, setQuestionCount] = useState(2);
 
-  if (questionCount >= questionList.length) {
-    return (
-      <div id="QuestionList">
-        {questionList.slice(0, questionCount).map((question) => (
-          <Question
-            body={question.question_body}
-            helpfulness={question.question_helpfulness}
-            id={question.question_id}
-            key={question.question_id}
-            answers={question.answers}
-            getQuestions={getQuestions}
-          />
-        ))}
-      </div>
-    );
-  }
   return (
     <div id="QuestionList">
       {questionList.slice(0, questionCount).map((question) => (
         <Question
+          key={question.question_id}
           body={question.question_body}
           helpfulness={question.question_helpfulness}
           id={question.question_id}
-          key={question.question_id}
+          name={product.name}
           answers={question.answers}
           getQuestions={getQuestions}
         />
       ))}
+      { questionCount < questionList.length && (
       <button onClick={(e) => { setQuestionCount(questionCount + 2); }}>
         More Answered Questions
       </button>
-      <AddQuestion />
+      )}
+      <button onClick={toggleAddQuestion}>Add question</button>
+      { questOpen && (
+        <AddQuestion
+          name={product.name}
+          id={product.id}
+          setQuestOpen={setQuestOpen}
+          getQuestions={getQuestions}
+        />
+      )}
     </div>
   );
 }

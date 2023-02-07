@@ -3,11 +3,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import AnswerList from './AnswerList.jsx';
+import AddAnswer from './AddAnswer.jsx';
 
 function Question({
-  body, answers, helpfulness, id, getQuestions,
+  body, helpfulness, id, name, answers, getQuestions,
 }) {
   const [helpfulClicked, setHelpfulClicked] = useState(false);
+  const [ansOpen, setAnsOpen] = useState(false);
+
   const handleQHelpful = (e) => {
     e.preventDefault();
     if (!helpfulClicked) {
@@ -26,13 +29,29 @@ function Question({
         });
     }
   };
+
+  const toggleAddAnswer = (e) => {
+    e.preventDefault();
+    setAnsOpen(true);
+  };
+
   return (
-    <div id="Question">
-      <div id="qBody">
-        <span id="qBodyText"><b>Q: </b>{body}</span>
-        <span id="qHelpful">Helpful? <span id="qHelp" onClick={handleQHelpful}><u>Yes</u> </span>
-          ({helpfulness})  | <u>Add Answer</u>
+    <div className="Question">
+      <div className="qBody">
+        <span className="qBodyText"><b>Q: </b>{body}</span>
+        <span className="qHelpful">Helpful? <span className="qHelp" onClick={handleQHelpful}><u>Yes</u> </span>
+          ({helpfulness})  |  <u onClick={toggleAddAnswer} style={{ cursor: 'pointer' }}> Add Answer</u>
         </span>
+        { ansOpen && (
+          <AddAnswer
+            key={id}
+            id={id}
+            name={name}
+            body={body}
+            setAnsOpen={setAnsOpen}
+            getQuestions={getQuestions}
+          />
+        )}
       </div>
       <AnswerList answerList={answers} getQuestions={getQuestions} />
     </div>

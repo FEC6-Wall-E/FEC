@@ -23,26 +23,6 @@ function AnswerList({ answerList, getQuestions }) {
     }
   };
 
-  if (ansArr.length > 2) {
-    return (
-      <div id="AnswerList">
-        {ansArr.slice(0, answerCount).map((answer) => (
-          <Answer
-            key={answer.id}
-            id={answer.id}
-            body={answer.body}
-            helpfulness={answer.helpfulness}
-            name={answer.answerer_name}
-            date={answer.date}
-            getQuestions={getQuestions}
-          />
-        ))}
-        <form onClick={handleMoreAnswers}>
-          <span id="moreAnswers"><b>{moreAnswers}</b></span>
-        </form>
-      </div>
-    );
-  }
   return (
     <div id="AnswerList">
       {ansArr.slice(0, answerCount).map((answer) => (
@@ -53,8 +33,15 @@ function AnswerList({ answerList, getQuestions }) {
           helpfulness={answer.helpfulness}
           name={answer.answerer_name}
           date={answer.date}
+          getQuestions={getQuestions}
         />
       ))}
+      { ansArr.length > 2
+      && (
+      <form onClick={handleMoreAnswers}>
+        <span className="moreAnswers"><b>{moreAnswers}</b></span>
+      </form>
+      )}
     </div>
   );
 }

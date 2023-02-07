@@ -41,13 +41,13 @@ function Answer({
       });
   };
   return (
-    <div id="Answer">
-      <span id="aBody"><b>A: </b>{body}</span>
+    <div className="Answer">
+      <span className="aBody"><b>A: </b>{body}</span>
       <br />
-      <span id="aHelpful">
+      <span className="aHelpful">
         by {name}, {format(parseISO(date), 'MMMM dd, yyyy')}  |
-        Helpful? <span id="aHelp" onClick={handleAHelpful}><u>Yes</u></span> ({helpfulness})  |
-        <span id="aReport" onClick={handleAReport}><u>Report</u></span>
+        Helpful? <span className="aHelp" onClick={handleAHelpful}><u>Yes</u></span> ({helpfulness})  |
+        <span className="aReport" onClick={handleAReport}><u>Report</u></span>
       </span>
     </div>
   );
