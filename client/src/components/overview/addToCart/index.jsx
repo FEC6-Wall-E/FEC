@@ -23,18 +23,20 @@ function AddToCart({ currentStyle, sizes }) {
 
   return (
     <div id="AddToCart">
-      <SizeSelector
-        ref={selectRef}
-        currentStyle={currentStyle}
-        setSku={setSku}
-        sizes={sizes}
-        size={size}
-      />
-      <QuantitySelector
-        currentStyle={currentStyle}
-        currentSku={sku}
-        setQuantity={setQuantity}
-      />
+      <span id="overviewSelectors">
+        <SizeSelector
+          ref={selectRef}
+          currentStyle={currentStyle}
+          setSku={setSku}
+          sizes={sizes}
+          size={size}
+        />
+        <QuantitySelector
+          currentStyle={currentStyle}
+          currentSku={sku}
+          setQuantity={setQuantity}
+        />
+      </span>
       <CartButton
         selectDrop={selectDrop}
         hidden={sizes.length === 0}

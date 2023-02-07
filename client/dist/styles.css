@@ -1,53 +1,111 @@
 #app {
   background-color: lightgray;
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
+
 }
 
-#imageModalImage #PanAndZoomImage-container{
-  margin: 0;
-  background: black;
-  position: fixed;
-  top: 0%;
-  left: 0%;
-  transition: all .2s ease;
-  /* padding: 100% */
+#ImageModal{
+  z-index: 99 !important;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 5vh;
+  left: 5vw;
+  height: 90vh;
+  width: 90vw;
+  overflow: scroll;
 }
-
-#imageModalBG {
+.modalZoom {
+  z-index: 1;
+  position: absolute;
+  cursor: zoom-in;
+}
+.show {
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: block;
+}
+.noShow {
+  opacity: 1;
+  display: block;
+  transition: opacity 0.2s;
+}
+.imageModalBG {
+  z-index: 0;
   position: fixed;
-  top: 0%;
   background-color: black;
-  opacity: 0.85;
-  padding-top: 50%;
+  opacity: 0.5;
   padding: 100%;
+  overflow: hidden;
+}
+#modalControls {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  display: flex;
+  bottom: 0px;
+  width: 40vw;
+  z-index: 2;
+  height: 3vh;
+}
+#modalControls button {
+  width: 6vw;
+  border: transparent;
+  background-color: gainsboro;
+  font-weight: bolder;
+  font-size: large;
+}
+.modalIndicator {
+  border: solid white 2px;
+  width: 0.7vw;
+  height: 0.7vw;
+  margin: 0.2vw;
+  border-radius: 50%;
+}
+.modalIndicator.selected {
+  background-color: white;
+  color: white;
+  opacity: 1;
+}
+#indicatorsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%
 }
 
-#picked {
-  border: 3px solid rgb(246, 20, 65);
-  color: whitesmoke
+.pickerImageBG {
+  position: relative;
+  display: block;
+  margin: 10px;
+  top: 10px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
 }
 
-.imagePickerImage {
+.imagePickerImage, .pickerImageBG {
+  position: relative;
   width: 3vw;
   height: 10vh;
-  border: 3px solid white;
-  padding-bottom: -5px;
+  background-color: white;
+  transition: all .2s ease;
+  object-fit: cover;
 }
 
-.imagePickerImage:hover {
-  border: 3px solid blueviolet;
-  color: whitesmoke
+.imagePickerImage:hover, #picked {
+  opacity: 0.5;
 }
 
 #overviewImagePicker {
-  width: 3vw;
+  width: 3.5vw;
   left: 10px;
   margin: 0;
   position: absolute;
+  height: calc(70vh + 70px);
   top: 50%;
   transform: translateY(-50%);
+  overflow: hidden;
 }
 
 .overViewSlider {
@@ -106,9 +164,6 @@ StarRatingCSS */
   display: inline-block;
   color: gray;
 }
-.star:last-child {
-  margin-right: 0;
-}
 .star:before {
   content:'\2605';
 }
@@ -157,39 +212,61 @@ StarRatingCSS */
 .shareButton:hover {
   color:gray;
 }
+.shareButton {
+  width: 100%;
+  height: 100%;
+  display:inline;
+  z-index: 1;
+}
 /*
 StyleSelector */
 .styleRow {
+  width: 80%;
   display: flex;
-}
-.selected {
-  opacity: 0.3;
+  justify-content: center;
 }
 .checkmark {
-  position: relative;
-  left: 35%;
+  position: absolute;
+  left: 37%;
   top: 50%;
 }
 .style, .styleContainer {
-  width: 80px;
-  height: 80px;
+  position: relative;
+  width: 8vh;
+  height: 8vh;
+  margin: auto;
   border-radius: 50%;
   background-color: white;
 }
+#CurrentStyle {
+  font-size: 2em;
+  margin: 0;
+}
 .style {
-  position: absolute;
-  transition: .3s ease;
-}
-.styleContainer {
-  display: inline-flex;
-}
-.style:hover {
-  opacity: 0.3;
+   transition: .3s ease;
 }
 
-#SizeSelector{
-  height: 35px;
- }
+.style:hover, .selected {
+  opacity: 0.3;
+}
+.cartButtonContainer, #overviewSelectors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+#CartButton {
+  border: transparent;
+  background-color: red;
+  height: 5vh;
+  width: 25vw;
+  font-size: 3em;
+  font-weight: bold;
+  border-radius: 10px;
+}
+#CartButton:hover {
+  background-color: rgb(250, 92, 92);
+}
 /*
 Overview Structure */
 #Image {
@@ -197,38 +274,37 @@ Overview Structure */
   margin: auto;
   width: auto;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 50px;
 }
-#ProductInfo {
-  margin: 0;
-  margin: auto;
-  position: flex;
-  float: left;
-  width: auto;
-  display: flex;
-  flex-direction: column;
+#ProductInfo, #StyleSelector, #AddToCart {
+  min-width: 100%;
+  min-height: 33.33%;
+  max-height: 33.33%;
+  padding: 2em;
 }
 #StyleSelector {
-  margin: 0;
-  position: flex;
-  float: left;
-  width: auto;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 #AddToCart {
-  margin: auto;
-  position: flex;
-  float: left;
-  width: auto;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
+  justify-content: center;
 }
 #overview {
+  display: flex;
+}
+#overviewContainer {
   margin: auto;
 }
-.leftSide {
-  float: left;
+#overviewContainer * {
+  box-sizing: border-box;
+}
+#ProductDetails {
+  display: flex;
+  margin: 10px, 0px;
 }
 .rightSide {
   float: right;
@@ -295,55 +371,43 @@ Overview Structure */
 /* CAROUSEL */
 .slider {
   display: flex;
-  overflow: hidden;
-  width: 100%;
-  /* white-space: nowrap; ? */
+  margin: 10px, 0px;
 }
-
-.slider-buttons {
-  text-align: center;
-  cursor: pointer;
+#ProductDetails .productDetails {
+  border-right: solid gray 3px;
+  width: 45vw;
 }
-
-.slider-buttons button {
-  margin: .25rem;
-}
-
-/* PRODUCT CARD */
-.product-card {
+#ProductDetails .features {
+  width: 15vw;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  margin: 0.6rem;
-  padding: 0.5rem;
-  width: 25vw;
-  transition: background-color 0.2s linear;
 }
-
-.mainImg {
-  width: auto;
-  height: 100%;
+.features .feature {
+  color: gray;
+  font-size: large;
 }
-
-.active {
-  background: rgba(0, 100, 150, 0.4);
+.feature {
+  margin: 0px;
 }
-
-/* THUMBNAILS CAROUSEL*/
-.thumbnails-slider {
-  align-items: center;
+.features {
+  padding: 1em;
+}
+.leftSide, .rightSide {
+  min-height: 100%;
+  width: 30vw;
+}
+.rightSide {
+  padding-left: 3em;
   display: flex;
-  overflow: hidden;
-  /* width: 100%; */
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.dropShadow {
+  filter: drop-shadow(0 0 0.25rem black);
 }
 
-/* THUMBNAILS*/
-.thumbnail {
-  margin: 0.6rem;
-  padding: 0.5rem;
-  width: 25%;
-  transition: background-color 0.2s linear;
-}
-
-.thumbnail img {
-  max-width: 35px;
+#overviewSelectors {
+  display: flex;
+  width: 100%;
 }
