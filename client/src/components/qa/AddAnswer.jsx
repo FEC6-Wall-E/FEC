@@ -3,26 +3,27 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function AddQuestion({
-  name, id, setQuestOpen, getQuestions,
+function AddAnswer({
+  id, name, body, setAnsOpen, getQuestions,
 }) {
-  const [questionInput, setQuestionInput] = useState('');
-  const [nickname, setNickname] = useState('');
-  const [emailInput, setEmailInput] = useState('');
+  const [images, setImages] = useState([]);
+  const [answerInput, setAnswerInput] = useState('');
+  const [answerName, setAnswerName] = useState('');
+  const [answerEmail, setAnswerEmail] = useState('');
 
   const close = () => {
-    setQuestOpen(false);
+    setAnsOpen(false);
   };
-  const handleAddQuestion = (e) => {
+  const handleAddAnswer = (e) => {
     e.preventDefault();
     axios({
       method: 'post',
-      url: '/qa/questions',
+      url: `/qa/questions/${id}/answers?${id}`,
       data: {
-        body: questionInput,
-        name: nickname,
-        email: emailInput,
-        product_id: id,
+        body: answerInput,
+        name: answerName,
+        email: answerEmail,
+        photos: images,
       },
     })
       .then(() => {
@@ -34,18 +35,20 @@ function AddQuestion({
         console.log(err);
       });
   };
+  const handleImg = (e) => {
+    setImages([...images, URL.createObjectURL(e.target.files[0])]);
+  };
+
   const content = new Array(1).fill(
     <div>
-      {/* <span onClick={close} className="close-button">&times;</span> */}
-      <h1>Ask Your Question </h1>
-      <h2>About the {name}</h2>
-      <form onSubmit={handleAddQuestion}>
-        <h3>Your question: </h3>
+      <h1>Submit Your Answer </h1>
+      <h2>{name}: {body}</h2>
+      <form onSubmit={handleAddAnswer}>
+        <h3>Your Answer: </h3>
         <input
           type="text"
           maxLength="1000"
-          placeholder="Why did you like the product or not?"
-          onChange={(e) => { setQuestionInput(e.target.value); }}
+          onChange={(e) => { setAnswerInput(e.target.value); }}
           required
         />
         <h3>What is your nickname?</h3>
@@ -53,7 +56,7 @@ function AddQuestion({
           type="text"
           maxLength="60"
           placeholder="Example: jackson11!"
-          onChange={(e) => { setNickname(e.target.value); }}
+          onChange={(e) => { setAnswerName(e.target.value); }}
           required
         />
         <h4>For privacy reasons, do not use your full name or email address</h4>
@@ -61,10 +64,22 @@ function AddQuestion({
           type="email"
           maxLength="60"
           placeholder="Example: jack@email.com"
-          onChange={(e) => { setEmailInput(e.target.value); }}
+          onChange={(e) => { setAnswerEmail(e.target.value); }}
           required
         />
         <h4>For authentication reasons, you will not be emailed</h4>
+        { images.length < 5 && (
+          <input type="file" accept="image/*" onChange={handleImg} />
+        )}
+        <br />
+        {images.map((image) => (
+          <img
+            src={image}
+            alt="thumbnail"
+            className="ansThumbnail"
+          />
+        ))}
+        <br /> <br />
         <button type="submit">Submit</button>
       </form>
     </div>,
@@ -83,4 +98,4 @@ function AddQuestion({
   );
 }
 
-export default AddQuestion;
+export default AddAnswer;

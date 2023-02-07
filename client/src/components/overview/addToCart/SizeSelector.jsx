@@ -22,11 +22,22 @@ const SizeSelector = React.forwardRef(({
   ];
   sizes.forEach((option) => options.push({ value: option, label: option }));
 
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      borderBottom: '1px dotted pink',
+      color: state.isSelected ? 'red' : 'blue',
+      padding: 5,
+      margin: 10,
+      width: '12vw',
+    }),
+  };
+
   return sizes.length === 0 ? (
     <span id="SizeSelector">
       <Select
         defaultValue={{ value: null, label: 'OUT OF STOCK' }}
-        className="sizeSelect"
+        styles={customStyles}
         name="size"
         isDisabled
       />
@@ -36,7 +47,8 @@ const SizeSelector = React.forwardRef(({
       <Select
         key={`my_unique_select_key__${currentStyle.style_id}`}
         defaultValue={options[0]}
-        maxMenuHeight={180}
+        classNamePrefix="sizeSelect"
+        styles={customStyles}
         menuPosition="fixed"
         openMenuOnFocus
         ref={ref}

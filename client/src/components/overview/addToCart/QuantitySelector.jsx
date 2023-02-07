@@ -15,6 +15,17 @@ function QuantitySelector({ currentStyle, currentSku, setQuantity }) {
     quantityArray.push(i + 1);
   }
 
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      borderBottom: '1px dotted pink',
+      color: state.isSelected ? 'red' : 'blue',
+      padding: 5,
+      margin: 10,
+      width: '12vw',
+    }),
+  };
+
   if (totalNum === 0) {
     return (
       <span id="QuantitySelector">
@@ -23,6 +34,7 @@ function QuantitySelector({ currentStyle, currentSku, setQuantity }) {
           className="quantitySelect"
           name="quantity"
           isDisabled
+          styles={customStyles}
         />
       </span>
     );
@@ -35,7 +47,7 @@ function QuantitySelector({ currentStyle, currentSku, setQuantity }) {
       <Select
         defaultValue={options[0]}
         key={`my_unique_select_key__${currentStyle.style_id}`}
-        maxMenuHeight={180}
+        styles={customStyles}
         menuPosition="fixed"
         options={options}
         onChange={(e) => setQuantity(e.value)}

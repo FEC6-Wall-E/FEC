@@ -4,7 +4,9 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import ProductCard from './ProductCard.jsx';
 import Thumbnail from './Thumbnail.jsx';
 
-function Carousel({ items, classname, setMainImg }) {
+function Carousel({
+  items, classname, setMainImg, theme,
+}) {
   const numberOfSlides = items.length;
   const [index, setIndex] = useState(0);
   const ref = useRef(null);
@@ -25,21 +27,21 @@ function Carousel({ items, classname, setMainImg }) {
   };
 
   return (
-    <div data-testid="slider" className={`${classname}-slider-wrapper`}>
-      <div className={`${classname}-slider-container`}>
+    <div data-testid="slider" className={`${classname}-slider-wrapper ${theme}`}>
+      <div className={`${classname}-slider-container ${theme}`}>
         {index > 0 && (
           <IoIosArrowBack
-            className={`${classname}-slider-button prev`}
+            className={`${classname}-slider-button prev ${theme}`}
             onClick={() => handleNav('prev')}
           />
         )}
         {index < numberOfSlides - 1 && (
           <IoIosArrowForward
-            className={`${classname}-slider-button next`}
+            className={`${classname}-slider-button next ${theme}`}
             onClick={() => handleNav('next')}
           />
         )}
-        <div className={`${classname}-slider`}>
+        <div className={`${classname}-slider ${theme}`}>
           {classname === 'product-card'
             ? items.map((item, idx) => (
               <ProductCard
@@ -48,6 +50,7 @@ function Carousel({ items, classname, setMainImg }) {
                 relatedProductId={item}
                 index={index}
                 idx={idx}
+                theme={theme}
               />
             )) : items.map((item, idx) => (
               <Thumbnail
@@ -58,6 +61,7 @@ function Carousel({ items, classname, setMainImg }) {
                 idx={idx}
                 setMainImg={setMainImg}
                 setIndex={setIndex}
+                theme={theme}
               />
             ))}
         </div>

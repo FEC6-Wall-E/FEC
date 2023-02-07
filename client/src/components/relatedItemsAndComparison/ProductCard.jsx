@@ -8,7 +8,9 @@ import Carousel from './Carousel.jsx';
 import Price from '../overview/info/price.jsx';
 
 /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
-const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, idx }, ref) {
+const ProductCard = forwardRef(function ProductCard({
+  relatedProductId, index, idx, theme,
+}, ref) {
   const [relatedProduct, setRelatedProduct] = useState({});
   const [defaultStyle, setDefaultStyle] = useState({});
   const [rating, setRating] = useState({});
@@ -66,19 +68,25 @@ const ProductCard = forwardRef(function ProductCard({ relatedProductId, index, i
   return (
     // add onClick={handleNavigate} to the first div
     <div
-      className={index === idx ? 'active product-card' : 'product-card'}
+      className={index === idx ? `active product-card ${theme}` : `product-card ${theme}`}
       ref={index === idx ? ref : null}
     >
-      <div className="images">
-        <img data-testid="main-image" className="mainImg" src={mainImg} alt="Missing" />
-        <Carousel items={images} classname="thumbnail" setMainImg={setMainImg} />
+      <div className={`images ${theme}`}>
+        <img data-testid="main-image" className={`mainImg ${theme}`} src={mainImg} alt="Missing" />
+        <Carousel items={images} theme={theme} classname="thumbnail" setMainImg={setMainImg} />
       </div>
-      <IoIosStarOutline className="compare" onClick={() => setShowModal(true)} />
-      {showModal && <CompareModal product2={relatedProduct} setShowModal={setShowModal} />}
-      <div data-testid="category" className="category">{relatedProduct.category}</div>
-      <div data-testid="product-name" className="product-name">{relatedProduct.name}</div>
-      <Price sale={defaultStyle.sale_price} original={defaultStyle.original_price} />
-      <StarRating rating={rating.averageRating} count={rating.ratings} />
+      <IoIosStarOutline className={`compare ${theme}`} onClick={() => setShowModal(true)} />
+      {showModal && (
+      <CompareModal
+        theme={theme}
+        product2={relatedProduct}
+        setShowModal={setShowModal}
+      />
+      )}
+      <div data-testid="category" className={`category ${theme}`}>{relatedProduct.category}</div>
+      <div data-testid="product-name" className={`product-name ${theme}`}>{relatedProduct.name}</div>
+      <Price theme={theme} sale={defaultStyle.sale_price} original={defaultStyle.original_price} />
+      <StarRating theme={theme} rating={rating.averageRating} count={rating.ratings} />
     </div>
   );
 });

@@ -9,44 +9,108 @@
   margin-left: auto;
   margin-right: auto;
 }
-#imageModalImage #PanAndZoomImage-container{
-  margin: 0;
-  background: black;
-  position: fixed;
-  top: 0%;
-  left: 0%;
-  transition: all .2s ease;
-  /* padding: 100% */
+
+#ImageModal{
+  z-index: 99 !important;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 5vh;
+  left: 5vw;
+  height: 90vh;
+  width: 90vw;
+  overflow: scroll;
 }
-#imageModalBG {
+.modalZoom {
+  z-index: 1;
+  position: absolute;
+  cursor: zoom-in;
+}
+.show {
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: block;
+}
+.noShow {
+  opacity: 1;
+  display: block;
+  transition: opacity 0.2s;
+}
+.imageModalBG {
+  z-index: 0;
   position: fixed;
-  top: 0%;
   background-color: black;
-  opacity: 0.85;
-  padding-top: 50%;
+  opacity: 0.5;
   padding: 100%;
+  overflow: hidden;
 }
-#picked {
-  border: 3px solid rgb(246, 20, 65);
-  color: whitesmoke
+#modalControls {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  display: flex;
+  bottom: 0px;
+  width: 40vw;
+  z-index: 2;
+  height: 3vh;
 }
-.imagePickerImage {
+#modalControls button {
+  width: 6vw;
+  border: transparent;
+  background-color: gainsboro;
+  font-weight: bolder;
+  font-size: large;
+}
+.modalIndicator {
+  border: solid white 2px;
+  width: 0.7vw;
+  height: 0.7vw;
+  margin: 0.2vw;
+  border-radius: 50%;
+}
+.modalIndicator.selected {
+  background-color: white;
+  color: white;
+  opacity: 1;
+}
+#indicatorsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%
+}
+
+.pickerImageBG {
+  position: relative;
+  display: block;
+  margin: 10px;
+  top: 10px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.imagePickerImage, .pickerImageBG {
+  position: relative;
   width: 3vw;
   height: 10vh;
-  border: 3px solid white;
-  padding-bottom: -5px;
+  background-color: white;
+  transition: all .2s ease;
+  object-fit: cover;
 }
-.imagePickerImage:hover {
-  border: 3px solid blueviolet;
-  color: whitesmoke
+
+.imagePickerImage:hover, #picked {
+  opacity: 0.5;
 }
 #overviewImagePicker {
-  width: 3vw;
+  width: 3.5vw;
   left: 10px;
   margin: 0;
   position: absolute;
+  height: calc(70vh + 70px);
   top: 50%;
   transform: translateY(-50%);
+  overflow: hidden;
 }
 .overViewSlider {
   white-space: nowrap;
@@ -100,9 +164,6 @@ StarRatingCSS */
   display: inline-block;
   color: gray;
 }
-.star:last-child {
-  margin-right: 0;
-}
 .star:before {
   content:'\2605';
 }
@@ -144,39 +205,61 @@ StarRatingCSS */
 .shareButton:hover {
   color:gray;
 }
+.shareButton {
+  width: 100%;
+  height: 100%;
+  display:inline;
+  z-index: 1;
+}
 /*
 StyleSelector */
 .styleRow {
+  width: 80%;
   display: flex;
-}
-.selected {
-  opacity: 0.3;
+  justify-content: center;
 }
 .checkmark {
-  position: relative;
-  left: 35%;
+  position: absolute;
+  left: 37%;
   top: 50%;
 }
 .style, .styleContainer {
-  width: 80px;
-  height: 80px;
+  position: relative;
+  width: 8vh;
+  height: 8vh;
+  margin: auto;
   border-radius: 50%;
   background-color: white;
 }
+#CurrentStyle {
+  font-size: 2em;
+  margin: 0;
+}
 .style {
-  position: absolute;
-  transition: .3s ease;
-}
-.styleContainer {
-  display: inline-flex;
-}
-.style:hover {
-  opacity: 0.3;
+   transition: .3s ease;
 }
 
-#SizeSelector{
-  height: 35px;
- }
+.style:hover, .selected {
+  opacity: 0.3;
+}
+.cartButtonContainer, #overviewSelectors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+#CartButton {
+  border: transparent;
+  background-color: red;
+  height: 5vh;
+  width: 25vw;
+  font-size: 3em;
+  font-weight: bold;
+  border-radius: 10px;
+}
+#CartButton:hover {
+  background-color: rgb(250, 92, 92);
+}
 /*
 Overview Structure */
 #Image {
@@ -184,37 +267,37 @@ Overview Structure */
   margin: auto;
   width: auto;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 50px;
 }
-#ProductInfo {
-  margin: 0;
-  margin: auto;
-  position: flex;
-  float: left;
-  width: auto;
-  display: flex;
-  flex-direction: column;
+#ProductInfo, #StyleSelector, #AddToCart {
+  min-width: 100%;
+  min-height: 33.33%;
+  max-height: 33.33%;
+  padding: 2em;
 }
 #StyleSelector {
-  margin: 0;
-  position: flex;
-  float: left;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 #AddToCart {
-  margin: auto;
-  position: flex;
-  float: left;
-  width: auto;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
+  justify-content: center;
 }
 #overview {
+  display: flex;
+}
+#overviewContainer {
   margin: auto;
 }
-.leftSide {
-  float: left;
+#overviewContainer * {
+  box-sizing: border-box;
+}
+#ProductDetails {
+  display: flex;
+  margin: 10px, 0px;
 }
 .rightSide {
   float: right;
@@ -229,39 +312,42 @@ Overview Structure */
   height: 80%;
   overflow: auto;
 }
-#Question {
+.Question {
   margin: 10px;
 }
-#qBody {
+.qBody {
   padding: 10px 0px;
 }
-#qBodyText {
+.qBodyText {
   padding: 0px 30px 0px 0px;
 }
-#qHelpful {
+.qHelpful {
   float: right;
   font-size: 80%;
 }
-#qHelp:hover {
-  background-color: chartreuse;
+.qHelp:hover {
+  color: royalblue;
+  cursor: pointer;
 }
-#Answer {
+.Answer {
   padding: 10px 0px 5px 10px;
 }
-#aBody {
+.aBody {
   padding: 10px 10px 10px 0px;
 }
-#aHelpful {
+.aHelpful {
   padding: 20px;
   font-size: 80%;
 }
-#aHelp:hover {
-  background-color: chartreuse;
+.aHelp:hover {
+  color: royalblue;
+  cursor: pointer;
 }
-#aReport:hover {
-  background-color: crimson;
+.aReport:hover {
+  color: crimson;
+  cursor: pointer;
 }
-#moreAnswers {
+.moreAnswers {
   padding: 10px 0px 0px 20px;
   text-decoration: underline;
 }
@@ -275,6 +361,77 @@ Overview Structure */
   width: 40%;
   padding: 2px 23px 2px 30px;
 }
+.qaModalShadow {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  top: 0px;
+  background-color: black;
+  opacity: 0.7;
+  z-index: 4;
+}
+.qaModal {
+  position: fixed;
+  max-width: 500px;
+  max-height: calc(100% - 200px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem;
+  width: 34rem;
+  border-radius: 0.5rem;
+}
+.qaModalContent {
+  overflow: auto;
+  min-height: 200px;
+}
+.ansThumbnail {
+  padding: 2px;
+  width: 96px;
+  height: auto;
+}
+.close-button {
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+}
+.close-button:hover {
+  background-color: darkgray;
+}
+button {
+  cursor: pointer;
+}
+/* .qModal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 34rem;
+  border-radius: 0.5rem;
+} */
 
 /* RELATED PRODUCTS */
 
@@ -302,6 +459,7 @@ Overview Structure */
   border: 0.125rem solid grey;
   cursor: pointer;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 0.6rem;
   position: relative;

@@ -1,12 +1,12 @@
 import React from 'react';
 import Carousel from './Carousel.jsx';
 
-function RelatedProducts({ relatedList }) {
+function RelatedProducts({ relatedList, theme }) {
   return (
     <section id="related-products">
-      <h5 data-testid="heading">RELATED PRODUCTS</h5>
+      <h5 data-testid="heading" className={theme}>RELATED PRODUCTS</h5>
       {relatedList.length ? (
-        <Carousel items={relatedList} classname="product-card" />)
+        <Carousel items={relatedList} theme={theme} classname="product-card" />)
         : <div data-testid="loading">Loading</div>}
     </section>
   );

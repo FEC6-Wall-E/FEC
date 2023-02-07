@@ -36,8 +36,8 @@ function CartButton({
   };
 
   return (
-    <div id="CartButton">
-      <button onClick={onClick}>Hello!</button>
+    <div className="cartButtonContainer">
+      <button className="dropShadow" id="CartButton" onClick={onClick}>Add To Cart</button>
     </div>
   );
 }
