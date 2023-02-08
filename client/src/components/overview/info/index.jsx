@@ -10,31 +10,42 @@ function ProductInfo({
 }) {
   const ratingData = getRatingData(metaData);
   const href = 'http://localhost:3000';
-  const twitterText = `Checkout this ${product.name} from Atelier! Get it at ${href}?pid=${product.id}`;
+  const twitterText = `Checkout this ${product.name} from BnL! Get it at ${href}?pid=${product.id}`;
 
   return (
     <div id="ProductInfo">
-      <StarRating count={ratingData.ratings} rating={ratingData.averageRating} theme={theme} />
-      <h2 className={`infoCategory ${theme}`}>{product.category}</h2>
-      <h1 className={`infoName ${theme}`}>{product.name}</h1>
-      <Price original={style.original_price} sale={style.sale_price} theme={theme} />
-      <div id="shareButtons">
-        <i
-          // eslint-disable-next-line no-undef
+      <div className="left">
+        <StarRating count={ratingData.ratings} rating={ratingData.averageRating} theme={theme} />
+        <h2 className={`infoCategory ${theme}`}>{product.category}</h2>
+        <h1 className={`infoName ${theme}`}>{product.name}</h1>
+        <Price original={style.original_price} sale={style.sale_price} theme={theme} />
+      </div>
+      <div id="ShareButtons">
+        <div
+          className={`shareButton ${theme}`}
           onClick={() => window.open(`https://twitter.com/intent/tweet?text=${twitterText}`)}
-          className={`fa-brands fa-twitter fa-2xl shareButton ${theme}`}
-        />
-        <i
-          // eslint-disable-next-line no-alert, no-undef
+        >
+          <i
+            className="fa-brands fa-twitter fa-2xl"
+          />
+        </div>
+        <div
+          className={`shareButton ${theme}`}
           onClick={() => alert('This button doesnt work until deployed!\n\nThis is in overview/info/index.jsx!')}
           // onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${href}`)}
-          className={`fa-brands fa-facebook fa-2xl shareButton ${theme}`}
-        />
-        <i
-          // eslint-disable-next-line no-undef
-          onClick={() => window.open(`https://www.pinterest.com/pin/create/link/?url=${href}/&description=${product.slogan}`)}
-          className={`fa-brands fa-pinterest fa-2xl shareButton ${theme}`}
-        />
+        >
+          <i
+            className="fa-brands fa-facebook fa-2xl"
+          />
+        </div>
+        <div
+          className={`shareButton ${theme}`}
+          onClick={() => window.open(`https://www.pinterest.com/pin/create/link/?url=${`${href}?pid=${product.id}`}/&description=${product.slogan}`)}
+        >
+          <i
+            className="fa-brands fa-pinterest fa-2xl"
+          />
+        </div>
       </div>
     </div>
   );

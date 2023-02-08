@@ -15,7 +15,7 @@ function Details({ product, theme }) {
       </div>
       <div className={`features ${theme}`}>
         {product.features.map((feat, idx) => (
-          <p className={`feautre ${theme}`} key={idx}>
+          <p className={`feature ${theme}`} key={idx}>
             {featureCreator(feat)}
           </p>
         ))}

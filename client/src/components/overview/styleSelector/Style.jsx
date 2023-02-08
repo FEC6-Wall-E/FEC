@@ -15,8 +15,8 @@ function Style({
       {selected ? <i className="checkmark fa-solid fa-check fa-2xl" /> : null}
       <img
         className={selected ? 'selected style' : 'style'}
-        width="8vh"
-        height="8vh"
+        width="7vh"
+        height="7vh"
         style={{ objectFit: 'cover' }}
         src={style.photos[0].thumbnail_url}
         alt="ERROR"
