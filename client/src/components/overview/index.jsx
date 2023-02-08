@@ -5,6 +5,7 @@ import ProductInfo from './info/index.jsx';
 import StyleSelector from './styleSelector/index.jsx';
 import AddToCart from './addToCart/index.jsx';
 import Details from './details/index.jsx';
+import handleInteraction from '../../handleInteraction.js';
 
 function Overview({
   product, styles, setStyles, metaData, theme,
@@ -23,7 +24,7 @@ function Overview({
   });
 
   return (
-    <div onClick={}data-testid="OVERVIEW" id="overviewContainer">
+    <div onClick={(e) => handleInteraction(e, 'OVERVIEW')} data-testid="OVERVIEW" id="overviewContainer">
       <div data-testid="OVERVIEW_MAIN" id="overview">
         <div className="leftSide">
           <Image style={style} />

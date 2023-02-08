@@ -5,6 +5,7 @@ import axios from 'axios';
 import SearchQuestions from './SearchQuestions.jsx';
 import QuestionList from './QuestionList.jsx';
 import AddQuestion from './AddQuestion.jsx';
+import handleInteraction from '../../handleInteraction.js';
 
 function QandA({ product }) {
   const [questionList, setQuestionList] = useState([]);
@@ -66,7 +67,7 @@ function QandA({ product }) {
 
   if (questionList.length === 0) {
     return (
-      <div id="QandA">
+      <div onClick={(e) => handleInteraction(e, 'QANDA')} id="QandA">
         <h3>Questions and Answers</h3>
         <button onClick={toggleAddQuestion}>Add question</button>
         { questOpen && (
@@ -81,7 +82,7 @@ function QandA({ product }) {
     );
   }
   return (
-    <div id="QandA">
+    <div onClick={(e) => handleInteraction(e, 'QANDA')} id="QandA">
       <h3>Questions and Answers</h3>
       <SearchQuestions setSearchInput={setSearchInput} />
       <QuestionList

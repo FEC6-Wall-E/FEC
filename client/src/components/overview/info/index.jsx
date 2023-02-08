@@ -31,6 +31,7 @@ function ProductInfo({
         </div>
         <div
           className={`shareButton ${theme}`}
+          // eslint-disable-next-line no-alert
           onClick={() => alert('This button doesnt work until deployed!\n\nThis is in overview/info/index.jsx!')}
           // onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${href}`)}
         >
