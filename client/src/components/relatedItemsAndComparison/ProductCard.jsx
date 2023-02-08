@@ -10,7 +10,7 @@ import Price from '../overview/info/price.jsx';
 
 /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
 const ProductCard = forwardRef(function ProductCard({
-  productId, index, idx, theme, classname, deleteOutfit,
+  productId, index, idx, theme, classname, deleteOutfit, setPid,
 }, ref) {
   const [product, setProduct] = useState({});
   const [defaultStyle, setDefaultStyle] = useState({});
@@ -67,11 +67,12 @@ const ProductCard = forwardRef(function ProductCard({
   }, [images]);
 
   return (
-    // add onClick={handleNavigate} to the first div
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className={index === idx ? `active product-card ${theme}` : `product-card ${theme}`}
       ref={index === idx ? ref : null}
       data-testid="slider-product-card"
+      onClick={() => setPid(productId)}
     >
       <div className={`images ${theme}`}>
         <img data-testid="main-image" className={`mainImg ${theme}`} src={mainImg} alt="Missing" />

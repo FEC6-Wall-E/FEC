@@ -6,7 +6,7 @@ import ProductCard from './ProductCard.jsx';
 import AddOutfitCard from './AddOutfitCard.jsx';
 
 function Carousel({
-  items, classname, theme, addOutfit, deleteOutfit,
+  items, classname, theme, addOutfit, deleteOutfit, setPid,
 }) {
   const numberOfSlides = items.length;
   const [index, setIndex] = useState(0);
@@ -68,6 +68,7 @@ function Carousel({
               idx={idx}
               theme={theme}
               deleteOutfit={deleteOutfit}
+              setPid={setPid}
             />
           ))}
         </div>

@@ -54,7 +54,7 @@ function App() {
         ? (
           <>
             <Overview product={product} styles={styles} setStyles={setStyles} metaData={meta} />
-            <RelatedProducts relatedList={relatedList} theme={theme} />
+            <RelatedProducts relatedList={relatedList} theme={theme} setPid={setPid} />
             <YourOutfitList product={product} theme={theme} />
             <QandA product={product} />
           </>
