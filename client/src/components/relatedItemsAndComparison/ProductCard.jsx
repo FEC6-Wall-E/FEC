@@ -1,17 +1,18 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React, { useState, useEffect, forwardRef } from 'react';
 import axios from 'axios';
 import { IoIosStarOutline } from 'react-icons/io';
 import averageRating from '../sharedComponents/lib/averageRating.js';
 import StarRating from '../sharedComponents/StarRating.jsx';
 import CompareModal from './CompareModal.jsx';
-import Carousel from './Carousel.jsx';
+import ThumbnailCarousel from './ThumbnailCarousel.jsx';
 import Price from '../overview/info/price.jsx';
 
 /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
 const ProductCard = forwardRef(function ProductCard({
-  relatedProductId, index, idx, theme,
+  productId, index, idx, theme, classname, deleteOutfit,
 }, ref) {
-  const [relatedProduct, setRelatedProduct] = useState({});
+  const [product, setProduct] = useState({});
   const [defaultStyle, setDefaultStyle] = useState({});
   const [rating, setRating] = useState({});
   const [images, setImages] = useState([{
@@ -23,21 +24,21 @@ const ProductCard = forwardRef(function ProductCard({
 
   useEffect(() => {
     const getRating = () => {
-      if (relatedProductId) {
-        axios.get(`/meta/${relatedProductId}`)
+      if (productId) {
+        axios.get(`/meta/${productId}`)
           .then((meta) => {
             setRating(averageRating(meta.data));
           })
           .catch((err) => console.error(err));
       }
     };
-    // get default style for the current related product (needed for images and price)
+
     const getStyles = () => {
-      axios.get(`/products/${relatedProductId}/styles`)
-        .then((product) => {
-          const defaultStyles = product.data.results.filter((style) => style['default?']);
+      axios.get(`/products/${productId}/styles`)
+        .then((item) => {
+          const defaultStyles = item.data.results.filter((style) => style['default?']);
           const newDefaultStyle = defaultStyles.length > 0
-            ? defaultStyles[0] : product.data.results[0];
+            ? defaultStyles[0] : item.data.results[0];
           setDefaultStyle(newDefaultStyle);
 
           if (newDefaultStyle.photos[0].thumbnail_url !== null) {
@@ -46,18 +47,18 @@ const ProductCard = forwardRef(function ProductCard({
         })
         .catch((err) => console.error(err));
     };
-    // get info for the current related product (needed for )
-    const getRelatedProductData = () => {
-      axios.get(`/products/${relatedProductId}`)
-        .then((product) => {
-          setRelatedProduct(product.data);
+
+    const getProductData = () => {
+      axios.get(`/products/${productId}`)
+        .then((item) => {
+          setProduct(item.data);
           getRating();
           getStyles();
         })
         .catch((err) => console.error(err));
     };
-    getRelatedProductData();
-  }, [relatedProductId]);
+    getProductData();
+  }, [productId]);
 
   useEffect(() => {
     if (images.length > 0) {
@@ -74,26 +75,38 @@ const ProductCard = forwardRef(function ProductCard({
     >
       <div className={`images ${theme}`}>
         <img data-testid="main-image" className={`mainImg ${theme}`} src={mainImg} alt="Missing" />
-        <Carousel items={images} theme={theme} classname="thumbnail" setMainImg={setMainImg} />
+        <ThumbnailCarousel items={images} theme={theme} setMainImg={setMainImg} />
       </div>
-      {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
-      <div
-        className={`compare ${theme}`}
-        onClick={() => setShowModal(true)}
-        role="button"
-        data-testid="open-compare"
-      >
-        <IoIosStarOutline />
-      </div>
+      {classname === 'product-card'
+        ? (
+          <div
+            className={`compare ${theme}`}
+            onClick={() => setShowModal(true)}
+            role="button"
+            data-testid="open-compare"
+          >
+            <IoIosStarOutline />
+          </div>
+        )
+        : (
+          <div
+            className={`delete ${theme}`}
+            onClick={() => deleteOutfit(product.id)}
+            role="button"
+            data-testid="delete-outfit"
+          >
+            x
+          </div>
+        )}
       {showModal && (
       <CompareModal
         theme={theme}
-        product2={relatedProduct}
+        product2={product}
         setShowModal={setShowModal}
       />
       )}
-      <div data-testid="category" className={`category ${theme}`}>{relatedProduct.category}</div>
-      <div data-testid="product-name" className={`product-name ${theme}`}>{relatedProduct.name}</div>
+      <div data-testid="category" className={`category ${theme}`}>{product.category}</div>
+      <div data-testid="product-name" className={`product-name ${theme}`}>{product.name}</div>
       <Price theme={theme} sale={defaultStyle.sale_price} original={defaultStyle.original_price} />
       <StarRating theme={theme} rating={rating.averageRating} count={rating.ratings} />
     </div>

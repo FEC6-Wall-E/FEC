@@ -454,7 +454,7 @@ button {
 .product-card-slider > * {
   scroll-snap-align: start;
 }
-.product-card {
+.product-card, .add-outfit-card {
   background:whitesmoke;
   border: 0.125rem solid grey;
   cursor: pointer;
@@ -537,7 +537,7 @@ button {
 }
 .thumbnail > img {
   aspect-ratio: 4 / 5;
-  /* line 302 gets rid of the sliver of white space at the bottom */
+  /* next gets rid of the sliver of white space at the bottom */
   display: block;
   inline-size: 100%;
   object-fit: cover;

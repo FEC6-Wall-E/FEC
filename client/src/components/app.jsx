@@ -53,16 +53,13 @@ function App() {
       {product && styles && meta && relatedList
         ? (
           <>
-            (
             <Overview product={product} styles={styles} setStyles={setStyles} metaData={meta} />
             <RelatedProducts relatedList={relatedList} theme={theme} />
+            <YourOutfitList product={product} theme={theme} />
             <QandA product={product} />
-            )
           </>
         )
         : null}
-      {/* <YourOutfitList />
-      */}
     </div>
   );
 }

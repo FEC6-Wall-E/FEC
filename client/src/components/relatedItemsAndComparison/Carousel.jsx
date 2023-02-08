@@ -1,11 +1,13 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React, { useState, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import ProductCard from './ProductCard.jsx';
 import Thumbnail from './Thumbnail.jsx';
+import AddOutfitCard from './AddOutfitCard.jsx';
 
 function Carousel({
-  items, classname, setMainImg, theme,
+  items, product, classname, theme, addOutfit, deleteOutfit,
 }) {
   const numberOfSlides = items.length;
   const [index, setIndex] = useState(0);
@@ -27,59 +29,49 @@ function Carousel({
   };
 
   return (
-    <div data-testid="slider" className={`${classname}-slider-wrapper ${theme}`}>
-      <div className={`${classname}-slider-container ${theme}`}>
+    <div data-testid="slider" className={`product-card-slider-wrapper ${theme}`}>
+      <div className={`product-card-slider-container ${theme}`}>
         {index > 0 && (
-          // <IoIosArrowBack
-          //   className={`${classname}-slider-button prev ${theme}`}
-          //   data-testId="prev-button"
-          //   onClick={() => handleNav('prev')}
-          // />
-          <button
-            className={`${classname}-slider-button prev ${theme}`}
-            data-testid={`${classname}-prev-button`}
+          <div
+            className={`product-card-slider-button prev ${theme}`}
+            data-testid="product-card-prev-button"
             onClick={() => handleNav('prev')}
+            role="button"
           >
-            prev
-          </button>
+            <IoIosArrowBack />
+          </div>
         )}
         {index < numberOfSlides - 1 && (
-          // <IoIosArrowForward
-          //   className={`${classname}-slider-button next ${theme}`}
-          //   data-testId="next-button"
-          //   onClick={() => handleNav('next')}
-          // />
-          <button
-            className={`${classname}-slider-button next ${theme}`}
-            data-testId={`${classname}-next-button`}
+          <div
+            className={`product-card-slider-button next ${theme}`}
+            data-testid="product-card-next-button"
             onClick={() => handleNav('next')}
+            role="button"
           >
-            next
-          </button>
+            <IoIosArrowForward />
+          </div>
         )}
-        <div className={`${classname}-slider ${theme}`}>
-          {classname === 'product-card'
-            ? items.map((item, idx) => (
-              <ProductCard
-                key={item}
-                ref={ref}
-                relatedProductId={item}
-                index={index}
-                idx={idx}
-                theme={theme}
-              />
-            )) : items.map((item, idx) => (
-              <Thumbnail
-                key={idx}
-                thumbnail={item}
-                ref={ref}
-                index={index}
-                idx={idx}
-                setMainImg={setMainImg}
-                setIndex={setIndex}
-                theme={theme}
-              />
-            ))}
+        <div className={`product-card-slider ${theme}`}>
+          {classname === 'outfit'
+          && (
+          <AddOutfitCard
+            product={product}
+            theme={theme}
+            addOutfit={addOutfit}
+          />
+          )}
+          {items.map((item, idx) => (
+            <ProductCard
+              classname={classname}
+              key={item}
+              ref={ref}
+              productId={item}
+              index={index}
+              idx={idx}
+              theme={theme}
+              deleteOutfit={deleteOutfit}
+            />
+          ))}
         </div>
       </div>
     </div>
