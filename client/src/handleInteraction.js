@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 const getTag = (e) => {
   let classes;
   if (typeof e.target.className === 'object') {
@@ -17,10 +19,19 @@ const getTag = (e) => {
   });
 
   return tag;
-}
+};
 
 module.exports = (e, widget) => {
-  const tag = getTag(e);
+  const element = getTag(e);
   const time = new Date(Date.now());
-  console.log(tag, time, widget);
+  const body = {
+    widget,
+    element,
+    time,
+  };
+  axios({
+    method: 'POST',
+    url: '/interactions',
+    data: body,
+  });
 };
