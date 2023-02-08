@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 
-const getAllFeatures = require('../getAllFeatures.js');
+const getAllFeatures = require('../../components/relatedItemsAndComparison/getAllFeatures.js');
 
 describe('getAllFeatures module', () => {
   const features1 = [

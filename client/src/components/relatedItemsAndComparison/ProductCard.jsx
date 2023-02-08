@@ -70,12 +70,21 @@ const ProductCard = forwardRef(function ProductCard({
     <div
       className={index === idx ? `active product-card ${theme}` : `product-card ${theme}`}
       ref={index === idx ? ref : null}
+      data-testid="slider-product-card"
     >
       <div className={`images ${theme}`}>
         <img data-testid="main-image" className={`mainImg ${theme}`} src={mainImg} alt="Missing" />
         <Carousel items={images} theme={theme} classname="thumbnail" setMainImg={setMainImg} />
       </div>
-      <IoIosStarOutline className={`compare ${theme}`} onClick={() => setShowModal(true)} />
+      {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
+      <div
+        className={`compare ${theme}`}
+        onClick={() => setShowModal(true)}
+        role="button"
+        data-testid="open-compare"
+      >
+        <IoIosStarOutline />
+      </div>
       {showModal && (
       <CompareModal
         theme={theme}

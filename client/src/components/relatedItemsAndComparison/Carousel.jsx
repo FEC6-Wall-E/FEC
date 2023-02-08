@@ -30,16 +30,32 @@ function Carousel({
     <div data-testid="slider" className={`${classname}-slider-wrapper ${theme}`}>
       <div className={`${classname}-slider-container ${theme}`}>
         {index > 0 && (
-          <IoIosArrowBack
+          // <IoIosArrowBack
+          //   className={`${classname}-slider-button prev ${theme}`}
+          //   data-testId="prev-button"
+          //   onClick={() => handleNav('prev')}
+          // />
+          <button
             className={`${classname}-slider-button prev ${theme}`}
+            data-testid={`${classname}-prev-button`}
             onClick={() => handleNav('prev')}
-          />
+          >
+            prev
+          </button>
         )}
         {index < numberOfSlides - 1 && (
-          <IoIosArrowForward
+          // <IoIosArrowForward
+          //   className={`${classname}-slider-button next ${theme}`}
+          //   data-testId="next-button"
+          //   onClick={() => handleNav('next')}
+          // />
+          <button
             className={`${classname}-slider-button next ${theme}`}
+            data-testId={`${classname}-next-button`}
             onClick={() => handleNav('next')}
-          />
+          >
+            next
+          </button>
         )}
         <div className={`${classname}-slider ${theme}`}>
           {classname === 'product-card'
