@@ -2,7 +2,7 @@
 import React from 'react';
 
 function CartButton({
-  hidden, quantity, sku, selectDrop,
+  hidden, quantity, sku, selectDrop, theme,
 }) {
   if (hidden) return null;
 
@@ -37,7 +37,7 @@ function CartButton({
 
   return (
     <div className="cartButtonContainer">
-      <button className="dropShadow" id="CartButton" onClick={onClick}>Add To Cart</button>
+      <button className={`dropShadow ${theme}`} id="CartButton" onClick={onClick}>Add To Cart</button>
     </div>
   );
 }

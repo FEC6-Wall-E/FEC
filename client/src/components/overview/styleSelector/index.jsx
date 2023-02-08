@@ -1,7 +1,9 @@
 import React from 'react';
 import Style from './Style.jsx';
 
-function StyleSelector({ currentStyle, allStyles, setStyle }) {
+function StyleSelector({
+  currentStyle, allStyles, setStyle, theme,
+}) {
   const stylesMatrix = [];
   let row = [];
 
@@ -18,11 +20,12 @@ function StyleSelector({ currentStyle, allStyles, setStyle }) {
 
   return (
     <div id="StyleSelector">
-      <h1 id="CurrentStyle">{currentStyle.name}</h1>
+      <h1 className={theme} id="CurrentStyle">{currentStyle.name}</h1>
       {stylesMatrix.map((styles, idx) => (
         <div key={idx} className="styleRow">
           {styles.map((style, idx2) => (
             <Style
+              theme={theme}
               key={idx2}
               style={style}
               setStyle={setStyle}

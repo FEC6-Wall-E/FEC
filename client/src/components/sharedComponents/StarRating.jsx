@@ -1,7 +1,9 @@
 import React from 'react';
 import roundRating from './lib/getNearestRating.js';
 
-function StarRating({ rating, count, link }) {
+function StarRating({
+  rating, count, link, theme,
+}) {
   if (count === 0) return null;
 
   let rounded = roundRating(rating);
@@ -19,12 +21,12 @@ function StarRating({ rating, count, link }) {
     stars.push(0);
   }
 
-  return (
+  return count ? (
     <div className="starRating">
       {stars.map((star, idx) => <span key={idx} className={`star val${star * 100}`} />)}
-      <p className="reviewCount" href={link}>{`See all ${count} reviews!`}</p>
+      <p className={`reviewCount ${theme}`} href={link}>{`See all ${count} reviews!`}</p>
     </div>
-  );
+  ) : null;
 }
 
 export default StarRating;

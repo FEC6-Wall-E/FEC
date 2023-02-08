@@ -1,8 +1,58 @@
-#app {
-  background-color: lightgray;
-  display: flex;
-
+* {
+  box-sizing: border-box;
+  transition: all ease 0.3s;
 }
+
+html,body {
+  margin: auto;
+  padding:0;
+  display: flex;
+  flex-direction: column;
+  /* background-image: url(/images/tall.jpeg); */
+}
+
+#app.light {
+  background-color: white;
+  padding: 0 10px
+}
+#app.dark {
+  background-color: rgb(3, 7, 15);
+  padding: 0 10px
+}
+.pageHeader {
+  z-index: 10;
+  position: relative;
+  padding: 10px;
+  width: 100%;
+}
+.pageHeader.light {
+  background-color: red;
+  box-shadow: 0 2px 20px #00000099;
+  clip-path: inset(0px 0px -100px 0px);
+}
+.pageHeader.dark {
+  background-color: red;
+  box-shadow: 0 8px 20px #ffffff99;
+  clip-path: inset(0px 0px -100px 0px);
+}
+.moonIcon, .sunIcon {
+  padding: 20px;;
+}
+.moonIcon {
+  color: #031c38;
+  float: right;
+}
+.moonIcon:hover {
+  color: #5c6d83;
+}
+.sunIcon {
+  color: #f4efca;
+  float: right;
+}
+.sunIcon:hover {
+  color: #ffffff;
+}
+
 
 #ImageModal{
   z-index: 99 !important;
@@ -15,6 +65,9 @@
   height: 90vh;
   width: 90vw;
   overflow: scroll;
+}
+#ImageModal * {
+  transition: none;
 }
 .modalZoom {
   z-index: 1;
@@ -83,7 +136,6 @@
   width: 100%;
   height: 100%;
 }
-
 .imagePickerImage, .pickerImageBG {
   position: relative;
   width: 3vw;
@@ -92,11 +144,9 @@
   transition: all .2s ease;
   object-fit: cover;
 }
-
 .imagePickerImage:hover, #picked {
   opacity: 0.5;
 }
-
 #overviewImagePicker {
   width: 3.5vw;
   left: 10px;
@@ -107,11 +157,9 @@
   transform: translateY(-50%);
   overflow: hidden;
 }
-
 .overViewSlider {
   white-space: nowrap;
 }
-
 .overviewImage {
   transition: ease-out 1s;
   display: inline-block;
@@ -133,28 +181,11 @@ Image Buttons */
   width: 5vw;
   height: 80vh;
 }
-
 .imageSelector:hover {
   opacity: 0.3;
 }
-
 .right{
   right: 0%;
-}
-/*
-ImageModalZoom */
-.click-zoom input[type=checkbox] {
-  display: none
-}
-
-.click-zoom img {
-  margin: 100px;
-  transition: transform 0.25s ease;
-  cursor: zoom-in
-}
-.click-zoom input[type=checkbox]:checked~img {
-  transform: scale(2);
-  cursor: zoom-out
 }
 /*
 StarRatingCSS */
@@ -194,58 +225,113 @@ StarRatingCSS */
   width: 15px;
   overflow: hidden;
 }
-.reviewCount {
+.reviewCount.light {
   display: inline;
   padding-left: 10px;
+  color: black;
+}
+.reviewCount.dark {
+  display: inline;
+  padding-left: 10px;
+  color: white;
 }
 
 /* Product Info */
+#ProductInfo .left, #ShareButtons {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+#ShareButtons {
+  right: 0px;
+}
+/* #ProductInfo .right {
+  display: flex;
+  flex-direction: column;
+} */
+h2.infoCategory, h1.infoName {
+  margin: 0.5em 0;
+}
+h2.infoCategory.light {
+  color: black;
+}
+h2.infoCategory.dark {
+  color: white;
+}
+h1.infoName.light {
+  color: black;
+}
+h1.infoName.dark {
+  color: white;
+}
 .sale {
   display: inline;
   margin-right: 5px;
-  color: red;
+  color: #e31a3a;
 }
-.original {
+.strike {
   display: inline;
   text-decoration: Line-through;
 }
-.shareButton:hover {
-  color:gray;
+.original.light {
+  color: black
+}
+.original.dark {
+  color: white
+}
+.shareButton :hover {
+  color:red;
+  cursor: pointer;
 }
 .shareButton {
-  width: 100%;
-  height: 100%;
-  display:inline;
+  width: 32px;
+  height: 32px;
+  margin: 5px;
+  display: inline;
   z-index: 1;
+}
+.shareButton.light {
+  color: black;
+}
+.shareButton.dark {
+  color: white;
 }
 /*
 StyleSelector */
 .styleRow {
-  width: 80%;
+  width: auto;
+  height: 7vh;
+  margin: 10px;
   display: flex;
   justify-content: center;
 }
 .checkmark {
   position: absolute;
-  left: 37%;
+  left: 30%;
   top: 50%;
 }
 .style, .styleContainer {
-  position: relative;
-  width: 8vh;
-  height: 8vh;
+  width: 7vh;
+  height: 7vh;
   margin: auto;
   border-radius: 50%;
   background-color: white;
 }
 #CurrentStyle {
-  font-size: 2em;
+  display: flex;
+  justify-content: center;
   margin: 0;
+  font-size: 2rem;
+}
+h1#CurrentStyle.light {
+  color: black;
+}
+h1#CurrentStyle.dark {
+  color: white;
 }
 .style {
    transition: .3s ease;
 }
-
 .style:hover, .selected {
   opacity: 0.3;
 }
@@ -257,12 +343,14 @@ StyleSelector */
 }
 #CartButton {
   border: transparent;
-  background-color: red;
+  background-color: #FF0000;
   height: 5vh;
   width: 25vw;
   font-size: 3em;
   font-weight: bold;
+  color: white;
   border-radius: 10px;
+  transition: ease 0.3s;
 }
 #CartButton:hover {
   background-color: rgb(250, 92, 92);
@@ -276,16 +364,24 @@ Overview Structure */
   display: inline-block;
   margin-right: 50px;
 }
-#ProductInfo, #StyleSelector, #AddToCart {
+#ProductInfo,  #AddToCart {
   min-width: 100%;
-  min-height: 33.33%;
-  max-height: 33.33%;
-  padding: 2em;
+  min-height: 25%;
+  max-height: 25%;
+  padding: 1em;
+}
+#ProductInfo {
+  display: flex;
 }
 #StyleSelector {
+  min-width: 100%;
+  min-height: 45%;
+  max-height: 45%;
+  padding: 1em;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  flex-direction: column;
 }
 #AddToCart {
   display: flex;
@@ -295,12 +391,6 @@ Overview Structure */
 }
 #overview {
   display: flex;
-}
-#overviewContainer {
-  margin: auto;
-}
-#overviewContainer * {
-  box-sizing: border-box;
 }
 #ProductDetails {
   display: flex;
@@ -447,8 +537,25 @@ button {
   display: flex;
   margin: 10px, 0px;
 }
-#ProductDetails .productDetails {
-  border-right: solid gray 3px;
+
+h2.slogan.light {
+  color: black;
+}
+h2.slogan.dark {
+  color: white;
+}
+p.description.light {
+  color: black;
+}
+p.description.dark {
+  color: white;
+}
+#ProductDetails .productDetails.light {
+  border-right: solid black 3px;
+  width: 45vw;
+}
+#ProductDetails .productDetails.dark {
+  border-right: solid white 3px;
   width: 45vw;
 }
 #ProductDetails .features {
@@ -457,12 +564,13 @@ button {
   justify-content: center;
   flex-direction: column;
 }
-.features .feature {
-  color: gray;
-  font-size: large;
+p.feature.light {
+  margin: auto;
+  color: black;
 }
-.feature {
-  margin: 0px;
+p.feature.dark {
+  margin: auto;
+  color: white;
 }
 .features {
   padding: 1em;
@@ -472,15 +580,17 @@ button {
   width: 30vw;
 }
 .rightSide {
-  padding-left: 3em;
+  padding: 0 3em;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
-.dropShadow {
+.dropShadow.light {
   filter: drop-shadow(0 0 0.25rem black);
 }
-
+.dropShadow.dark {
+  filter: drop-shadow(0 0 0.25rem white);
+}
 #overviewSelectors {
   display: flex;
   width: 100%;
