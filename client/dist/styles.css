@@ -1,7 +1,7 @@
 #app {
   background-color: lightgray;
   display: flex;
-
+  flex-direction: column;
 }
 
 #ImageModal{
@@ -311,15 +311,15 @@ Overview Structure */
 }
 
 /* Q and A */
-#q-and-a {
+.q-and-a {
   width: 100%;
   height: 35rem;
 }
-#qa-header {
+.qa-header {
   font-weight: lighter;
   padding: 0 0 0 1vh;
 }
-#question-list {
+.question-list {
   height: 80%;
   overflow: auto;
 }
@@ -363,9 +363,9 @@ Overview Structure */
 }
 .more-answers {
   padding: 10px 0px 0px 20px;
-  text-decoration: underline;
+  font-weight: bold;
 }
-#more-questions {
+.more-questions {
   margin: 0 0.5vh 0.5vh 1vh;
   align-items: center;
   background-color: #fff;
@@ -381,7 +381,7 @@ Overview Structure */
   padding: 0 1vh;
   text-align: center;
 }
-#add-question {
+.add-question {
   margin: 0vh 0 0.5vh 0.5vh;
   align-items: center;
   background-color: #fff;
@@ -397,11 +397,11 @@ Overview Structure */
   padding: 0 1vh;
   text-align: center;
 }
-#search-questions {
+.search-questions {
   width: 100%;
   padding: 0 0 1vh 1vh;
 }
-#search-bar {
+.search-bar {
   border: 1px solid grey;
   height: 3vh;
   width: 95%;
