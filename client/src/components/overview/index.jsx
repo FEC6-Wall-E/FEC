@@ -23,7 +23,7 @@ function Overview({
   });
 
   return (
-    <div data-testid="OVERVIEW" id="overviewContainer">
+    <div onClick={}data-testid="OVERVIEW" id="overviewContainer">
       <div data-testid="OVERVIEW_MAIN" id="overview">
         <div className="leftSide">
           <Image style={style} />
