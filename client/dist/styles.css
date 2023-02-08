@@ -5,7 +5,7 @@
   background-color: lightgray;
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  /* width: 60vw; */
   margin-left: auto;
   margin-right: auto;
 }
@@ -441,14 +441,14 @@ button {
 }
 .product-card-slider {
   display: grid;
-  overflow-x: hidden;
-  overscroll-behavior-inline: contain;
-  scroll-snap-type: inline mandatory;
-  scroll-behavior: smooth;
   gap: 0.6rem;
   grid-auto-flow: column;
   grid-auto-columns: 23%;
+  overflow-x: hidden;
+  overscroll-behavior-inline: contain;
   padding: 0 0.6rem 0.6rem;
+  scroll-snap-type: inline mandatory;
+  scroll-behavior: smooth;
   scroll-padding-inline: 0.6rem 1rem;
 }
 .product-card-slider > * {
@@ -465,6 +465,14 @@ button {
   position: relative;
   padding: 0.3rem;
   width: 100%;
+}
+.add-outfit-card {
+  /* temorarily set min-height until I figure out how to set it to the same
+  height as the other product cards */
+  min-height: 40vh;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
 }
 .images {
   cursor: pointer;
@@ -589,7 +597,6 @@ button {
   font-size: 0.9rem;
   letter-spacing: 0.075em;
 }
-
 /* COMPARISON MODAL */
 #comparison-modal {
   position: fixed;

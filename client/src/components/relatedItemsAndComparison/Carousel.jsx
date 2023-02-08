@@ -3,11 +3,10 @@ import React, { useState, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import ProductCard from './ProductCard.jsx';
-import Thumbnail from './Thumbnail.jsx';
 import AddOutfitCard from './AddOutfitCard.jsx';
 
 function Carousel({
-  items, product, classname, theme, addOutfit, deleteOutfit,
+  items, classname, theme, addOutfit, deleteOutfit,
 }) {
   const numberOfSlides = items.length;
   const [index, setIndex] = useState(0);
@@ -55,7 +54,6 @@ function Carousel({
           {classname === 'outfit'
           && (
           <AddOutfitCard
-            product={product}
             theme={theme}
             addOutfit={addOutfit}
           />

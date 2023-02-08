@@ -1,8 +1,10 @@
 import React from 'react';
 
-function AddOutfitCard({ product, theme, addOutfit }) {
+function AddOutfitCard({ theme, addOutfit }) {
   return (
-    <div className={`${theme} add-outfit-card`}>
+    <div
+      className={`${theme} add-outfit-card`}
+    >
       {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
       <div
         className={`${theme} plus`}
@@ -11,7 +13,7 @@ function AddOutfitCard({ product, theme, addOutfit }) {
         data-testid="add-outfit-button"
       >
         +
-        <h5 className={`${theme} plus`}>Add to Outfit</h5>
+        <div className={`${theme} plus`}>Add to Outfit</div>
       </div>
     </div>
   );
