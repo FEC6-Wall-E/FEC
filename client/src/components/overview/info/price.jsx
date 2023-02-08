@@ -1,16 +1,16 @@
 import React from 'react';
 
-function Price({ sale, original }) {
+function Price({ sale, original, theme }) {
   return !sale
     ? (
       <div data-testid="PRICE" className="price">
-        <p>{`$${original}`}</p>
+        <p className={`original ${theme}`}>{`$${original}`}</p>
       </div>
     )
     : (
       <div data-testid="PRICE" className="price">
-        <p className="sale">{`$${sale}`}</p>
-        <p className="original">{`$${original}`}</p>
+        <p className={`sale ${theme}`}>{`$${sale}`}</p>
+        <p className={`original strike ${theme}`}>{`$${original}`}</p>
       </div>
     );
 }

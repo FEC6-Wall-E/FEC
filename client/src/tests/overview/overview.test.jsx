@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { render, screen, cleanup } from '@testing-library/react/pure';
+import { render, screen } from '@testing-library/react/pure';
 import userEvent from '@testing-library/user-event';
 // eslint-disable-next-line import/no-unresolved
 import App from '../../components/App.jsx';
@@ -27,7 +27,7 @@ let mainImage = null;
 let imagePicker = null;
 let imageLeftButton = null;
 let imageRightButton = null;
-let modal = {
+const modal = {
   main: null,
   image: null,
   bg: null,
@@ -39,11 +39,6 @@ let modal = {
 screen.logTestingPlaygroundURL();
 
 const wait = (t) => new Promise((r) => { setTimeout(r, t); });
-const reset = () => {
-  app = null;
-  modal = {};
-  cleanup();
-};
 
 let user;
 

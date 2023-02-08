@@ -3,7 +3,7 @@ import CartButton from './CartButton.jsx';
 import QuantitySelector from './QuantitySelector.jsx';
 import SizeSelector from './SizeSelector.jsx';
 
-function AddToCart({ currentStyle, sizes }) {
+function AddToCart({ currentStyle, sizes, theme }) {
   const [sku, setSku] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const selectRef = React.useRef();
@@ -30,11 +30,13 @@ function AddToCart({ currentStyle, sizes }) {
           setSku={setSku}
           sizes={sizes}
           size={size}
+          theme={theme}
         />
         <QuantitySelector
           currentStyle={currentStyle}
           currentSku={sku}
           setQuantity={setQuantity}
+          theme={theme}
         />
       </span>
       <CartButton
@@ -43,6 +45,7 @@ function AddToCart({ currentStyle, sizes }) {
         quantity={quantity}
         sku={sku}
         size={size}
+        theme={theme}
       />
     </div>
   );
