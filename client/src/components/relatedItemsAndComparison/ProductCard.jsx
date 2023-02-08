@@ -91,7 +91,7 @@ const ProductCard = forwardRef(function ProductCard({
         : (
           <div
             className={`delete ${theme}`}
-            onClick={() => deleteOutfit(product.id)}
+            onClick={() => deleteOutfit(productId)}
             role="button"
             data-testid="delete-outfit"
           >

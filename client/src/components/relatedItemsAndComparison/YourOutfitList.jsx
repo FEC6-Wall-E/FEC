@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Carousel from './Carousel.jsx';
 
 function YourOutfitList({
   product, theme,
 }) {
   const [outfitList, setOutfitLst] = useState([]);
+
+  useEffect(() => {
+    const data = window.localStorage.getItem('outfitList');
+    if (data) {
+      setOutfitLst(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem('outfitList', JSON.stringify(outfitList));
+  }, [outfitList]);
 
   const addOutfit = () => {
     if (!outfitList.includes(product.id)) {
@@ -13,9 +24,7 @@ function YourOutfitList({
   };
 
   const deleteOutfit = (id) => {
-    const deleteIdx = outfitList.indexOf(id);
-    outfitList.splice(deleteIdx, 1);
-    setOutfitLst(outfitList);
+    setOutfitLst([...outfitList].filter((itemId) => itemId !== id));
   };
 
   return (

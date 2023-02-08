@@ -42,7 +42,7 @@ function ThumbnailCarousel({
         {index < numberOfSlides - 1 && (
           <div
             className={`thumbnail-slider-button next ${theme}`}
-            data-testId="thumbnail-next-button"
+            data-testid="thumbnail-next-button"
             onClick={() => handleNav('next')}
             role="button"
           >

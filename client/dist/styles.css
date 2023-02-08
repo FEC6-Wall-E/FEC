@@ -537,7 +537,7 @@ button {
 }
 .thumbnail > img {
   aspect-ratio: 4 / 5;
-  /* next gets rid of the sliver of white space at the bottom */
+  /* display: block gets rid of the sliver of white space at the bottom */
   display: block;
   inline-size: 100%;
   object-fit: cover;
@@ -557,7 +557,7 @@ button {
 .thumbnail-slider-button.next {
   right: -0.2em;
 }
-.compare {
+.compare, .delete {
   position: absolute;
   top: 3%;
   right: 7%;

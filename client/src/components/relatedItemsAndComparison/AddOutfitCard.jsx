@@ -11,8 +11,8 @@ function AddOutfitCard({ product, theme, addOutfit }) {
         data-testid="add-outfit-button"
       >
         +
+        <h5 className={`${theme} plus`}>Add to Outfit</h5>
       </div>
-      <h5 className={`${theme} plus`}>Add to Outfit</h5>
     </div>
   );
 }
