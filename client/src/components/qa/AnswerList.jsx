@@ -29,11 +29,7 @@ function AnswerList({ answerList, getQuestions, theme }) {
       {ansArr.slice(0, answerCount).map((answer) => (
         <Answer
           key={answer.id}
-          id={answer.id}
-          body={answer.body}
-          helpfulness={answer.helpfulness}
-          name={answer.answerer_name}
-          date={answer.date}
+          answer={answer}
           getQuestions={getQuestions}
           theme={theme}
         />
