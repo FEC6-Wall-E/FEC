@@ -405,6 +405,12 @@ Overview Structure */
   width: 100%;
   height: 35rem;
 }
+.q-and-a.light{
+  color: black;
+}
+.q-and-a.dark{
+  color: white;
+}
 .qa-header {
   font-weight: lighter;
   padding: 0 0 0 1vh;
@@ -420,15 +426,19 @@ Overview Structure */
   padding: 0.7vh 0vh;
 }
 .q-body-text {
+  display: inline-block;
   font-weight: bold;
+  max-width: 60%;
 }
 .q-helpful {
-  float: right;
   position: relative;
+  float: right;
   top: 50%;
+  right: 4%;
   font-size: 80%;
 }
 .q-help:hover {
+  transition: 0s;
   color: royalblue;
   cursor: pointer;
 }
@@ -444,16 +454,22 @@ Overview Structure */
   padding: 0.5vh 0;
 }
 .a-help:hover {
+  transition: 0s;
   color: royalblue;
   cursor: pointer;
 }
 .a-report:hover {
+  transition: 0s;
   color: crimson;
   cursor: pointer;
 }
 .more-answers {
   padding: 10px 0px 0px 20px;
-  font-weight: bold;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.more-answers:hover {
+  text-decoration: underline;
 }
 .more-questions {
   margin: 0 0.5vh 0.5vh 1vh;
@@ -471,6 +487,10 @@ Overview Structure */
   padding: 0 1vh;
   text-align: center;
 }
+.more-questions:hover {
+  color: white;
+  background-color: crimson;
+}
 .add-question {
   margin: 0vh 0 0.5vh 0.5vh;
   align-items: center;
@@ -487,15 +507,27 @@ Overview Structure */
   padding: 0 1vh;
   text-align: center;
 }
+.add-question:hover {
+  color: white;
+  background-color: crimson;
+}
+.add-answer {
+  cursor: pointer;
+}
+.add-answer:hover {
+  transition: 0s;
+  color: royalblue;
+}
 .search-questions {
   width: 100%;
   padding: 0 0 1vh 1vh;
 }
 .search-bar {
   border: 1px solid grey;
+  background-color: whitesmoke;
   height: 3vh;
   width: 95%;
-  padding: 0.5vh 0vh 0.5vh 1.5vh;
+  padding: 0.5vh 0vh 0.5vh 1vh;
 }
 #search-bar::placeholder {
   font-weight: bolder;
