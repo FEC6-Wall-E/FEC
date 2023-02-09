@@ -66,16 +66,21 @@ const ProductCard = forwardRef(function ProductCard({
     }
   }, [images]);
 
+  const changeProduct = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.location.replace(`http://localhost:3000/?pid=${productId}`);
+    setPid(productId);
+  };
+
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className={index === idx ? `active product-card ${theme}` : `product-card ${theme}`}
       ref={index === idx ? ref : null}
       data-testid="slider-product-card"
-      // onClick={() => setPid(productId)}
     >
       <div className={`images ${theme}`}>
-        <img data-testid="main-image" className={`mainImg ${theme}`} src={mainImg} alt="Missing" onClick={() => setPid(productId)}/>
+        <img data-testid="main-image" className={`mainImg ${theme}`} src={mainImg} alt="Missing" onClick={() => changeProduct()} />
         <ThumbnailCarousel items={images} theme={theme} setMainImg={setMainImg} />
       </div>
       {classname === 'product-card'
@@ -107,7 +112,7 @@ const ProductCard = forwardRef(function ProductCard({
       />
       )}
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-      <div onClick={() => setPid(productId)}>
+      <div onClick={() => changeProduct()}>
         <div data-testid="category" className={`category ${theme}`}>{product.category}</div>
         <div data-testid="product-name" className={`product-name ${theme}`}>{product.name}</div>
         <Price
