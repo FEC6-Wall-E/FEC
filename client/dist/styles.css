@@ -402,7 +402,7 @@ Overview Structure */
 
 /* Q and A */
 .q-and-a {
-  width: 100%;
+  width: 60vw;
   height: 35rem;
 }
 .q-and-a.light{
@@ -417,23 +417,27 @@ Overview Structure */
 }
 .question-list {
   height: 80%;
+  width: 100%;
   overflow: auto;
 }
 .question {
   margin: 1vh;
+  max-width: 100%;
 }
 .q-body {
+  position: relative;
   padding: 0.7vh 0vh;
 }
 .q-body-text {
   display: inline-block;
+  max-width: 50%;
+  overflow-wrap: break-word;
   font-weight: bold;
-  max-width: 60%;
 }
 .q-helpful {
   position: relative;
   float: right;
-  top: 50%;
+  margin-top: 1%;
   right: 4%;
   font-size: 80%;
 }
@@ -441,6 +445,27 @@ Overview Structure */
   transition: 0s;
   color: royalblue;
   cursor: pointer;
+}
+.q-accordion {
+  vertical-align: top;
+  background-color: white;
+  color: black;
+  border: .1vh solid #000;
+  margin-left: 1vh;
+  width: 21px;
+  height: 20px;
+  text-align: center;
+}
+.q-accordion:hover {
+  background-color: crimson;
+  color: white;
+}
+.q-panel {
+  overflow: hidden;
+  transition: max-height 1.2s ease;
+}
+.q-panel.dark {
+  color: black;
 }
 .answer {
   padding: 0.5vh 0 1vh 1vh;
@@ -463,6 +488,11 @@ Overview Structure */
   color: crimson;
   cursor: pointer;
 }
+.a-photo {
+  padding: 1vh 0.2vh 0 0.2vh;
+  height: 7vh;
+  width: 6vw;
+}
 .more-answers {
   padding: 10px 0px 0px 20px;
   font-weight: bolder;
@@ -473,7 +503,6 @@ Overview Structure */
 }
 .more-questions {
   margin: 0 0.5vh 0.5vh 1vh;
-  align-items: center;
   background-color: #fff;
   color: rgba(0, 0, 0, 0.8);
   border: .1vh solid #000;
@@ -481,7 +510,6 @@ Overview Structure */
   font-size: 90%;
   font-weight: bolder;
   height: 5vh;
-  justify-content: center;
   letter-spacing: -.13vh;
   min-width: 10vh;
   padding: 0 1vh;
@@ -493,7 +521,6 @@ Overview Structure */
 }
 .add-question {
   margin: 0vh 0 0.5vh 0.5vh;
-  align-items: center;
   background-color: #fff;
   color: rgba(0, 0, 0, 0.8);
   border: .1vh solid #000;
@@ -501,13 +528,46 @@ Overview Structure */
   font-size: 90%;
   font-weight: bolder;
   height: 5vh;
-  justify-content: center;
   letter-spacing: -.13vh;
   min-width: 10vh;
   padding: 0 1vh;
   text-align: center;
 }
 .add-question:hover {
+  color: white;
+  background-color: crimson;
+}
+.qa-add-title {
+  text-align: center;
+}
+.qa-add-subtext {
+  margin: 1vh 0;
+  color: grey;
+}
+.qa-add-input {
+  background-color: whitesmoke;
+}
+.qa-add-name, .qa-add-email {
+  border-width: 1px;
+  border-style: solid;
+  padding: 2px;
+  background-color: whitesmoke;
+}
+.qa-add-submit {
+  position: relative;
+  left: 40%;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.8);
+  border: .1vh solid #000;
+  box-sizing: border-box;
+  font-size: 90%;
+  font-weight: bolder;
+  height: 4vh;
+  min-width: 5vh;
+  padding: 1vh;
+  text-align: center;
+}
+.qa-add-submit:hover {
   color: white;
   background-color: crimson;
 }
@@ -574,11 +634,13 @@ Overview Structure */
   line-height: 1.5rem;
   text-align: center;
   cursor: pointer;
+  border: .1vh solid #000;
   border-radius: 0.25rem;
-  background-color: lightgray;
+  background-color: white;
 }
 .close-button:hover {
-  background-color: darkgray;
+  background-color: red;
+  color: white;
 }
 button {
   cursor: pointer;

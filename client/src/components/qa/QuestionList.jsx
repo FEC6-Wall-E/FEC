@@ -13,11 +13,8 @@ function QuestionList({
       {questionList.slice(0, questionCount).map((question) => (
         <Question
           key={question.question_id}
-          body={question.question_body}
-          helpfulness={question.question_helpfulness}
-          id={question.question_id}
           name={product.name}
-          answers={question.answers}
+          question={question}
           getQuestions={getQuestions}
           theme={theme}
         />
@@ -39,8 +36,9 @@ function QuestionList({
       </button>
       { questOpen && (
         <AddQuestion
-          name={product.name}
+          key={product.id}
           id={product.id}
+          name={product.name}
           setQuestOpen={setQuestOpen}
           getQuestions={getQuestions}
         />

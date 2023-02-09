@@ -65,7 +65,7 @@ function QandA({ product, theme }) {
   if (questionList.length === 0) {
     return (
       <div data-testid="QANDA" className={`q-and-a ${theme}`}>
-        <h4 className={`qa-header ${theme}`}>QUESTIONS & ANSWERS</h4>
+        <h3 className={`qa-header ${theme}`}>QUESTIONS & ANSWERS</h3>
         <button onClick={toggleAddQuestion}>Add question</button>
         { questOpen && (
           <AddQuestion
@@ -81,7 +81,7 @@ function QandA({ product, theme }) {
 
   return (
     <div data-testid="QANDA" className={`q-and-a ${theme}`}>
-      <h4 className={`qa-header ${theme}`}>QUESTIONS & ANSWERS</h4>
+      <h3 className={`qa-header ${theme}`}>QUESTIONS & ANSWERS</h3>
       <SearchQuestions setSearchInput={setSearchInput} theme={theme} />
       <QuestionList
         questionList={filteredQuestions.length > 0 ? filteredQuestions : questionList}

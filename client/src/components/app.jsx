@@ -78,7 +78,7 @@ function App() {
           {/* <RelatedProducts />
           <YourOutfitList /> */}
           {product
-            ? <QandA product={product} />
+            ? <QandA product={product} theme={theme} />
             : null}
         </div>
       </div>
