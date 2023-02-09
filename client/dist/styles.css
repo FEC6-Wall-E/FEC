@@ -8,7 +8,15 @@ html,body {
   padding:0;
   display: flex;
   flex-direction: column;
+  /* min-height: 100%; */
   /* background-image: url(/images/tall.jpeg); */
+}
+
+#app {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #app.light {
@@ -573,17 +581,29 @@ p.feature.dark {
 }
 #overviewSelectors {
   display: flex;
-  flex-direction: column;
   width: 100%;
 }
 
-/* RELATED PRODUCTS */
+/* RELATED PRODUCTS AND OUTFITS */
 
+#related-and-outfits {
+  width: 60vw;
+  /* max-width: 70%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
 /* CAROUSEL */
+.product-card-slider-container {
+  width: 100%;
+}
+
 .product-card-slider-container {
   position: relative;
 }
 .product-card-slider {
+  width: 100%;
   display: grid;
   gap: 0.6rem;
   grid-auto-flow: column;
@@ -608,7 +628,7 @@ p.feature.dark {
   gap: 0.6rem;
   position: relative;
   padding: 0.3rem;
-  width: 100%;
+  max-width: 100%;
 }
 .add-outfit-card {
   /* temorarily set min-height until I figure out how to set it to the same
