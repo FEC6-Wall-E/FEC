@@ -181,14 +181,15 @@ Image Buttons */
   position: absolute;
   top: 0%;
   opacity: 0;
-  width: 5vw;
+  width: 8vw;
   height: 80vh;
 }
 .imageSelector:hover {
   opacity: 0.3;
 }
-.right{
+.imageSelector.right{
   right: 0%;
+  width: 5vw;
 }
 /*
 StarRatingCSS */
@@ -265,11 +266,12 @@ h2.infoCategory.dark {
 }
 h1.infoName.light {
   color: black;
-  font-size: 3rem;
+  font-size: 2.5rem;
+  width: 100%
 }
 h1.infoName.dark {
   color: white;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 .sale {
   display: inline;
@@ -355,7 +357,7 @@ h1#CurrentStyle.dark {
   background-color: #FF0000;
   height: 5vh;
   width: 25vw;
-  font-size: 3em;
+  font-size: 2rem;
   font-weight: bold;
   color: white;
   border-radius: 10px;
@@ -377,7 +379,6 @@ Overview Structure */
   min-width: 100%;
   min-height: 25%;
   max-height: 25%;
-  padding: 1em;
 }
 #ProductInfo {
   display: flex;
@@ -386,7 +387,6 @@ Overview Structure */
   min-width: 100%;
   min-height: 45%;
   max-height: 45%;
-  padding: 1em;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -404,6 +404,7 @@ Overview Structure */
 #ProductDetails {
   display: flex;
   margin: 10px, 0px;
+  margin-bottom: 6vh;
 }
 .rightSide {
   float: right;
@@ -560,11 +561,11 @@ p.description.dark {
   color: white;
 }
 #ProductDetails .productDetails.light {
-  border-right: solid black 3px;
+  border-right: solid rgb(130, 130, 130) 3px;
   width: 45vw;
 }
 #ProductDetails .productDetails.dark {
-  border-right: solid white 3px;
+  border-right: solid rgb(169, 169, 169) 3px;
   width: 45vw;
 }
 #ProductDetails .features {
@@ -578,18 +579,18 @@ p.feature.light, p.value.light {
   color: black;
 }
 p.feature.dark, p.value.dark {
-  margin: 10px auto;
+  margin: 10px;
   color: white;
 }
 p.tripple-arrow.light {
-  color: rgb(112, 112, 112);
+  color: rgb(130, 130, 130);
 }
 p.tripple-arrow.dark {
-  color: rgb(214, 214, 214);
+  color: rgb(169, 169, 169);
 }
 .featureContainer * {
   display: inline;
-  margin: auto 10px;
+  margin: auto;
 }
 .features {
   padding: 1em;
