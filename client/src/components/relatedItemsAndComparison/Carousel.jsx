@@ -23,7 +23,7 @@ function Carousel({
     ref.current.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
-      inline: 'nearest',
+      inline: 'start',
     });
   };
 

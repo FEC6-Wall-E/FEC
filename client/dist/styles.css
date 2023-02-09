@@ -588,29 +588,27 @@ p.feature.dark {
 
 #related-and-outfits {
   width: 60vw;
-  /* max-width: 70%; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
+  margin: 5em auto;
 }
 /* CAROUSEL */
 .product-card-slider-container {
   width: 100%;
 }
-
 .product-card-slider-container {
   position: relative;
 }
 .product-card-slider {
   width: 100%;
   display: grid;
-  gap: 0.6rem;
+  gap: 2rem;
   grid-auto-flow: column;
   grid-auto-columns: 23%;
   overflow-x: hidden;
   overscroll-behavior-inline: contain;
-  padding: 0 0.6rem 0.6rem;
+  padding: 0.6rem 0.6rem;
   scroll-snap-type: inline mandatory;
   scroll-behavior: smooth;
   scroll-padding-inline: 0.6rem 1rem;
@@ -620,7 +618,8 @@ p.feature.dark {
 }
 .product-card, .add-outfit-card {
   background:whitesmoke;
-  border: 0.125rem solid grey;
+  border: 0.1rem solid grey;
+  border-radius: 0.4em;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -629,6 +628,7 @@ p.feature.dark {
   position: relative;
   padding: 0.3rem;
   max-width: 100%;
+  transition: all ease-out 1s;
 }
 .add-outfit-card {
   /* temorarily set min-height until I figure out how to set it to the same
@@ -644,11 +644,16 @@ p.feature.dark {
   width: 100%
 }
 .active {
-  border: 0.125rem solid red;
+  /* border: 0.125rem solid red; */
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
 }
 .mainImg {
-  aspect-ratio: 4 / 5;
-  border: 0.125rem solid grey;
+  /* aspect-ratio: 4 / 5; */
+  aspect-ratio: 3 / 4;
+  /* border: 0.1rem solid grey; */
+  border-radius: 0.1em;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  /* filter: drop-shadow(0 0 0.2rem black); */
   display: block;
   inline-size: 100%;
   object-fit: cover;
@@ -740,6 +745,13 @@ p.feature.dark {
 }
 .compare:hover {
   opacity: 0.7;
+}
+.product-card-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.8em;
+  padding-left: 0.5em;
 }
 .product-card .reviewCount {
   display: none;

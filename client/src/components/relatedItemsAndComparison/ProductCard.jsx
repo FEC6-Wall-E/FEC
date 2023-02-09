@@ -112,7 +112,7 @@ const ProductCard = forwardRef(function ProductCard({
       />
       )}
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-      <div onClick={() => changeProduct()}>
+      <div className="product-card-details" onClick={() => changeProduct()}>
         <div data-testid="category" className={`category ${theme}`}>{product.category}</div>
         <div data-testid="product-name" className={`product-name ${theme}`}>{product.name}</div>
         <Price

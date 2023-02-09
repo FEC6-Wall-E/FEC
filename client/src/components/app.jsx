@@ -17,11 +17,6 @@ function App() {
   const initID = document.querySelector('main') ? +document.querySelector('main').getAttribute('pid') : 40344;
   const [pid, setPid] = useState(initID);
 
-  // useEffect(() => {
-  //   window.scrollTo({ top: 0, behavior: 'smooth' });
-  //   window.location.assign(`http://localhost:3000/?pid=${pid}`);
-  // }, [pid]);
-
   console.log('PID: ----> ', pid);
 
   const changeTheme = (newTheme) => {
@@ -66,7 +61,6 @@ function App() {
         const errStatus = err.response ? err.response.status : null;
         // eslint-disable-next-line no-console
         console.log(errStatus, err);
-        if (errStatus === 500) window.location.href = ('http://localhost:3000/?pid=40349');
       });
   }, [pid]);
 
