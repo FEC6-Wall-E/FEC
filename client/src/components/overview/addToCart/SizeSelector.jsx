@@ -3,7 +3,7 @@ import React from 'react';
 import Select from 'react-select';
 
 const SizeSelector = React.forwardRef(({
-  currentStyle, setSku, sizes, size, theme,
+  currentStyle, setSku, sizes, size,
 }, ref) => {
   const sizeToSku = (sizeToConvert) => {
     // eslint-disable-next-line no-restricted-syntax

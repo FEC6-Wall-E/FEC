@@ -165,4 +165,14 @@ module.exports = {
         });
     },
   },
+
+  interactions: {
+    post: (req, res) => api.post('interactions', req.body)
+      .then(() => {
+        res.sendStatus(201);
+      })
+      .catch(() => {
+        res.sendStatus(500);
+      }),
+  },
 };

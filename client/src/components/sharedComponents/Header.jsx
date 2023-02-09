@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
+import handleInteraction from '../../handleInteraction.js';
 
 function Header({ setTheme, theme }) {
   const handleClick = () => {
@@ -11,7 +12,7 @@ function Header({ setTheme, theme }) {
   };
 
   return (
-    <div className={`pageHeader ${theme}`}>
+    <div onClick={(e) => handleInteraction(e, 'HEADER')} className={`pageHeader ${theme}`}>
       <img
         src="/images/buyInLarge.svg"
         alt="buyInLargeIcon"

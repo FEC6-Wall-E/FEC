@@ -3,7 +3,7 @@ import React from 'react';
 import Select from 'react-select';
 
 function QuantitySelector({
-  currentStyle, currentSku, setQuantity, theme,
+  currentStyle, currentSku, setQuantity,
 }) {
   const quantityArray = [];
   const totalNum = currentSku ? currentStyle.skus[currentSku].quantity : 0;

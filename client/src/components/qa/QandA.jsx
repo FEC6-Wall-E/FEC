@@ -6,6 +6,7 @@ import SearchQuestions from './SearchQuestions.jsx';
 import QuestionList from './QuestionList.jsx';
 import AddQuestion from './AddQuestion.jsx';
 import api from './lib/qaRequests.js';
+import handleInteraction from '../../handleInteraction.js';
 
 function QandA({ product, theme }) {
   const [questionList, setQuestionList] = useState([]);
@@ -64,7 +65,7 @@ function QandA({ product, theme }) {
 
   if (questionList.length === 0) {
     return (
-      <div data-testid="QANDA" className={`q-and-a ${theme}`}>
+      <div onClick={(e) => handleInteraction(e, 'QANDA')} data-testid="QANDA" className={`q-and-a ${theme}`}>
         <h3 className={`qa-header ${theme}`}>QUESTIONS & ANSWERS</h3>
         <button onClick={toggleAddQuestion}>Add question</button>
         { questOpen && (
@@ -80,7 +81,7 @@ function QandA({ product, theme }) {
   }
 
   return (
-    <div data-testid="QANDA" className={`q-and-a ${theme}`}>
+    <div onClick={(e) => handleInteraction(e, 'QANDA')} data-testid="QANDA" className={`q-and-a ${theme}`}>
       <h3 className={`qa-header ${theme}`}>QUESTIONS & ANSWERS</h3>
       <SearchQuestions setSearchInput={setSearchInput} theme={theme} />
       <QuestionList

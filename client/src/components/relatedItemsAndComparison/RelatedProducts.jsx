@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Carousel from './Carousel.jsx';
+import handleInteraction from '../../handleInteraction.js';
 
 function RelatedProducts() {
   // props that are passed in are {product} or {productId},
@@ -24,7 +25,7 @@ function RelatedProducts() {
   }, []);
 
   return (
-    <section id="related-products">
+    <section onClick={(e) => handleInteraction(e, 'RELATED')} id="related-products">
       <h5>RELATED PRODUCTS</h5>
       <div className="slider-container">
         <Carousel relatedList={relatedList} />
