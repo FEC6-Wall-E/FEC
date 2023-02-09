@@ -10,6 +10,8 @@ function ImageModal({
   const [show, setShow] = React.useState(false);
   const [idx, setIdx] = React.useState(currIdx || 0);
 
+  const placeholder = 'https://www.freeiconspng.com/uploads/no-image-icon-6.png';
+
   React.useEffect(() => {
     setIdx(currIdx || 0);
   }, [currIdx]);
@@ -49,7 +51,7 @@ function ImageModal({
   }
 
   const style = {
-    backgroundImage: `url(${images[idx].url})`,
+    backgroundImage: `url(${images[idx].url || placeholder})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: '250%',
   };
@@ -66,7 +68,7 @@ function ImageModal({
       >
         <img
           className={show ? 'show' : 'noShow'}
-          src={images[idx].url}
+          src={images[idx].url || placeholder}
           alt="missing"
         />
       </figure>
