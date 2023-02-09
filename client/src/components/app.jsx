@@ -14,7 +14,6 @@ function App() {
   const [product, setProduct] = useState(null);
   const [styles, setStyles] = useState(null);
   const [meta, setMeta] = useState(null);
-  // eslint-disable-next-line no-undef
   const initID = document.querySelector('main') ? +document.querySelector('main').getAttribute('pid') : 40344;
   const [pid, setPid] = useState(initID);
 
