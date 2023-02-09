@@ -17,7 +17,7 @@ function Details({ product, theme }) {
             <p className={`feature ${theme}`} key={`feature ${idx}`}>
               {feat.feature}
             </p>
-            <p className={`>>> ${theme}`} key={`feature ${idx}`}>
+            <p className={`tripple-arrow ${theme}`} key={`feature ${idx}`}>
               {'>>>'}
             </p>
             <p className={`value ${theme}`} key={`feature ${idx}`}>

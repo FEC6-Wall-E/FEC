@@ -37,7 +37,7 @@ html,body {
   clip-path: inset(0px 0px -100px 0px);
 }
 .moonIcon, .sunIcon {
-  padding: 20px;;
+  padding: 20px;
 }
 .moonIcon {
   color: #031c38;
@@ -573,13 +573,19 @@ p.description.dark {
   justify-content: center;
   flex-direction: column;
 }
-p.feature.light {
+p.feature.light, p.value.light {
   margin: 10px;
   color: black;
 }
-p.feature.dark {
+p.feature.dark, p.value.dark {
   margin: 10px auto;
   color: white;
+}
+p.tripple-arrow.light {
+  color: rgb(112, 112, 112);
+}
+p.tripple-arrow.dark {
+  color: rgb(214, 214, 214);
 }
 .featureContainer * {
   display: inline;
