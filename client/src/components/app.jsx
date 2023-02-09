@@ -4,8 +4,7 @@ import axios from 'axios';
 import Header from './sharedComponents/Header.jsx';
 import Overview from './overview/index.jsx';
 import QandA from './qa/QandA.jsx';
-import RelatedProducts from './relatedItemsAndComparison/RelatedProducts.jsx';
-import YourOutfitList from './relatedItemsAndComparison/YourOutfitList.jsx';
+import RelatedAndOutfits from './relatedItemsAndComparison/index.jsx';
 import examples from '../examples.js';
 
 function App() {
@@ -17,6 +16,10 @@ function App() {
   // eslint-disable-next-line no-undef
   const initID = document.querySelector('main') ? +document.querySelector('main').getAttribute('pid') : 40344;
   const [pid, setPid] = useState(initID);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pid]);
 
   console.log('PID: ----> ', pid);
 
@@ -80,11 +83,15 @@ function App() {
               />
             )
             : null}
-          {product && styles && meta && relatedList
-            ? <RelatedProducts relatedList={relatedList} theme={theme} setPid={setPid} />
-            : null}
-          { product
-            ? <YourOutfitList product={product} theme={theme} />
+          {product && relatedList
+            ? (
+              <RelatedAndOutfits
+                product={product}
+                relatedList={relatedList}
+                theme={theme}
+                setPid={setPid}
+              />
+            )
             : null}
           {product
             ? <QandA product={product} />

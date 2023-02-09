@@ -28,7 +28,7 @@ function YourOutfitList({
   };
 
   return (
-    <section
+    <div
       data-testid="outfitList"
       id="outfitList"
       className={`${theme}`}
@@ -37,7 +37,7 @@ function YourOutfitList({
       <section>
         <Carousel items={outfitList} classname="outfit" theme={theme} product={product} addOutfit={addOutfit} deleteOutfit={deleteOutfit} />
       </section>
-    </section>
+    </div>
   );
 }
 
