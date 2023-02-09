@@ -367,6 +367,55 @@ h1#CurrentStyle.dark {
   background-color: rgb(250, 92, 92);
 }
 /*
+Details Cap */
+h2.slogan.light {
+  color: black;
+}
+h2.slogan.dark {
+  color: white;
+}
+p.description.light {
+  color: black;
+}
+p.description.dark {
+  color: white;
+}
+#ProductDetails .productDetails.light {
+  border-right: solid rgb(130, 130, 130) 3px;
+  width: 45vw;
+}
+#ProductDetails .productDetails.dark {
+  border-right: solid rgb(169, 169, 169) 3px;
+  width: 45vw;
+}
+#ProductDetails .features {
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+p.feature.light, p.value.light {
+  margin: 10px;
+  color: black;
+}
+p.feature.dark, p.value.dark {
+  margin: 10px;
+  color: white;
+}
+p.tripple-arrow.light {
+  color: rgb(130, 130, 130);
+}
+p.tripple-arrow.dark {
+  color: rgb(169, 169, 169);
+}
+.featureContainer * {
+  display: inline;
+  margin: auto;
+}
+.features {
+  padding: 1em;
+}
+/*
 Overview Structure */
 #Image {
   float: left; /*It isnt though*/
@@ -406,8 +455,26 @@ Overview Structure */
   margin: 10px, 0px;
   margin-bottom: 6vh;
 }
+.leftSide, .rightSide {
+  min-height: 100%;
+  width: 30vw;
+}
 .rightSide {
   float: right;
+  padding: 0 3em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.dropShadow.light {
+  filter: drop-shadow(0 0 0.25rem black);
+}
+.dropShadow.dark {
+  filter: drop-shadow(0 0 0.25rem white);
+}
+#overviewSelectors {
+  display: flex;
+  width: 100%;
 }
 
 /* Q and A */
@@ -600,72 +667,4 @@ button {
 .slider {
   display: flex;
   margin: 10px, 0px;
-}
-
-h2.slogan.light {
-  color: black;
-}
-h2.slogan.dark {
-  color: white;
-}
-p.description.light {
-  color: black;
-}
-p.description.dark {
-  color: white;
-}
-#ProductDetails .productDetails.light {
-  border-right: solid rgb(130, 130, 130) 3px;
-  width: 45vw;
-}
-#ProductDetails .productDetails.dark {
-  border-right: solid rgb(169, 169, 169) 3px;
-  width: 45vw;
-}
-#ProductDetails .features {
-  width: 15vw;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-p.feature.light, p.value.light {
-  margin: 10px;
-  color: black;
-}
-p.feature.dark, p.value.dark {
-  margin: 10px;
-  color: white;
-}
-p.tripple-arrow.light {
-  color: rgb(130, 130, 130);
-}
-p.tripple-arrow.dark {
-  color: rgb(169, 169, 169);
-}
-.featureContainer * {
-  display: inline;
-  margin: auto;
-}
-.features {
-  padding: 1em;
-}
-.leftSide, .rightSide {
-  min-height: 100%;
-  width: 30vw;
-}
-.rightSide {
-  padding: 0 3em;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.dropShadow.light {
-  filter: drop-shadow(0 0 0.25rem black);
-}
-.dropShadow.dark {
-  filter: drop-shadow(0 0 0.25rem white);
-}
-#overviewSelectors {
-  display: flex;
-  width: 100%;
 }
