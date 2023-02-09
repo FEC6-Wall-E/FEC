@@ -69,8 +69,8 @@ function App() {
               />
             )
             : null}
-          {/* <RelatedProducts />
-          <YourOutfitList /> */}
+          <RelatedProducts />
+          <YourOutfitList />
           {product
             ? <QandA product={product} />
             : null}
