@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
-import axios from 'axios';
 import AnswerList from './AnswerList.jsx';
 import AddAnswer from './AddAnswer.jsx';
+import api from './lib/qaRequests.js';
 
 function Question({
-  body, helpfulness, id, name, answers, getQuestions,
+  body, helpfulness, id, name, answers, getQuestions, theme,
 }) {
   const [helpfulClicked, setHelpfulClicked] = useState(false);
   const [ansOpen, setAnsOpen] = useState(false);
@@ -14,10 +14,7 @@ function Question({
   const handleQHelpful = (e) => {
     e.preventDefault();
     if (!helpfulClicked) {
-      axios({
-        method: 'put',
-        url: `/qa/questions/${id}/helpful`,
-      })
+      api.putQHelpful(id)
         .then(() => {
           getQuestions();
         })
@@ -36,11 +33,11 @@ function Question({
   };
 
   return (
-    <div className="question">
+    <div data-testid="question" className={`question ${theme}`}>
       <div className="q-body">
         <span className="q-body-text">Q: {body}</span>
         <span className="q-helpful">Helpful? <span className="q-help" onClick={handleQHelpful}><u>Yes</u> </span>
-          ({helpfulness})  |  <u onClick={toggleAddAnswer} style={{ cursor: 'pointer' }}> Add Answer</u>
+          ({helpfulness})  |  <u className="add-answer" onClick={toggleAddAnswer}> Add Answer</u>
         </span>
         { ansOpen && (
           <AddAnswer
@@ -53,7 +50,7 @@ function Question({
           />
         )}
       </div>
-      <AnswerList answerList={answers} getQuestions={getQuestions} />
+      <AnswerList answerList={answers} getQuestions={getQuestions} theme={theme} />
     </div>
   );
 }

@@ -1,30 +1,21 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from './lib/qaRequests.js';
 
 function AddQuestion({
   name, id, setQuestOpen, getQuestions,
 }) {
   const [questionInput, setQuestionInput] = useState('');
-  const [nickname, setNickname] = useState('');
-  const [emailInput, setEmailInput] = useState('');
+  const [questionName, setQuestionName] = useState('');
+  const [questionEmail, setQuestionEmail] = useState('');
 
   const close = () => {
     setQuestOpen(false);
   };
   const handleAddQuestion = (e) => {
     e.preventDefault();
-    axios({
-      method: 'post',
-      url: '/qa/questions',
-      data: {
-        body: questionInput,
-        name: nickname,
-        email: emailInput,
-        product_id: id,
-      },
-    })
+    api.postQuestion(questionInput, questionName, questionEmail, id)
       .then(() => {
         console.log('success');
         close();
@@ -36,7 +27,6 @@ function AddQuestion({
   };
   const content = new Array(1).fill(
     <div>
-      {/* <span onClick={close} className="close-button">&times;</span> */}
       <h1>Ask Your Question </h1>
       <h2>About the {name}</h2>
       <form onSubmit={handleAddQuestion}>
@@ -53,7 +43,7 @@ function AddQuestion({
           type="text"
           maxLength="60"
           placeholder="Example: jackson11!"
-          onChange={(e) => { setNickname(e.target.value); }}
+          onChange={(e) => { setQuestionName(e.target.value); }}
           required
         />
         <h4>For privacy reasons, do not use your full name or email address</h4>
@@ -61,7 +51,7 @@ function AddQuestion({
           type="email"
           maxLength="60"
           placeholder="Example: jack@email.com"
-          onChange={(e) => { setEmailInput(e.target.value); }}
+          onChange={(e) => { setQuestionEmail(e.target.value); }}
           required
         />
         <h4>For authentication reasons, you will not be emailed</h4>
