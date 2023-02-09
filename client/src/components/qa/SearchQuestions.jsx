@@ -1,14 +1,15 @@
 import React from 'react';
 
-function SearchQuestions({ setSearchInput }) {
+function SearchQuestions({ setSearchInput, theme }) {
   return (
-    <form id="SearchQuestions" onSubmit={(e) => { e.preventDefault(); }}>
+    <form data-testid="SEARCHQUESTIONS" className={`search-questions ${theme}`} onSubmit={(e) => { e.preventDefault(); }}>
       <input
-        id="SearchBar"
+        data-testid="SEARCHBAR"
+        className={`search-bar ${theme}`}
         type="text"
         onChange={(e) => { setSearchInput(e.target.value); }}
         onFocus={(e) => { e.target.value = ''; }}
-        placeholder="Have a question? Search for answers..."
+        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
       />
     </form>
   );

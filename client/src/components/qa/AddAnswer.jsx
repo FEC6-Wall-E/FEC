@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from './lib/qaRequests.js';
 
 function AddAnswer({
   id, name, body, setAnsOpen, getQuestions,
@@ -16,16 +16,7 @@ function AddAnswer({
   };
   const handleAddAnswer = (e) => {
     e.preventDefault();
-    axios({
-      method: 'post',
-      url: `/qa/questions/${id}/answers?${id}`,
-      data: {
-        body: answerInput,
-        name: answerName,
-        email: answerEmail,
-        photos: images,
-      },
-    })
+    api.postAnswer(answerInput, answerName, answerEmail, images, id)
       .then(() => {
         console.log('success');
         close();
@@ -76,7 +67,7 @@ function AddAnswer({
           <img
             src={image}
             alt="thumbnail"
-            className="ansThumbnail"
+            className="ans-thumbnail"
           />
         ))}
         <br /> <br />
@@ -87,9 +78,9 @@ function AddAnswer({
 
   return (
     <div>
-      <div className="qaModalShadow" onClick={close} />
-      <div className="qaModal">
-        <div className="qaModalContent">
+      <div className="qa-modal-shadow" onClick={close} />
+      <div className="qa-modal">
+        <div className="qa-modal-content">
           <span onClick={close} className="close-button">&times;</span>
           {content}
         </div>

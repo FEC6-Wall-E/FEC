@@ -5,8 +5,9 @@ import axios from 'axios';
 import SearchQuestions from './SearchQuestions.jsx';
 import QuestionList from './QuestionList.jsx';
 import AddQuestion from './AddQuestion.jsx';
+import api from './lib/qaRequests.js';
 
-function QandA({ product }) {
+function QandA({ product, theme }) {
   const [questionList, setQuestionList] = useState([]);
   const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -27,7 +28,6 @@ function QandA({ product }) {
       const searched = questionList.filter((question) => question.question_body.toUpperCase()
         .includes(searchInput.toUpperCase()));
       if (searched.length === 0) {
-        // eslint-disable-next-line no-alert, no-undef
         alert('No questions matched your search, try again');
       } else {
         setFilteredQuestions(searched);
@@ -36,12 +36,9 @@ function QandA({ product }) {
       filterByAnswers(questionList);
     }
   };
-  // const productId = 40383;
+
   const getQuestions = () => {
-    axios({
-      method: 'GET',
-      url: `/qa/questions?product_id=${product.id}&page=1&count=200`,
-    })
+    api.getQuestionsByID(product.id)
       .then((res) => {
         const sorted = res.data.results.sort((a, b) => b.helpfulness - a.helpfulness);
         setQuestionList(sorted);
@@ -51,6 +48,7 @@ function QandA({ product }) {
         console.error('Error getting questions for this product', err);
       });
   };
+
   const toggleAddQuestion = (e) => {
     e.preventDefault();
     setQuestOpen(true);
@@ -66,8 +64,8 @@ function QandA({ product }) {
 
   if (questionList.length === 0) {
     return (
-      <div id="QandA">
-        <h3>Questions and Answers</h3>
+      <div data-testid="QANDA" className={`q-and-a ${theme}`}>
+        <h4 className={`qa-header ${theme}`}>QUESTIONS & ANSWERS</h4>
         <button onClick={toggleAddQuestion}>Add question</button>
         { questOpen && (
           <AddQuestion
@@ -80,10 +78,11 @@ function QandA({ product }) {
       </div>
     );
   }
+
   return (
-    <div id="QandA">
-      <h3>Questions and Answers</h3>
-      <SearchQuestions setSearchInput={setSearchInput} />
+    <div data-testid="QANDA" className={`q-and-a ${theme}`}>
+      <h4 className={`qa-header ${theme}`}>QUESTIONS & ANSWERS</h4>
+      <SearchQuestions setSearchInput={setSearchInput} theme={theme} />
       <QuestionList
         questionList={filteredQuestions.length > 0 ? filteredQuestions : questionList}
         getQuestions={getQuestions}
@@ -91,6 +90,7 @@ function QandA({ product }) {
         toggleAddQuestion={toggleAddQuestion}
         questOpen={questOpen}
         setQuestOpen={setQuestOpen}
+        theme={theme}
       />
     </div>
   );
