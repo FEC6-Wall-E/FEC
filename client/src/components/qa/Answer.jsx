@@ -1,20 +1,18 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { useState } from 'react';
-import axios from 'axios';
 import { parseISO, format } from 'date-fns';
+import api from './lib/qaRequests.js';
 
 function Answer({
-  id, body, helpfulness, name, date, getQuestions,
+  answer, getQuestions, theme,
 }) {
   const [ansHelpfulClicked, setAnsHelpfulClicked] = useState(false);
+  const [report, setReport] = useState('Report');
   const handleAHelpful = (e) => {
     e.preventDefault();
     if (!ansHelpfulClicked) {
-      axios({
-        method: 'put',
-        url: `/qa/answers/${id}/helpful`,
-      })
+      api.putAHelpful(answer.id)
         .then(() => {
           getQuestions();
         })
@@ -28,26 +26,28 @@ function Answer({
   };
   const handleAReport = (e) => {
     e.preventDefault();
-    axios({
-      method: 'put',
-      url: `/qa/answers/${id}/report`,
-    })
+    api.putAReport(answer.id)
       .then(() => {
-        alert('Answer reported!');
-        getQuestions();
+        setReport('Reported');
       })
       .catch((err) => {
         console.log(err);
       });
   };
   return (
-    <div className="Answer">
-      <span className="aBody"><b>A: </b>{body}</span>
+    <div className={`answer ${theme}`}>
+      <span className="a-body"><b>A: </b>{answer.body}</span>
       <br />
-      <span className="aHelpful">
-        by {name}, {format(parseISO(date), 'MMMM dd, yyyy')}  |
-        Helpful? <span className="aHelp" onClick={handleAHelpful}><u>Yes</u></span> ({helpfulness})  |
-        <span className="aReport" onClick={handleAReport}><u>Report</u></span>
+      <span className="a-helpful">
+        by {answer.answerer_name}, {format(parseISO(answer.date), 'MMMM dd, yyyy')}  |
+        Helpful? <span className="a-help" onClick={handleAHelpful}><u>Yes</u></span> ({answer.helpfulness}) {'  |  '}
+        <span className="a-report" onClick={handleAReport}><u>{report}</u></span>
+      </span>
+      <br />
+      <span className="a-photos">
+        {answer.photos.map((photo) => (
+          <img className="a-photo" src={`${photo}`} alt="answer" />
+        ))}
       </span>
     </div>
   );

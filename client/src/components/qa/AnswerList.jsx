@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import Answer from './Answer.jsx';
 
-function AnswerList({ answerList, getQuestions }) {
+function AnswerList({ answerList, getQuestions, theme }) {
   const [answerCount, setAnswerCount] = useState(2);
   const [moreAnswers, setMoreAnswers] = useState('See More Answers');
 
@@ -24,22 +25,19 @@ function AnswerList({ answerList, getQuestions }) {
   };
 
   return (
-    <div id="AnswerList">
+    <div className={`answer-list ${theme}`}>
       {ansArr.slice(0, answerCount).map((answer) => (
         <Answer
           key={answer.id}
-          id={answer.id}
-          body={answer.body}
-          helpfulness={answer.helpfulness}
-          name={answer.answerer_name}
-          date={answer.date}
+          answer={answer}
           getQuestions={getQuestions}
+          theme={theme}
         />
       ))}
       { ansArr.length > 2
       && (
-      <form onClick={handleMoreAnswers}>
-        <span className="moreAnswers"><b>{moreAnswers}</b></span>
+      <form>
+        <span onClick={handleMoreAnswers} className={`more-answers ${theme}`}>{moreAnswers}</span>
       </form>
       )}
     </div>

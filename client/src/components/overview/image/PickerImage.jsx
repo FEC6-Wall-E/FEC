@@ -9,12 +9,14 @@ function PickerImage({
 }) {
   const [src, setSrc] = React.useState(url);
 
+  const placeholder = 'https://www.freeiconspng.com/uploads/no-image-icon-6.png';
+
   React.useEffect(() => {
     setSrc(url);
   }, [url]);
 
   const onError = () => {
-    setSrc('https://www.freeiconspng.com/uploads/no-image-icon-6.png');
+    setSrc(placeholder);
   };
 
   return (
@@ -33,9 +35,9 @@ function PickerImage({
         height="100"
         onClick={() => setImage(idx)}
         id={idx === currID ? 'picked' : null}
-        src={src}
+        src={src || placeholder}
         onError={onError}
-        alt="?"
+        alt="missing"
       />
     </span>
 

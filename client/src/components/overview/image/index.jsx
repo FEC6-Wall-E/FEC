@@ -10,6 +10,8 @@ function Image({ style }) {
   const [index, setIndex] = React.useState(0);
   const [modal, setModal] = React.useState(baseModal);
 
+  const placeholder = 'https://www.freeiconspng.com/uploads/no-image-icon-6.png';
+
   const changeIndex = (i) => {
     // eslint-disable-next-line no-use-before-define
 
@@ -52,7 +54,7 @@ function Image({ style }) {
                 transform: `translate3d(${-index * 100}%, 0, 0)`,
                 objectFit: 'cover',
               }}
-              src={image.url}
+              src={image.url || placeholder}
               alt="Missing!"
               key={idx}
             />
