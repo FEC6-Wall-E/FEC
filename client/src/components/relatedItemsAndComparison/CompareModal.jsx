@@ -11,9 +11,9 @@ function CompareModal({ product2, setShowModal, theme }) {
         <div data-testid="compare" className={`comparison-modal-content ${theme}`}>
           <header data-testid="header">Comparing</header>
           <div className={`comparison-table ${theme}`}>
-            <div data-testid="product1-name">{examples.product.name}</div>
-            <div />
-            <div data-testid="product2-name">{product2.name}</div>
+            <div className="table-header" data-testid="product1-name">{examples.product.name}</div>
+            <div className="table-header" />
+            <div className="table-header" data-testid="product2-name">{product2.name}</div>
             {features.map((feature) => (
               <div className={`comparison-table-row ${theme}`}>
                 <div data-testid="product1-feature">{feature.value1 ? feature.value1 : ''}</div>
