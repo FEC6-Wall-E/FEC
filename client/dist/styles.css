@@ -572,9 +572,15 @@ Overview Structure */
   cursor: pointer;
 }
 .a-photo {
-  padding: 1vh 0.2vh 0 0.2vh;
-  height: 7vh;
-  width: 6vw;
+  padding: 1vh 0.2vw 0 0.2vw;
+  object-fit: cover;
+  cursor: pointer;
+  height: 10vh;
+  width: 10vh;
+}
+.a-photo-modal {
+  max-height: 80vh;
+  max-width: 50vw;
 }
 .more-answers {
   padding: 10px 0px 0px 20px;
@@ -585,7 +591,7 @@ Overview Structure */
   text-decoration: underline;
 }
 .more-questions {
-  margin: 0 0.5vh 0.5vh 1vh;
+  margin: 1vh 0.5vh 0.5vh 1vh;
   background-color: #fff;
   color: rgba(0, 0, 0, 0.8);
   border: .1vh solid #000;
@@ -604,7 +610,7 @@ Overview Structure */
   background-color: red;
 }
 .add-question {
-  margin: 0vh 0 0.5vh 0.5vh;
+  margin: 1vh 0 0.5vh 0.5vh;
   background-color: #fff;
   color: rgba(0, 0, 0, 0.8);
   border: .1vh solid #000;
@@ -692,6 +698,7 @@ Overview Structure */
   background-color: black;
   opacity: 0.7;
   z-index: 4;
+  cursor: pointer;
 }
 .qa-modal{
   position: fixed;
@@ -705,7 +712,6 @@ Overview Structure */
   display: flex;
   flex-direction: column;
   padding: 1rem 1.5rem;
-  width: 34rem;
   border-radius: 0.5rem;
 }
 .qa-modal-content {
@@ -714,6 +720,9 @@ Overview Structure */
 }
 .qa-modal-content.dark {
   color: black;
+}
+.qa-modal-photo {
+  text-align: center;
 }
 .ans-thumbnail {
   padding: 2px;

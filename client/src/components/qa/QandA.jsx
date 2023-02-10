@@ -31,7 +31,6 @@ function QandA({ product, theme }) {
       const searched = questionList.filter((question) => question.question_body.toUpperCase()
         .includes(searchInput.toUpperCase()));
       if (searched.length === 0) {
-        // alert('No questions matched your search, try again');
         setNoMatch(true);
       } else {
         setFilteredQuestions(searched);
@@ -83,6 +82,7 @@ function QandA({ product, theme }) {
       </div>
     );
   }
+  const displayList = filteredQuestions.length > 0 ? filteredQuestions : questionList;
 
   return (
     <div onClick={(e) => handleInteraction(e, 'QANDA')} data-testid="QANDA" className={`q-and-a ${theme}`}>
@@ -92,13 +92,13 @@ function QandA({ product, theme }) {
         <div className="search-res">No questions matched your search, try again</div>
       )}
       <QuestionList
-        questionList={filteredQuestions.length > 0 ? filteredQuestions : questionList}
+        questionList={displayList}
         getQuestions={getQuestions}
         product={product}
         questionCount={questionCount}
         theme={theme}
       />
-      { questionCount < questionList.length && (
+      { questionCount < displayList.length && (
       <button
         onClick={(e) => { setQuestionCount(questionCount + 2); }}
         className={`more-questions ${theme}`}
