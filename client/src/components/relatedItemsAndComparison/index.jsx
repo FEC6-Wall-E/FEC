@@ -8,8 +8,18 @@ function RelatedAndOutfits({
 }) {
   return (
     <div id="related-and-outfits">
-      <RelatedProducts relatedList={relatedList} theme={theme} setPid={setPid} onClick={(e) => handleInteraction(e, 'RELATED')} />
-      <YourOutfitList product={product} theme={theme} onClick={(e) => handleInteraction(e, 'RELATED')} />
+      <RelatedProducts
+        product={product}
+        relatedList={relatedList}
+        theme={theme}
+        setPid={setPid}
+        onClick={(e) => handleInteraction(e, 'RELATED')}
+      />
+      <YourOutfitList
+        product={product}
+        theme={theme}
+        onClick={(e) => handleInteraction(e, 'RELATED')}
+      />
     </div>
   );
 }

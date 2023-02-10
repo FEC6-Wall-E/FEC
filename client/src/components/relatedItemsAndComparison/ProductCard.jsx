@@ -10,7 +10,7 @@ import Price from '../overview/info/price.jsx';
 
 /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
 const ProductCard = forwardRef(function ProductCard({
-  productId, index, idx, theme, classname, deleteOutfit, setPid,
+  productId, mainProduct, index, idx, theme, classname, deleteOutfit, setPid,
 }, ref) {
   const [product, setProduct] = useState({});
   const [defaultStyle, setDefaultStyle] = useState({});
@@ -101,12 +101,13 @@ const ProductCard = forwardRef(function ProductCard({
             role="button"
             data-testid="delete-outfit"
           >
-            x
+            &times;
           </div>
         )}
       {showModal && (
       <CompareModal
         theme={theme}
+        product1={mainProduct}
         product2={product}
         setShowModal={setShowModal}
       />

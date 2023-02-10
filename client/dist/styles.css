@@ -231,16 +231,7 @@ StarRatingCSS */
 .star.val75:after {
   width: 15px;
 }
-.reviewCount.light {
-  display: inline;
-  padding-left: 10px;
-  color: black;
-}
-.reviewCount.dark {
-  display: inline;
-  padding-left: 10px;
-  color: white;
-}
+
 /* Product Info */
 #ProductInfo .left, #ShareButtons {
   display: flex;
@@ -483,7 +474,7 @@ Overview Structure */
 /* Q and A */
 .q-and-a {
   width: 60vw;
-  height: 35rem;
+  max-height: 100vh;
 }
 .q-and-a.light{
   color: black;
@@ -491,12 +482,12 @@ Overview Structure */
 .q-and-a.dark{
   color: white;
 }
-.qa-header {
+.qa-header{
   font-weight: lighter;
   padding: 0 0 0 1vh;
 }
 .question-list {
-  height: 80%;
+  max-height: 70vh;
   width: 100%;
   overflow: auto;
 }
@@ -512,7 +503,7 @@ Overview Structure */
   display: inline-block;
   max-width: 50%;
   overflow-wrap: break-word;
-  font-weight: bold;
+  font-weight: lighter;
 }
 .q-helpful {
   position: relative;
@@ -530,14 +521,17 @@ Overview Structure */
   vertical-align: top;
   background-color: white;
   color: black;
+  font-weight: bold;
   border: .1vh solid #000;
+  border-radius: 0.25rem;
   margin-left: 1vh;
   width: 21px;
   height: 20px;
   text-align: center;
+  padding-right: 1.1em
 }
 .q-accordion:hover {
-  background-color: crimson;
+  background-color: red;
   color: white;
 }
 .q-panel {
@@ -565,13 +559,19 @@ Overview Structure */
 }
 .a-report:hover {
   transition: 0s;
-  color: crimson;
+  color: red;
   cursor: pointer;
 }
 .a-photo {
-  padding: 1vh 0.2vh 0 0.2vh;
-  height: 7vh;
-  width: 6vw;
+  padding: 1vh 0.2vw 0 0.2vw;
+  object-fit: cover;
+  cursor: pointer;
+  height: 10vh;
+  width: 10vh;
+}
+.a-photo-modal {
+  max-height: 80vh;
+  max-width: 50vw;
 }
 .more-answers {
   padding: 10px 0px 0px 20px;
@@ -582,10 +582,11 @@ Overview Structure */
   text-decoration: underline;
 }
 .more-questions {
-  margin: 0 0.5vh 0.5vh 1vh;
+  margin: 1vh 0.5vh 0.5vh 1vh;
   background-color: #fff;
   color: rgba(0, 0, 0, 0.8);
   border: .1vh solid #000;
+  border-radius: 0.5em;
   box-sizing: border-box;
   font-size: 90%;
   font-weight: bolder;
@@ -597,13 +598,14 @@ Overview Structure */
 }
 .more-questions:hover {
   color: white;
-  background-color: crimson;
+  background-color: red;
 }
 .add-question {
-  margin: 0vh 0 0.5vh 0.5vh;
+  margin: 1vh 0 0.5vh 0.5vh;
   background-color: #fff;
   color: rgba(0, 0, 0, 0.8);
   border: .1vh solid #000;
+  border-radius: 0.5em;
   box-sizing: border-box;
   font-size: 90%;
   font-weight: bolder;
@@ -615,7 +617,7 @@ Overview Structure */
 }
 .add-question:hover {
   color: white;
-  background-color: crimson;
+  background-color: red;
 }
 .qa-add-title {
   text-align: center;
@@ -639,6 +641,7 @@ Overview Structure */
   background-color: #fff;
   color: rgba(0, 0, 0, 0.8);
   border: .1vh solid #000;
+  border-radius: 0.5em;
   box-sizing: border-box;
   font-size: 90%;
   font-weight: bolder;
@@ -649,7 +652,7 @@ Overview Structure */
 }
 .qa-add-submit:hover {
   color: white;
-  background-color: crimson;
+  background-color: red;
 }
 .add-answer {
   cursor: pointer;
@@ -673,6 +676,9 @@ Overview Structure */
   font-weight: bolder;
   color: rgba(0, 0, 0, 0.8);
 }
+.search-res {
+  padding-left: 1vh;
+}
 .qa-modal-shadow {
   position: fixed;
   height: 100%;
@@ -683,11 +689,12 @@ Overview Structure */
   background-color: black;
   opacity: 0.7;
   z-index: 4;
+  cursor: pointer;
 }
-.qa-modal {
+.qa-modal{
   position: fixed;
-  max-width: 500px;
-  max-height: calc(100% - 200px);
+  max-width: 60vw;
+  max-height: 90vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -696,17 +703,22 @@ Overview Structure */
   display: flex;
   flex-direction: column;
   padding: 1rem 1.5rem;
-  width: 34rem;
   border-radius: 0.5rem;
 }
 .qa-modal-content {
   overflow: auto;
   min-height: 200px;
 }
+.qa-modal-content.dark {
+  color: black;
+}
+.qa-modal-photo {
+  text-align: center;
+}
 .ans-thumbnail {
   padding: 2px;
-  width: 96px;
-  height: auto;
+  width: 86px;
+  height: 100px;
 }
 .close-button {
   float: right;
@@ -780,19 +792,20 @@ p.feature.dark {
 }
 
 /* RELATED PRODUCTS AND OUTFITS */
-
 #related-and-outfits {
   width: 60vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 5em auto;
+  gap: 2em;
 }
+#outfit-list {
+  align-self: start;
+}
+
 /* CAROUSEL */
 .product-card-slider-container {
   width: 100%;
-}
-.product-card-slider-container {
   position: relative;
 }
 .product-card-slider {
@@ -803,7 +816,7 @@ p.feature.dark {
   grid-auto-columns: 23%;
   overflow-x: hidden;
   overscroll-behavior-inline: contain;
-  padding: 0.6rem 0.6rem;
+  padding: 1rem 0.6rem;
   scroll-snap-type: inline mandatory;
   scroll-behavior: smooth;
   scroll-padding-inline: 0.6rem 1rem;
@@ -813,7 +826,7 @@ p.feature.dark {
 }
 .product-card, .add-outfit-card {
   background:whitesmoke;
-  border: 0.1rem solid grey;
+  border: 0.075rem solid grey;
   border-radius: 0.4em;
   cursor: pointer;
   display: flex;
@@ -823,29 +836,38 @@ p.feature.dark {
   position: relative;
   padding: 0.3rem;
   max-width: 100%;
-  transition: all ease-out 1s;
+  transition: all ease-out 0.8s;
 }
 .add-outfit-card {
-  /* temorarily set min-height until I figure out how to set it to the same
-  height as the other product cards */
-  min-height: 40vh;
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
+  background: white;
+  min-width: fit-content;
+}
+.product-card:hover, .add-outfit-card:hover {
+  transition: all ease-in-out 0.2s;
+  /* transform: scale(1.0125); */
+  /* transform: translateY(-0.8rem); */
+}
+.plus{
+  padding: 1.25em;
 }
 .images {
   cursor: pointer;
   position: relative;
-  width: 100%
+  width: 100%;
 }
-.active {
-  /* border: 0.125rem solid red; */
-  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+
+.active.light {
+  box-shadow: rgba(255, 215, 0) 0.3rem 0.3rem 0.2rem, rgb(255, 215, 0, 0.7) 0 0 0 0.2rem;
+  /* filter: drop-shadow(0.5rem 0.5rem 0.2rem gold); */
 }
-.mainImg {
-  /* aspect-ratio: 4 / 5; */
-  aspect-ratio: 3 / 4;
-  /* border: 0.1rem solid grey; */
+.active.dark {
+  box-shadow: rgba(255, 215, 0) 1px 1px 4px, rgb(255, 215, 0, 0.7) 0px 0px 0px 3px;
+}
+.mainImg, .add-outfit-card > img {
+  aspect-ratio: 4 / 5;
   border-radius: 0.1em;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   /* filter: drop-shadow(0 0 0.2rem black); */
@@ -861,11 +883,20 @@ p.feature.dark {
   z-index: 1;
   font-size: 2rem;
 }
+.product-card-slider-button.dark {
+  color: red;
+}
+.product-card-slider-button.dark:hover {
+  color: gold;
+}
+.product-card-slider-button:hover {
+  color: red;
+}
 .product-card-slider-button.prev {
-  left: -2rem;
+  left: -3rem;
 }
 .product-card-slider-button.next {
-  right: -2rem;
+  right: -3rem;
 }
 
 /* THUMBNAILS */
@@ -892,7 +923,7 @@ p.feature.dark {
   gap: 0.6rem;
   grid-auto-flow: column;
   grid-auto-columns: 20%;
-  /* width: 100%; */
+  width: 100%;
   overflow-x: hidden;
   overscroll-behavior-inline: contain;
   padding: 0.6rem 0.6rem;
@@ -920,7 +951,7 @@ p.feature.dark {
   height: 1.5em;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-30%);
   width: 1.5em;
 }
 .thumbnail-slider-button.prev {
@@ -929,17 +960,34 @@ p.feature.dark {
 .thumbnail-slider-button.next {
   right: -0.2em;
 }
+.thumbnail-slider-button:hover {
+  color:red;
+}
 .compare, .delete {
   position: absolute;
   top: 3%;
   right: 7%;
-  font-size: large;
   color: black;
+  font-size:x-large;
   z-index: 1;
   cursor: pointer;
+  transition: transform .2s;
 }
 .compare:hover {
-  opacity: 0.7;
+  color: red;
+  transform: scale(1.2);
+  transition: all ease 0.1s;
+}
+.delete {
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: x-large;
+  color: red;
+}
+.delete:hover {
+  transform: scale(1.4);
 }
 .product-card-details {
   display: flex;
@@ -968,21 +1016,30 @@ p.feature.dark {
   font-size: 0.9rem;
   letter-spacing: 0.075em;
 }
+.outfit-header, .related-header {
+  font-weight: lighter;
+  padding: 0 0 0 1vh;
+}
+.outfit-header.light, .related-header.light {
+  color: black;
+}
+.outfit-header.dark, .related-header.dark {
+  color: white;
+}
+
 /* COMPARISON MODAL */
 #comparison-modal {
   position: fixed;
-  /* might need to adjust z-index based on z-index for Jake's modals
-  to avoid stacking conflicts */
   z-index: 1000;
   top: 50%;
   left: 50%;
-  /* transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
   width: 40%;
   min-height: 30%;
   /* oveflow: auto enables scroll if needed; might need to be moved to modal-content */
   overflow: auto;
-  background-color: whitesmoke;
-  border-radius: 1.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
 }
 .comparison-modal-content {
   padding: 1.5rem;
@@ -991,35 +1048,67 @@ p.feature.dark {
   width: 100%;
 }
 .comparison-modal-content > header {
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-transform: uppercase;
   padding-bottom: 0.7em;
+  text-align: center;
 }
 .comparison-table {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 20ch));
+  column-gap: 2em;
+  row-gap: 1em;
+  align-items: center;
+  padding: 1.5em;
+}
+.table-header {
+  font-size: 1rem;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  color: red;
+  align-self: center;
+  font-weight: 600;
+  text-align: center;
 }
 .comparison-table-row {
   display: contents;
-  padding: 0.6rem 0.6rem;
+  padding: 0.6rem;
+}
+.comparison-table-row > .feature {
+  font-weight: 600;
+  place-self: center;
+}
+.product1-feature, .product1 {
+  justify-self: end;
+  text-align: end;
+}
+.product2-feature, .product2 {
+  justify-self: start;
+  text-align: start;
 }
 .comparison-modal-button {
   position: absolute;
-  top: 5%;
-  right: 5%;
-  font-size: medium;
+  top: 7%;
+  right: 3%;
+  width: 1.5rem;
+  line-height: 1.5rem;
   color: black;
   z-index: 1010;
-  border-radius: 50%;
+  border: .1vh solid #000;
+  border-radius: 0.25rem;
+  background-color: white;
   cursor: pointer;
 }
+.comparison-modal-button:hover {
+  background-color: red;
+  color: white;
+}
 .comparison-modal-overlay {
-  z-index: 990;
-  position: absolute;
-  /* or fixed based on css-tricks */
+  z-index: 4;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
 }
