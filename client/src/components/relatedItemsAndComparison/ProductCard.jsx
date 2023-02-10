@@ -68,7 +68,7 @@ const ProductCard = forwardRef(function ProductCard({
 
   const changeProduct = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    window.location.replace(`http://localhost:3000/?pid=${productId}`);
+    window.location.replace(`${window.location.href.substr(0, window.location.href.length - 5)}${productId}`);
     setPid(productId);
   };
 
@@ -116,7 +116,7 @@ const ProductCard = forwardRef(function ProductCard({
         <div data-testid="category" className={`category ${theme}`}>{product.category}</div>
         <div data-testid="product-name" className={`product-name ${theme}`}>{product.name}</div>
         <Price
-          theme={theme}
+          theme="light"
           sale={defaultStyle.sale_price}
           original={defaultStyle.original_price}
         />
