@@ -1,108 +1,127 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React, { useState, useEffect, forwardRef } from 'react';
 import axios from 'axios';
-import ThumbnailsList from './ThumbnailsList.jsx';
+import { IoIosStarOutline } from 'react-icons/io';
 import averageRating from '../sharedComponents/lib/averageRating.js';
-// import StarRating from '../sharedComponents/StarRating.jsx';
+import StarRating from '../sharedComponents/StarRating.jsx';
+import CompareModal from './CompareModal.jsx';
+import ThumbnailCarousel from './ThumbnailCarousel.jsx';
+import Price from '../overview/info/price.jsx';
 
 /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
-const ProductCard = forwardRef(function ProductCard({ productId, index, idx }, ref) {
-  const [relatedProduct, setRelatedProduct] = useState({});
+const ProductCard = forwardRef(function ProductCard({
+  productId, index, idx, theme, classname, deleteOutfit, setPid,
+}, ref) {
+  const [product, setProduct] = useState({});
   const [defaultStyle, setDefaultStyle] = useState({});
-  // const [rating, setRating] = useState([]);
-  const [images, setImages] = useState([]);
+  const [rating, setRating] = useState({});
+  const [images, setImages] = useState([{
+    thumbnail_url: 'https://www.freeiconspng.com/uploads/no-image-icon-6.png',
+    url: 'https://www.freeiconspng.com/uploads/no-image-icon-6.png',
+  }]);
   const [mainImg, setMainImg] = useState('');
-
-  const getRating = () => {
-    if (productId) {
-      axios.get(`/meta/${productId}`)
-        .then((meta) => {
-          console.log(meta);
-          // setRating(averageRating(meta));
-        })
-        .catch((err) => console.error(err));
-    }
-  };
-
-  // get default style for the current related product (needed for images and price)
-  const getStyles = () => {
-    axios.get(`/products/${productId}/styles`)
-      .then((product) => {
-        const defaultStyles = product.data.results.filter((style) => style['default?']);
-        const newDefaultStyle = defaultStyles.length > 0
-          ? defaultStyles[0] : product.data.results[0];
-        setDefaultStyle(newDefaultStyle);
-
-        if (newDefaultStyle.photos[0].thumbnail_url !== null) {
-          setImages(newDefaultStyle.photos);
-        } else {
-          setImages([{
-            thumbnail_url: 'https://www.freeiconspng.com/uploads/no-image-icon-6.png',
-            url: 'https://www.freeiconspng.com/uploads/no-image-icon-6.png',
-          }]);
-        }
-      })
-      .catch((err) => console.error(err));
-  };
-
-  // get info for the current related product (needed for )
-  const getRelatedProduct = () => {
-    axios.get(`/products/${productId}`)
-      .then((product) => {
-        setRelatedProduct(product.data);
-        // getRating();
-      })
-      .catch((err) => console.error(err))
-      .then(() => getStyles());
-  };
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    if (productId) {
-      getRelatedProduct();
-    }
-    // getStyles();
+    const getRating = () => {
+      if (productId) {
+        axios.get(`/meta/${productId}`)
+          .then((meta) => {
+            setRating(averageRating(meta.data));
+          })
+          .catch((err) => console.error(err));
+      }
+    };
+
+    const getStyles = () => {
+      axios.get(`/products/${productId}/styles`)
+        .then((item) => {
+          const defaultStyles = item.data.results.filter((style) => style['default?']);
+          const newDefaultStyle = defaultStyles.length > 0
+            ? defaultStyles[0] : item.data.results[0];
+          setDefaultStyle(newDefaultStyle);
+
+          if (newDefaultStyle.photos[0].thumbnail_url !== null) {
+            setImages(newDefaultStyle.photos);
+          }
+        })
+        .catch((err) => console.error(err));
+    };
+
+    const getProductData = () => {
+      axios.get(`/products/${productId}`)
+        .then((item) => {
+          setProduct(item.data);
+          getRating();
+          getStyles();
+        })
+        .catch((err) => console.error(err));
+    };
+    getProductData();
   }, [productId]);
 
   useEffect(() => {
     if (images.length > 0) {
-      setMainImg(images[0].thumbnail_url);
+      setMainImg(images[0].url);
     }
   }, [images]);
 
-  // const handleNavigate = () => {
-  //   setProduct(productId);
-  // };
+  const changeProduct = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.location.replace(`http://localhost:3000/?pid=${productId}`);
+    setPid(productId);
+  };
 
   return (
-    // add onClick={handleNavigate} to the first div
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
-      className={index === idx ? 'active product-card' : 'product-card'}
+      className={index === idx ? `active product-card ${theme}` : `product-card ${theme}`}
       ref={index === idx ? ref : null}
+      data-testid="slider-product-card"
     >
-      <img className="mainImg" src={mainImg} alt="Missing" />
-      <ThumbnailsList images={images} setMainImg={setMainImg} />
-      {/* add onClick={handleCompare} to the button */}
-      <button className="compare">Compare</button>
-      <div className="category">{relatedProduct.category}</div>
-      <h4 className="product-name">{relatedProduct.name}</h4>
-      {defaultStyle.sale_price
+      <div className={`images ${theme}`}>
+        <img data-testid="main-image" className={`mainImg ${theme}`} src={mainImg} alt="Missing" onClick={() => changeProduct()} />
+        <ThumbnailCarousel items={images} theme={theme} setMainImg={setMainImg} />
+      </div>
+      {classname === 'product-card'
         ? (
-          <div className="price">
-            <span className="sale">
-              {`$${defaultStyle.sale_price}`}
-            </span>
-            <span className="struckthrough">
-              {`$${defaultStyle.original_price}`}
-            </span>
+          <div
+            className={`compare ${theme}`}
+            onClick={() => setShowModal(true)}
+            role="button"
+            data-testid="open-compare"
+          >
+            <IoIosStarOutline />
           </div>
         )
         : (
-          <div className="price default">
-            {`$${defaultStyle.original_price}`}
+          <div
+            className={`delete ${theme}`}
+            onClick={() => deleteOutfit(productId)}
+            role="button"
+            data-testid="delete-outfit"
+          >
+            x
           </div>
         )}
-      <span className="rating">
-        {/* <StarRating rating={rating[0]} count={rating[1]} link={}/> */}
-      </span>
+      {showModal && (
+      <CompareModal
+        theme={theme}
+        product2={product}
+        setShowModal={setShowModal}
+      />
+      )}
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+      <div className="product-card-details" onClick={() => changeProduct()}>
+        <div data-testid="category" className={`category ${theme}`}>{product.category}</div>
+        <div data-testid="product-name" className={`product-name ${theme}`}>{product.name}</div>
+        <Price
+          theme={theme}
+          sale={defaultStyle.sale_price}
+          original={defaultStyle.original_price}
+        />
+        <StarRating theme={theme} rating={rating.averageRating} count={rating.ratings} />
+      </div>
     </div>
   );
 });

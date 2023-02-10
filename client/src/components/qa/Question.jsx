@@ -6,15 +6,17 @@ import AddAnswer from './AddAnswer.jsx';
 import api from './lib/qaRequests.js';
 
 function Question({
-  body, helpfulness, id, name, answers, getQuestions, theme,
+  question, name, getQuestions, theme,
 }) {
   const [helpfulClicked, setHelpfulClicked] = useState(false);
   const [ansOpen, setAnsOpen] = useState(false);
+  const [accDisplay, setAccDisplay] = useState(0);
+  const [accordion, setAccordion] = useState('+');
 
   const handleQHelpful = (e) => {
     e.preventDefault();
     if (!helpfulClicked) {
-      api.putQHelpful(id)
+      api.putQHelpful(question.question_id)
         .then(() => {
           getQuestions();
         })
@@ -32,25 +34,42 @@ function Question({
     setAnsOpen(true);
   };
 
+  const handleAccordion = (e) => {
+    e.preventDefault();
+    if (accDisplay) {
+      setAccDisplay(0);
+      setAccordion('+');
+    } else {
+      setAccDisplay('50vh');
+      setAccordion('-');
+    }
+  };
   return (
     <div data-testid="question" className={`question ${theme}`}>
       <div className="q-body">
-        <span className="q-body-text">Q: {body}</span>
+        <span className="q-body-text">Q: {question.question_body}</span>
+        <button className="q-accordion" onClick={handleAccordion}>{accordion}</button>
         <span className="q-helpful">Helpful? <span className="q-help" onClick={handleQHelpful}><u>Yes</u> </span>
-          ({helpfulness})  |  <u className="add-answer" onClick={toggleAddAnswer}> Add Answer</u>
+          ({question.question_helpfulness})  |  <u className="add-answer" onClick={toggleAddAnswer}> Add Answer</u>
         </span>
         { ansOpen && (
           <AddAnswer
-            key={id}
-            id={id}
+            key={question.question_id}
+            id={question.question_id}
             name={name}
-            body={body}
+            body={question.question_body}
             setAnsOpen={setAnsOpen}
             getQuestions={getQuestions}
           />
         )}
       </div>
-      <AnswerList answerList={answers} getQuestions={getQuestions} theme={theme} />
+      <div className="q-panel" style={{ 'max-height': `${accDisplay}` }}>
+        <AnswerList
+          answerList={question.answers}
+          getQuestions={getQuestions}
+          theme={theme}
+        />
+      </div>
     </div>
   );
 }

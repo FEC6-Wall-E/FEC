@@ -5,13 +5,14 @@ import { parseISO, format } from 'date-fns';
 import api from './lib/qaRequests.js';
 
 function Answer({
-  id, body, helpfulness, name, date, getQuestions, theme,
+  answer, getQuestions, theme,
 }) {
   const [ansHelpfulClicked, setAnsHelpfulClicked] = useState(false);
+  const [report, setReport] = useState('Report');
   const handleAHelpful = (e) => {
     e.preventDefault();
     if (!ansHelpfulClicked) {
-      api.putAHelpful(id)
+      api.putAHelpful(answer.id)
         .then(() => {
           getQuestions();
         })
@@ -25,10 +26,9 @@ function Answer({
   };
   const handleAReport = (e) => {
     e.preventDefault();
-    api.putAReport(id)
+    api.putAReport(answer.id)
       .then(() => {
-        alert('Answer reported!');
-        getQuestions();
+        setReport('Reported');
       })
       .catch((err) => {
         console.log(err);
@@ -36,12 +36,18 @@ function Answer({
   };
   return (
     <div className={`answer ${theme}`}>
-      <span className="a-body"><b>A: </b>{body}</span>
+      <span className="a-body"><b>A: </b>{answer.body}</span>
       <br />
       <span className="a-helpful">
-        by {name}, {format(parseISO(date), 'MMMM dd, yyyy')}  |
-        Helpful? <span className="a-help" onClick={handleAHelpful}><u>Yes</u></span> ({helpfulness}) {'  |  '}
-        <span className="a-report" onClick={handleAReport}><u>Report</u></span>
+        by {answer.answerer_name}, {format(parseISO(answer.date), 'MMMM dd, yyyy')}  |
+        Helpful? <span className="a-help" onClick={handleAHelpful}><u>Yes</u></span> ({answer.helpfulness}) {'  |  '}
+        <span className="a-report" onClick={handleAReport}><u>{report}</u></span>
+      </span>
+      <br />
+      <span className="a-photos">
+        {answer.photos.map((photo) => (
+          <img className="a-photo" src={`${photo}`} alt="answer" />
+        ))}
       </span>
     </div>
   );
