@@ -2,11 +2,10 @@
 import React, { useState, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import ProductCard from './ProductCard.jsx';
-import AddOutfitCard from './AddOutfitCard.jsx';
+import Thumbnail from './Thumbnail.jsx';
 
-function Carousel({
-  items, classname, theme, addOutfit, deleteOutfit, setPid,
+function ThumbnailCarousel({
+  items, setMainImg, theme,
 }) {
   const numberOfSlides = items.length;
   const [index, setIndex] = useState(0);
@@ -23,17 +22,17 @@ function Carousel({
     ref.current.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
-      inline: 'start',
+      inline: 'nearest',
     });
   };
 
   return (
-    <div data-testid="slider" className={`product-card-slider-wrapper ${theme}`}>
-      <div className={`product-card-slider-container ${theme}`}>
+    <div data-testid="slider" className={`thumbnail-slider-wrapper ${theme}`}>
+      <div className={`thumbnail-slider-container ${theme}`}>
         {index > 0 && (
           <div
-            className={`product-card-slider-button prev ${theme}`}
-            data-testid="product-card-prev-button"
+            className={`thumbnail-slider-button prev ${theme}`}
+            data-testid="thumbnail-prev-button"
             onClick={() => handleNav('prev')}
             role="button"
           >
@@ -42,33 +41,25 @@ function Carousel({
         )}
         {index < numberOfSlides - 1 && (
           <div
-            className={`product-card-slider-button next ${theme}`}
-            data-testid="product-card-next-button"
+            className={`thumbnail-slider-button next ${theme}`}
+            data-testid="thumbnail-next-button"
             onClick={() => handleNav('next')}
             role="button"
           >
             <IoIosArrowForward />
           </div>
         )}
-        <div className={`product-card-slider ${theme}`}>
-          {classname === 'outfit'
-          && (
-          <AddOutfitCard
-            theme={theme}
-            addOutfit={addOutfit}
-          />
-          )}
+        <div className={`thumbnail-slider ${theme}`}>
           {items.map((item, idx) => (
-            <ProductCard
-              classname={classname}
-              key={item}
+            <Thumbnail
+              key={idx}
+              thumbnail={item}
               ref={ref}
-              productId={item}
               index={index}
               idx={idx}
+              setMainImg={setMainImg}
+              setIndex={setIndex}
               theme={theme}
-              deleteOutfit={deleteOutfit}
-              setPid={setPid}
             />
           ))}
         </div>
@@ -77,4 +68,4 @@ function Carousel({
   );
 }
 
-export default Carousel;
+export default ThumbnailCarousel;

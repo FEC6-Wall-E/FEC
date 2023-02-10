@@ -9,7 +9,15 @@ html,body {
   padding:0;
   display: flex;
   flex-direction: column;
+  /* min-height: 100%; */
   /* background-image: url(/images/tall.jpeg); */
+}
+
+#app {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #app.light {
@@ -205,29 +213,23 @@ StarRatingCSS */
 .star.val100 {
   color: gold;
 }
-.star.val25:after {
-  content:'\2605';
-  color: gold;
-  position: absolute;
-  margin-left: -24px;
-  width: 8px;
-  overflow: hidden;
-}
-.star.val50:after {
-  content:'\2605';
-  color: gold;
-  position: absolute;
-  margin-left: -24px;
-  width: 12px;
-  overflow: hidden;
-}
+.star.val25:after,
+.star.val50:after,
 .star.val75:after {
   content:'\2605';
   color: gold;
   position: absolute;
   margin-left: -24px;
-  width: 15px;
   overflow: hidden;
+}
+.star.val25:after {
+  width: 8px;
+}
+.star.val50:after {
+  width: 12px;
+}
+.star.val75:after {
+  width: 15px;
 }
 .reviewCount.light {
   display: inline;
@@ -239,7 +241,6 @@ StarRatingCSS */
   padding-left: 10px;
   color: white;
 }
-
 /* Product Info */
 #ProductInfo .left, #ShareButtons {
   display: flex;
@@ -281,7 +282,7 @@ h1.infoName.dark {
 }
 .strike {
   display: inline;
-  text-decoration: Line-through;
+  text-decoration: line-through;
 }
 .original.light {
   color: black
@@ -723,10 +724,300 @@ button {
   cursor: pointer;
 }
 
-/* RELATED PRODUCTS */
 
-/* CAROUSEL */
-.slider {
+h2.slogan.light {
+  color: black;
+}
+h2.slogan.dark {
+  color: white;
+}
+p.description.light {
+  color: black;
+}
+p.description.dark {
+  color: white;
+}
+#ProductDetails .productDetails.light {
+  border-right: solid black 3px;
+  width: 45vw;
+}
+#ProductDetails .productDetails.dark {
+  border-right: solid white 3px;
+  width: 45vw;
+}
+p.feature.light {
+  margin: auto;
+  color: black;
+}
+p.feature.dark {
+  margin: auto;
+  color: white;
+}
+.features {
+  padding: 1em;
+}
+.leftSide, .rightSide {
+  min-height: 100%;
+  width: 30vw;
+}
+.rightSide {
+  padding: 0 3em;
   display: flex;
-  margin: 10px, 0px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.dropShadow.light {
+  filter: drop-shadow(0 0 0.25rem black);
+}
+.dropShadow.dark {
+  filter: drop-shadow(0 0 0.25rem white);
+}
+#overviewSelectors {
+  display: flex;
+  width: 100%;
+}
+
+/* RELATED PRODUCTS AND OUTFITS */
+
+#related-and-outfits {
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5em auto;
+}
+/* CAROUSEL */
+.product-card-slider-container {
+  width: 100%;
+}
+.product-card-slider-container {
+  position: relative;
+}
+.product-card-slider {
+  width: 100%;
+  display: grid;
+  gap: 2rem;
+  grid-auto-flow: column;
+  grid-auto-columns: 23%;
+  overflow-x: hidden;
+  overscroll-behavior-inline: contain;
+  padding: 0.6rem 0.6rem;
+  scroll-snap-type: inline mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-inline: 0.6rem 1rem;
+}
+.product-card-slider > * {
+  scroll-snap-align: start;
+}
+.product-card, .add-outfit-card {
+  background:whitesmoke;
+  border: 0.1rem solid grey;
+  border-radius: 0.4em;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: relative;
+  padding: 0.3rem;
+  max-width: 100%;
+  transition: all ease-out 1s;
+}
+.add-outfit-card {
+  /* temorarily set min-height until I figure out how to set it to the same
+  height as the other product cards */
+  min-height: 40vh;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.images {
+  cursor: pointer;
+  position: relative;
+  width: 100%
+}
+.active {
+  /* border: 0.125rem solid red; */
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+}
+.mainImg {
+  /* aspect-ratio: 4 / 5; */
+  aspect-ratio: 3 / 4;
+  /* border: 0.1rem solid grey; */
+  border-radius: 0.1em;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  /* filter: drop-shadow(0 0 0.2rem black); */
+  display: block;
+  inline-size: 100%;
+  object-fit: cover;
+}
+.product-card-slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+  font-size: 2rem;
+}
+.product-card-slider-button.prev {
+  left: -2rem;
+}
+.product-card-slider-button.next {
+  right: -2rem;
+}
+
+/* THUMBNAILS */
+.thumbnail-slider-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+  background: lightgray;
+  opacity: 0.8;
+  overflow: hidden;
+}
+.images:hover .thumbnail-slider-wrapper {
+  height: 24%;
+}
+.thumbnail-slider-container {
+  position: relative;
+}
+.thumbnail-slider {
+  display: grid;
+  gap: 0.6rem;
+  grid-auto-flow: column;
+  grid-auto-columns: 20%;
+  /* width: 100%; */
+  overflow-x: hidden;
+  overscroll-behavior-inline: contain;
+  padding: 0.6rem 0.6rem;
+  scroll-behavior: smooth;
+  scroll-padding-inline: 0.6rem 0.6rem;
+  scroll-snap-type: inline mandatory;
+}
+.thumbnail-slider > * {
+  scroll-snap-align: start;
+}
+.thumbnail {
+  background:whitesmoke;
+  padding: 0.1rem;
+}
+.thumbnail > img {
+  aspect-ratio: 4 / 5;
+  /* display: block gets rid of the sliver of white space at the bottom */
+  display: block;
+  inline-size: 100%;
+  object-fit: cover;
+}
+.thumbnail-slider-button {
+  color: black;
+  cursor: pointer;
+  height: 1.5em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5em;
+}
+.thumbnail-slider-button.prev {
+  left: -0.2em;
+}
+.thumbnail-slider-button.next {
+  right: -0.2em;
+}
+.compare, .delete {
+  position: absolute;
+  top: 3%;
+  right: 7%;
+  font-size: large;
+  color: black;
+  z-index: 1;
+  cursor: pointer;
+}
+.compare:hover {
+  opacity: 0.7;
+}
+.product-card-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.8em;
+  padding-left: 0.5em;
+}
+.product-card .reviewCount {
+  display: none;
+}
+.category {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+.product-name {
+  display: flex;
+  /* flex-grow ensures consistent size across all the
+  cards despite varying name lengths */
+  flex-grow: 1;
+  font-size: 1rem;
+  font-weight: 600;
+  overflow: hidden;
+}
+.product-card .price {
+  font-size: 0.9rem;
+  letter-spacing: 0.075em;
+}
+/* COMPARISON MODAL */
+#comparison-modal {
+  position: fixed;
+  /* might need to adjust z-index based on z-index for Jake's modals
+  to avoid stacking conflicts */
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+  width: 40%;
+  min-height: 30%;
+  /* oveflow: auto enables scroll if needed; might need to be moved to modal-content */
+  overflow: auto;
+  background-color: whitesmoke;
+  border-radius: 1.5rem;
+}
+.comparison-modal-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.comparison-modal-content > header {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  padding-bottom: 0.7em;
+}
+.comparison-table {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.comparison-table-row {
+  display: contents;
+  padding: 0.6rem 0.6rem;
+}
+.comparison-modal-button {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-size: medium;
+  color: black;
+  z-index: 1010;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.comparison-modal-overlay {
+  z-index: 990;
+  position: absolute;
+  /* or fixed based on css-tricks */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
 }
