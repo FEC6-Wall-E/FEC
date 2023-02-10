@@ -382,10 +382,12 @@ p.description.dark {
   color: white;
 }
 #ProductDetails .productDetails.light {
+  padding: 0 1em;
   border-right: solid rgb(130, 130, 130) 3px;
   width: 45vw;
 }
 #ProductDetails .productDetails.dark {
+  padding: 0 1em;
   border-right: solid rgb(169, 169, 169) 3px;
   width: 45vw;
 }
@@ -396,17 +398,17 @@ p.description.dark {
   flex-direction: column;
 }
 p.feature.light, p.value.light {
-  margin: 10px;
   color: black;
 }
 p.feature.dark, p.value.dark {
-  margin: 10px;
   color: white;
 }
 p.tripple-arrow.light {
+  margin: 15px;
   color: rgb(130, 130, 130);
 }
 p.tripple-arrow.dark {
+  margin: 15px;
   color: rgb(169, 169, 169);
 }
 .featureContainer * {
