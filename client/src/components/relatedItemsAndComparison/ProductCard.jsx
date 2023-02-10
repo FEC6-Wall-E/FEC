@@ -68,7 +68,7 @@ const ProductCard = forwardRef(function ProductCard({
 
   const changeProduct = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    window.location.replace(`http://localhost:3000/?pid=${productId}`);
+    window.location.replace(`${window.location.href.substr(0, window.location.href.length - 5)}${productId}`);
     setPid(productId);
   };
 
