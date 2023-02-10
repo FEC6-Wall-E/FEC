@@ -12,7 +12,9 @@ function QandA({ product, theme }) {
   const [questionList, setQuestionList] = useState([]);
   const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [noMatch, setNoMatch] = useState(false);
   const [questOpen, setQuestOpen] = useState(false);
+  const [questionCount, setQuestionCount] = useState(2);
 
   const filterByAnswers = (questions) => {
     const ans = questions.filter((question) => {
@@ -29,7 +31,8 @@ function QandA({ product, theme }) {
       const searched = questionList.filter((question) => question.question_body.toUpperCase()
         .includes(searchInput.toUpperCase()));
       if (searched.length === 0) {
-        alert('No questions matched your search, try again');
+        // alert('No questions matched your search, try again');
+        setNoMatch(true);
       } else {
         setFilteredQuestions(searched);
       }
@@ -60,6 +63,7 @@ function QandA({ product, theme }) {
   }, []);
 
   useEffect(() => {
+    setNoMatch(false);
     filterBySearch();
   }, [searchInput]);
 
@@ -68,7 +72,7 @@ function QandA({ product, theme }) {
       <div onClick={(e) => handleInteraction(e, 'QANDA')} data-testid="QANDA" className={`q-and-a ${theme}`}>
         <h3 className={`qa-header ${theme}`}>QUESTIONS & ANSWERS</h3>
         <button onClick={toggleAddQuestion}>Add question</button>
-        { questOpen && (
+        { questOpen && searchInput.length >= 3 && (
           <AddQuestion
             name={product.name}
             id={product.id}
@@ -84,15 +88,41 @@ function QandA({ product, theme }) {
     <div onClick={(e) => handleInteraction(e, 'QANDA')} data-testid="QANDA" className={`q-and-a ${theme}`}>
       <h3 className={`qa-header ${theme}`}>QUESTIONS & ANSWERS</h3>
       <SearchQuestions setSearchInput={setSearchInput} theme={theme} />
+      { noMatch === true && (
+        <div className="search-res">No questions matched your search, try again</div>
+      )}
       <QuestionList
         questionList={filteredQuestions.length > 0 ? filteredQuestions : questionList}
         getQuestions={getQuestions}
         product={product}
-        toggleAddQuestion={toggleAddQuestion}
-        questOpen={questOpen}
-        setQuestOpen={setQuestOpen}
+        questionCount={questionCount}
         theme={theme}
       />
+      { questionCount < questionList.length && (
+      <button
+        onClick={(e) => { setQuestionCount(questionCount + 2); }}
+        className={`more-questions ${theme}`}
+        data-testid="more-questions"
+      >
+        MORE ANSWERED QUESTIONS
+      </button>
+      )}
+      <button
+        onClick={toggleAddQuestion}
+        className={`add-question ${theme}`}
+      >
+        ADD QUESTION
+      </button>
+      { questOpen && (
+        <AddQuestion
+          key={product.id}
+          id={product.id}
+          name={product.name}
+          setQuestOpen={setQuestOpen}
+          getQuestions={getQuestions}
+          theme={theme}
+        />
+      )}
     </div>
   );
 }

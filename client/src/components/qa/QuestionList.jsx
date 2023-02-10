@@ -5,9 +5,8 @@ import Question from './Question.jsx';
 import AddQuestion from './AddQuestion.jsx';
 
 function QuestionList({
-  questionList, getQuestions, product, toggleAddQuestion, questOpen, setQuestOpen, theme,
+  questionList, getQuestions, product, questionCount, theme,
 }) {
-  const [questionCount, setQuestionCount] = useState(2);
   return (
     <div className={`question-list ${theme}`}>
       {questionList.slice(0, questionCount).map((question) => (
@@ -19,30 +18,6 @@ function QuestionList({
           theme={theme}
         />
       ))}
-      { questionCount < questionList.length && (
-      <button
-        onClick={(e) => { setQuestionCount(questionCount + 2); }}
-        className={`more-questions ${theme}`}
-        data-testid="more-questions"
-      >
-        MORE ANSWERED QUESTIONS
-      </button>
-      )}
-      <button
-        onClick={toggleAddQuestion}
-        className={`add-question ${theme}`}
-      >
-        ADD QUESTION
-      </button>
-      { questOpen && (
-        <AddQuestion
-          key={product.id}
-          id={product.id}
-          name={product.name}
-          setQuestOpen={setQuestOpen}
-          getQuestions={getQuestions}
-        />
-      )}
     </div>
   );
 }
