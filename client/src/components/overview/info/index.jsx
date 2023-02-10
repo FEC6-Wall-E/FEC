@@ -9,8 +9,8 @@ function ProductInfo({
   metaData, product, style, theme,
 }) {
   const ratingData = getRatingData(metaData);
-  const href = 'http://localhost:3000';
-  const twitterText = `Checkout this ${product.name} from BnL! Get it at ${href}?pid=${product.id}`;
+  const { href } = window.location;
+  const twitterText = `Checkout this ${product.name} from BnL! Get it at ${href}`;
 
   return (
     <div id="ProductInfo">
@@ -31,9 +31,7 @@ function ProductInfo({
         </div>
         <div
           className={`shareButton ${theme}`}
-          // eslint-disable-next-line no-alert
-          onClick={() => alert('This button doesnt work until deployed!\n\nThis is in overview/info/index.jsx!')}
-          // onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${href}`)}
+          onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${href}`)}
         >
           <i
             className="fa-brands fa-facebook fa-2xl"
@@ -41,7 +39,7 @@ function ProductInfo({
         </div>
         <div
           className={`shareButton ${theme}`}
-          onClick={() => window.open(`https://www.pinterest.com/pin/create/link/?url=${`${href}?pid=${product.id}`}/&description=${product.slogan}`)}
+          onClick={() => window.open(`https://www.pinterest.com/pin/create/link/?url=${`${href}`}&description=${product.slogan}`)}
         >
           <i
             className="fa-brands fa-pinterest fa-2xl"

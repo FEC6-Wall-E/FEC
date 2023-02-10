@@ -23,7 +23,10 @@ function App() {
     setTheme(newTheme);
   };
 
-  if (window.location.href === 'http://localhost:3000/') window.location.href = ('http://localhost:3000/?pid=40349');
+  if (window.location.href.substr(8).split('/')[1] === '') window.location.href = (`${window.location.href}?pid=40349`);
+  if (+window.location.href.substr(window.location.href.length - 5) < 40344) {
+    window.location.href = `${window.location.href.substr(0, window.location.href.length - 5)}40349`;
+  }
 
   useEffect(() => {
     changeTheme('light');
@@ -31,15 +34,15 @@ function App() {
 
   useEffect(() => {
     Promise.all([
-      axios.get(`http://localhost:3000/products/${pid}`)
+      axios.get(`/products/${pid}`)
         .then((result) => {
           setProduct(result.data);
         }),
-      axios.get(`http://localhost:3000/products/${pid}/styles`)
+      axios.get(`/products/${pid}/styles`)
         .then((result) => {
           setStyles(result.data.results);
         }),
-      axios.get(`http://localhost:3000/meta/${pid}`)
+      axios.get(`/meta/${pid}`)
         .then((result) => {
           setMeta(result.data);
         }),
@@ -48,7 +51,6 @@ function App() {
         const errStatus = err.response ? err.response.status : null;
         // eslint-disable-next-line no-console
         console.log(errStatus, err);
-        if (errStatus === 500) window.location.href = ('http://localhost:3000/?pid=40349');
       });
   }, [pid]);
 
