@@ -101,7 +101,7 @@ const ProductCard = forwardRef(function ProductCard({
             role="button"
             data-testid="delete-outfit"
           >
-            x
+            &times;
           </div>
         )}
       {showModal && (
