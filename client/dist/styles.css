@@ -189,7 +189,7 @@ Image Buttons */
   position: absolute;
   top: 0%;
   opacity: 0;
-  width: 8vw;
+  width: 7vw;
   height: 80vh;
 }
 .imageSelector:hover {
@@ -270,6 +270,7 @@ h1.infoName.dark {
   margin-right: 5px;
   color: #e31a3a;
   font-weight: bold;
+  font-size: larger;
 }
 .strike {
   display: inline;
