@@ -47,7 +47,7 @@ function Question({
   return (
     <div data-testid="question" className={`question ${theme}`}>
       <div className="q-body">
-        <span className="q-body-text">Q: {question.question_body}</span>
+        <span className="q-body-text"><b>Q:</b> {question.question_body}</span>
         <button className="q-accordion" onClick={handleAccordion}>{accordion}</button>
         <span className="q-helpful">Helpful? <span className="q-help" onClick={handleQHelpful}><u>Yes</u> </span>
           ({question.question_helpfulness})  |  <u className="add-answer" onClick={toggleAddAnswer}> Add Answer</u>
@@ -60,6 +60,7 @@ function Question({
             body={question.question_body}
             setAnsOpen={setAnsOpen}
             getQuestions={getQuestions}
+            theme={theme}
           />
         )}
       </div>
