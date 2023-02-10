@@ -7,6 +7,7 @@ import QandA from './qa/QandA.jsx';
 import RelatedAndOutfits from './relatedItemsAndComparison/index.jsx';
 import examples from '../examples.js';
 import backgrounds from '../backgrounds.js';
+import filterList from './relatedItemsAndComparison/filterRelatedItems.js';
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -78,7 +79,7 @@ function App() {
             ? (
               <RelatedAndOutfits
                 product={product}
-                relatedList={relatedList}
+                relatedList={filterList(relatedList, pid)}
                 theme={theme}
                 setPid={setPid}
               />
