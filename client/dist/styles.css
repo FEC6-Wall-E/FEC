@@ -231,16 +231,7 @@ StarRatingCSS */
 .star.val75:after {
   width: 15px;
 }
-.reviewCount.light {
-  display: inline;
-  padding-left: 10px;
-  color: black;
-}
-.reviewCount.dark {
-  display: inline;
-  padding-left: 10px;
-  color: white;
-}
+
 /* Product Info */
 #ProductInfo .left, #ShareButtons {
   display: flex;
@@ -804,7 +795,7 @@ p.feature.dark {
   grid-auto-columns: 23%;
   overflow-x: hidden;
   overscroll-behavior-inline: contain;
-  padding: 0.6rem 0.6rem;
+  padding: 1rem 0.6rem;
   scroll-snap-type: inline mandatory;
   scroll-behavior: smooth;
   scroll-padding-inline: 0.6rem 1rem;
@@ -814,7 +805,7 @@ p.feature.dark {
 }
 .product-card, .add-outfit-card {
   background:whitesmoke;
-  border: 0.1rem solid grey;
+  border: 0.075rem solid grey;
   border-radius: 0.4em;
   cursor: pointer;
   display: flex;
@@ -824,31 +815,35 @@ p.feature.dark {
   position: relative;
   padding: 0.3rem;
   max-width: 100%;
-  transition: all ease-out 1s;
+  transition: all ease-out 0.8s;
 }
 .add-outfit-card {
-  /* temorarily set min-height until I figure out how to set it to the same
-  height as the other product cards */
-  /* min-height: 40vh; */
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
   background: white;
+  min-width: fit-content;
+}
+.product-card:hover, .add-outfit-card:hover {
+  transition: all ease-in-out 0.2s;
+  /* transform: scale(1.0125); */
+  /* transform: translateY(-0.8rem); */
+}
+.plus{
+  padding: 1.25em;
 }
 .images {
   cursor: pointer;
   position: relative;
-  width: 100%
+  width: 100%;
 }
+
 .active.light {
-  /* border: 0.125rem solid red; */
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
-  transition: all ease 0.1s;
+  box-shadow: rgba(255, 215, 0) 0.3rem 0.3rem 0.2rem, rgb(255, 215, 0, 0.7) 0 0 0 0.2rem;
+  /* filter: drop-shadow(0.5rem 0.5rem 0.2rem gold); */
 }
 .active.dark {
-  /* border: 0.125rem solid red; */
-  box-shadow: rgba(255, 255, 255, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
-  transition: all ease 0.1s;
+  box-shadow: rgba(255, 215, 0) 1px 1px 4px, rgb(255, 215, 0, 0.7) 0px 0px 0px 3px;
 }
 .mainImg, .add-outfit-card > img {
   aspect-ratio: 4 / 5;
@@ -870,9 +865,11 @@ p.feature.dark {
 .product-card-slider-button.dark {
   color: red;
 }
+.product-card-slider-button.dark:hover {
+  color: gold;
+}
 .product-card-slider-button:hover {
-  transform: scale(1.05);
-  transition: all ease 0.1s;
+  color: red;
 }
 .product-card-slider-button.prev {
   left: -3rem;
@@ -933,7 +930,7 @@ p.feature.dark {
   height: 1.5em;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-30%);
   width: 1.5em;
 }
 .thumbnail-slider-button.prev {
@@ -942,18 +939,22 @@ p.feature.dark {
 .thumbnail-slider-button.next {
   right: -0.2em;
 }
+.thumbnail-slider-button:hover {
+  color:red;
+}
 .compare, .delete {
   position: absolute;
   top: 3%;
   right: 7%;
-  color: gold;
+  color: black;
+  font-size:x-large;
   z-index: 1;
   cursor: pointer;
   transition: transform .2s;
 }
 .compare:hover {
   color: red;
-  transform: scale(1.4);
+  transform: scale(1.2);
   transition: all ease 0.1s;
 }
 .delete {
@@ -965,7 +966,6 @@ p.feature.dark {
   color: red;
 }
 .delete:hover {
-  color: black;
   transform: scale(1.4);
 }
 .product-card-details {
