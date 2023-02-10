@@ -45,6 +45,7 @@ function AddQuestion({
                 maxLength="1000"
                 placeholder="Why did you like the product or not?"
                 onChange={(e) => { setQuestionInput(e.target.value); }}
+                required
               />
               <h3>What is your nickname? <span style={{ color: 'red' }}>*</span></h3>
               <input

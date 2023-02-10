@@ -46,6 +46,7 @@ function AddAnswer({
             <h1 className="qa-add-title">Submit Your Answer </h1>
             <h2>{name}: {body}</h2>
             <form onSubmit={handleAddAnswer}>
+              <span>(<span style={{ color: 'red' }}>*</span>) Mandatory</span>
               <h3>Your Answer <span style={{ color: 'red' }}>*</span></h3>
               <textarea
                 className="qa-add-input"
@@ -53,6 +54,7 @@ function AddAnswer({
                 cols="40"
                 maxLength="1000"
                 onChange={(e) => { setAnswerInput(e.target.value); }}
+                required
               />
               <h3>What is your nickname? <span style={{ color: 'red' }}>*</span></h3>
               <input
