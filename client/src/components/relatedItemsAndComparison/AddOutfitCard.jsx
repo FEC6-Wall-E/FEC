@@ -9,12 +9,10 @@ function AddOutfitCard({ theme, addOutfit }) {
       role="button"
       data-testid="add-outfit-button"
     >
-      <div
-        className={`${theme} plus`}
-      >
-        +
-        <div className={`${theme} plus`}>Add to Outfit</div>
+      <div className={`${theme} plus`}>
+        <img src="/images/addToOutfit.svg" alt="Add to Outfit" width="120" height="160" />
       </div>
+      <div className={`${theme} plus`}>Add to Outfit</div>
     </div>
   );
 }

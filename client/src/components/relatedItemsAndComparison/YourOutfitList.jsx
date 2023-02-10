@@ -30,7 +30,7 @@ function YourOutfitList({
   return (
     <div
       data-testid="outfitList"
-      id="outfitList"
+      id="outfit-list"
       className={`${theme}`}
     >
       <h5 className={`${theme}`}>YOUR OUTFIT</h5>

@@ -116,7 +116,7 @@ const ProductCard = forwardRef(function ProductCard({
         <div data-testid="category" className={`category ${theme}`}>{product.category}</div>
         <div data-testid="product-name" className={`product-name ${theme}`}>{product.name}</div>
         <Price
-          theme={theme}
+          theme="light"
           sale={defaultStyle.sale_price}
           original={defaultStyle.original_price}
         />
