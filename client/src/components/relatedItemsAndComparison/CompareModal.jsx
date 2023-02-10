@@ -17,8 +17,8 @@ function CompareModal({
                 <div className="table-header product1" data-testid="product1-name">{product1.name}</div>
                 <div className="table-header" />
                 <div className="table-header product2" data-testid="product2-name">{product2.name}</div>
-                {features.map((feature) => (
-                  <div className={`comparison-table-row ${theme}`}>
+                {features.map((feature, index) => (
+                  <div className={`comparison-table-row ${theme}`} key={index}>
                     <div className="product1-feature" data-testid="product1-feature">{feature.value1 ? feature.value1 : ''}</div>
                     <div className="feature" data-testid="feature">{feature.feature}</div>
                     <div className="product2-feature" data-testid="product2-feature">{feature.value2 ? feature.value2 : ''}</div>
