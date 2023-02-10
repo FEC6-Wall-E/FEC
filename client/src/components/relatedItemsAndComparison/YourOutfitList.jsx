@@ -33,7 +33,7 @@ function YourOutfitList({
       id="outfit-list"
       className={`${theme}`}
     >
-      <h5 className={`${theme}`}>YOUR OUTFIT</h5>
+      <h3 className={`${theme} outfit-header`}>YOUR OUTFIT</h3>
       <section>
         <Carousel items={outfitList} classname="outfit" theme={theme} product={product} addOutfit={addOutfit} deleteOutfit={deleteOutfit} />
       </section>

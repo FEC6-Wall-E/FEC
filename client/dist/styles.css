@@ -493,6 +493,12 @@ Overview Structure */
   font-weight: lighter;
   padding: 0 0 0 1vh;
 }
+.qa-header.light, .outfit-header.light, .related-header.light {
+  color: black;
+}
+.qa-header.dark, .outfit-header.dark, .related-header.dark {
+  color: white;
+}
 .question-list {
   height: 80%;
   width: 100%;
@@ -839,9 +845,14 @@ p.feature.dark {
   position: relative;
   width: 100%
 }
-.active {
+.active.light {
   /* border: 0.125rem solid red; */
-  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  transition: all ease 0.1s;
+}
+.active.dark {
+  /* border: 0.125rem solid red; */
+  box-shadow: rgba(255, 255, 255, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
   transition: all ease 0.1s;
 }
 .mainImg, .add-outfit-card > img {
@@ -867,7 +878,7 @@ p.feature.dark {
   color: red;
 }
 .product-card-slider-button:hover {
-  /* transform: scale(1.05); */
+  transform: scale(1.05);
   transition: all ease 0.1s;
 }
 .product-card-slider-button.prev {
