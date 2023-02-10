@@ -4,14 +4,14 @@ import axios from 'axios';
 
 export default {
   getQuestionsByID: (productId) => {
-    const inputs = {
+    const config = {
       method: 'get',
       url: `/qa/questions?product_id=${productId}&page=1&count=200`,
     };
-    return axios(inputs);
+    return axios(config);
   },
   postQuestion: (body, name, email, product_id) => {
-    const inputs = {
+    const config = {
       method: 'post',
       url: '/qa/questions',
       data: {
@@ -21,10 +21,10 @@ export default {
         product_id,
       },
     };
-    return axios(inputs);
+    return axios(config);
   },
   postAnswer: (body, name, email, photos, productId) => {
-    const inputs = {
+    const config = {
       method: 'post',
       url: `/qa/questions/${productId}/answers?${productId}`,
       data: {
@@ -34,27 +34,33 @@ export default {
         photos,
       },
     };
-    return axios(inputs);
+    return axios(config);
+  },
+  postImage: (image) => {
+    const formData = new FormData();
+    formData.append('file', image);
+    formData.append('upload_preset', 'rcynzrha');
+    return axios.post('https://api.cloudinary.com/v1_1/dw5uya9rf/image/upload', formData);
   },
   putQHelpful: (productId) => {
-    const inputs = {
+    const config = {
       method: 'put',
       url: `/qa/questions/${productId}/helpful`,
     };
-    return axios(inputs);
+    return axios(config);
   },
   putAHelpful: (productId) => {
-    const inputs = {
+    const config = {
       method: 'put',
       url: `/qa/answers/${productId}/helpful`,
     };
-    return axios(inputs);
+    return axios(config);
   },
   putAReport: (productId) => {
-    const inputs = {
+    const config = {
       method: 'put',
       url: `/qa/answers/${productId}/report`,
     };
-    return axios(inputs);
+    return axios(config);
   },
 };

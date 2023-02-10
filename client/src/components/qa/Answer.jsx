@@ -34,12 +34,19 @@ function Answer({
         console.log(err);
       });
   };
+  let name;
+  if (answer.answerer_name === 'Seller') {
+    name = <b>{answer.answerer_name}</b>;
+  } else {
+    name = answer.answerer_name;
+  }
+
   return (
     <div className={`answer ${theme}`}>
       <span className="a-body"><b>A: </b>{answer.body}</span>
       <br />
       <span className="a-helpful">
-        by {answer.answerer_name}, {format(parseISO(answer.date), 'MMMM dd, yyyy')}  |
+        by {name}, {format(parseISO(answer.date), 'MMMM dd, yyyy')}  |
         Helpful? <span className="a-help" onClick={handleAHelpful}><u>Yes</u></span> ({answer.helpfulness}) {'  |  '}
         <span className="a-report" onClick={handleAReport}><u>{report}</u></span>
       </span>
