@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Carousel from './Carousel.jsx';
 
 function YourOutfitList({
-  product, theme, handleInteraction,
+  product, theme,
 }) {
   const [outfitList, setOutfitLst] = useState([]);
 
@@ -32,7 +32,6 @@ function YourOutfitList({
       data-testid="outfitList"
       id="outfitList"
       className={`${theme}`}
-      onClick={(e) => handleInteraction(e, 'OUTFITLIST')}
     >
       <h5 className={`${theme}`}>YOUR OUTFIT</h5>
       <section>
