@@ -9,15 +9,25 @@ Simple overview of use/purpose.
     * [Dependencies](#dependencies)
     * [Installing](#installing)
     * [Executing program](#executing-program)
-  * [Help](#help)
   * [Authors](#authors)
   * [Version History](#version-history)
-  * [License](#license)
-  * [Acknowledgments](#acknowledgments)
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+The front End Capstone is a fullstack app designed to challenge our CSS, HTML, and React skills / knowledge as well as promote growth in these areas.
+We chose to desing an E-Commerce website called Buy In Large, a cloth seller based off of the company from the movie Wall-E.
+The Website's dsign is entirely based off of the color scheme and theme of the consumer section of the Axiom from the movie.
+Our website allows the user to browse a product, its styles, related products, and any Questions and Answers about the said product.
+The user scan view different images and styles in the Overview widget, as well as review details, and a description of the product.
+This section also contains the Add To Cart componenet, allowing the user to specify a Size and Quantity of the item and then add it to their cart!
+Further down the page is the Related Items and Outfit widget which allows the user to view similar and related items to the current product along with some info about those products.
+The user can also open a comparison Modal that compares the features of the product versus the current product.
+Also within this widget, the user can add items to their outfit, a way of storing products the user likes into an outfit!
+At the bottom of our page is the Questions and Answers widget, which allows the user to search through existend questions to see if their question has been answered.
+In the case that it is not, they can pose the question themselves with the Question Modal where they can add photos!
+Many of these features are shared in the Answers section, where users or the Seller can answer another users question.
+Our website also uses URLs that contain the current product ID so you can share the product with friends or family.
+The site also allows the user to switch between a light and dark mode.
 
 ## Getting Started
 
@@ -41,54 +51,40 @@ An in-depth paragraph about your project and overview of use.
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* NPM
+* All required libraries ad modules from package.json
+```
+npm i
+```
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* To download the program, you can clone the repo
+* You will have to rename the 'example.env' folder to '.env' and add the port number and API token
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+* Move into the FEC directory
+* Run the following commands:
 ```
-code blocks for commands
+npm run build
+npm run start
 ```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+* Then, navigate to the localhost:port!
 
 ## Authors
 
-Alex Libacova
+Jacob Davis - Product Overview
+![Screenshot](README_IMAGES/overview.png)
 
-Daniel Greaves
+Alex Libacova - Related Items and Outfit
+![Screenshot](README_IMAGES/related.png)
+![Screenshot](README_IMAGES/outfit.png)
 
-Jacob Davis
+Daniel Greaves - Questions and Answers
+![Screenshot](README_IMAGES/q&a.png)
 
 ## Version History
 
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
 * 0.1
     * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
-
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
